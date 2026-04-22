@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 4px;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes marqueeLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333333%); }
+}
+
+@keyframes marqueeRight {
+  0% { transform: translateX(-33.333333%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-left {
+  animation: marqueeLeft 30s linear infinite;
+  display: flex;
+}
+
+.animate-marquee-right {
+  animation: marqueeRight 30s linear infinite;
+  display: flex;
+}
+
+.hover\:animation-play-state-paused:hover {
+  animation-play-state: paused !important;
+}
+
+/* Custom premium hover sweep effect */
+@keyframes shimmer {
+  0% { transform: translateX(-150%); }
+  100% { transform: translateX(200%); }
+}
