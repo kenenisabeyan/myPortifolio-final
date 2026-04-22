@@ -26,7 +26,7 @@ const Contact = () => {
     e.preventDefault();
     setStatus('loading');
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
+      const apiUrl = import.meta.env.VITE_API_URL || "https://kenenisa-2.onrender.com";
       const res = await fetch(`${apiUrl}/contact`, {
         method: "POST",
         headers: {
