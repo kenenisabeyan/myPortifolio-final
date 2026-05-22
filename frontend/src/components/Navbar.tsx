@@ -84,11 +84,11 @@ const Navbar = ({ isDarkMode, toggleDarkMode }: { isDarkMode?: boolean, toggleDa
       scrolled 
         ? 'bg-[#060D1F]/80 backdrop-blur-3xl border-b border-cyan-500/20 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.8)]' 
         : 'bg-gradient-to-b from-[#030610]/95 to-transparent py-5 border-b border-transparent'
-    } px-6 md:px-12`}>
+    } px-6`}>
       {/* Decorative top border gradient line on scroll */}
       <div className={`absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent transition-opacity duration-500 ${scrolled ? 'opacity-100' : 'opacity-0'}`}></div>
 
-      <div className="max-w-[75rem] mx-auto flex justify-between items-center text-sm font-medium relative z-10">
+      <div className="max-w-7xl mx-auto flex justify-between items-center text-sm font-medium relative z-10">
         
         {/* Logo */}
         <div className="flex items-center group relative cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
@@ -99,7 +99,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }: { isDarkMode?: boolean, toggleDa
         </div>
 
         {/* Center Nav */}
-        <ul className="hidden md:flex space-x-10">
+        <ul className="hidden md:flex mx-auto space-x-10">
           {navItems.map((item) => (
             <li key={item} className="relative group flex flex-col items-center">
               <button 

@@ -23,10 +23,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <div className="flex gap-8 mt-2 md:mt-0">
-          <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white text-sm font-medium transition-colors duration-300">Terms & Conditions</a>
-          <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white text-sm font-medium transition-colors duration-300">Privacy Policy</a>
-        </div>
+        <p className="text-gray-500 dark:text-gray-400 text-sm font-medium tracking-wide mt-2 md:mt-0">Designed to showcase my skills, projects, and passion for building modern web experiences.</p>
       </div>
     </footer>
   )
