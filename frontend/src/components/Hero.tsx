@@ -22,29 +22,29 @@ const Hero = () => {
           </div>
 
           {/* Glass plate behind text for legibility over 3D backgrounds */}
-          <div className="relative z-20 bg-[#030610]/60 backdrop-blur-lg p-6 sm:p-8 rounded-[2rem] border border-white/[0.05] shadow-[0_0_40px_rgba(0,0,0,1)] mb-10 w-full">
+          <div className="relative z-20 bg-[#030610]/60 backdrop-blur-lg p-6 sm:p-8 rounded-[2rem] border border-white/[0.05] shadow-[0_0_40px_rgba(0,0,0,1)] mb-10 w-full max-w-[520px] mx-auto lg:mx-0">
             {/* Main Headline */}
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-white mb-6 [text-shadow:0_4px_20px_rgba(0,0,0,1)] relative z-30">
-               From concept to  <br className="hidden lg:block" />
+               Engineering Scalable    <br className="hidden lg:block" />
                <span className="inline-block relative mt-2 mr-2 md:mr-3 lg:mr-0">
                  <span className="absolute -inset-1 blur-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 opacity-40 animate-pulse"></span>
                  <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400">
-                   Production 
+                   Digital Products 
                  </span>
                </span>
                <br className="hidden lg:block" />
-               web apps
+               for Modern Businesses
             </h1>
             
             {/* Subtle Bio Text */}
             <p className="text-base md:text-lg font-medium leading-relaxed text-blue-50 max-w-2xl relative z-30 [text-shadow:0_2px_10px_rgba(0,0,0,1)]">
-               👋 Hello, I’m 
+              Full-Stack Software Engineer focused on
                <span className="inline-block relative mx-2">
-                 <span className="relative text-cyan-400 font-bold">
-                   Kenenisa Beyan,
+                <span className="relative text-cyan-400 font-bold">
+                  Architecting scalable
                  </span>
                </span>
-                a Full-Stack Software Engineer focused on building scalable, high-performance digital solutions that deliver real-world results.
+               , production-grade web platforms with performance, reliability, and user experience at the core.
             </p>
           </div>
 
@@ -136,7 +136,7 @@ const Hero = () => {
           </div>
 
           {/* Outer containment ring */}
-          <div className="relative w-[280px] h-[340px] sm:w-[360px] sm:h-[440px] rounded-3xl border-4 border-gray-100 dark:border-0 dark:p-[2px] dark:bg-gradient-to-tr dark:from-cyan-500 dark:via-transparent dark:to-blue-600 flex items-center justify-center z-10 group cursor-default shadow-sm dark:shadow-[0_0_50px_rgba(34,211,238,0.2)]">
+          <div className="relative w-full max-w-[520px] aspect-[4/5] rounded-3xl border-4 border-gray-100 dark:border-0 dark:p-[2px] dark:bg-gradient-to-tr dark:from-cyan-500 dark:via-transparent dark:to-blue-600 flex items-center justify-center z-10 group cursor-default shadow-sm dark:shadow-[0_0_50px_rgba(34,211,238,0.2)]">
             
             {/* White/Black void core */}
             <div className="w-full h-full rounded-[1.3rem] bg-white dark:bg-[#030610] dark:border-[8px] dark:border-[#030610] flex items-center justify-center overflow-hidden">

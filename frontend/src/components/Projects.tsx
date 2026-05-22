@@ -28,11 +28,11 @@ const Projects = () => {
           {projects.map((project, idx) => (
             <div
               key={idx}
-              className="group relative bg-white/80 dark:bg-[#0a0f1e]/80 backdrop-blur-xl rounded-2xl overflow-hidden border border-gray-200 dark:border-white/5 hover:border-cyan-500/40 transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transform hover:-translate-y-2 flex flex-col"
+              className="group relative bg-[#07101f]/90 dark:bg-[#020817]/95 backdrop-blur-xl rounded-[2rem] overflow-hidden border border-white/[0.08] hover:border-cyan-500/30 transition-all duration-500 shadow-[0_20px_80px_rgba(0,0,0,0.24)] hover:shadow-[0_25px_90px_rgba(8,145,255,0.18)] transform hover:-translate-y-2 flex flex-col"
             >
               {/* Image Container */}
-              <div className="relative w-full h-64 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-100 dark:from-[#0a0f1e] to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+              <div className="relative w-full h-64 overflow-hidden border-b border-white/5 bg-[#020817]/70">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10 opacity-40 group-hover:opacity-30 transition-opacity duration-300" />
                 <img
                   src={project.image}
                   alt={project.title}
@@ -50,11 +50,11 @@ const Projects = () => {
               </div>
 
               {/* Content Container */}
-              <div className="p-8 flex-1 flex flex-col relative z-20 -mt-6 bg-gradient-to-b from-transparent to-white dark:to-[#0a0f1e]">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
+              <div className="p-8 flex-1 flex flex-col relative z-20 -mt-6 bg-[#07101f]/90 dark:bg-[#020817]/95">
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 flex-1">
+                <p className="text-gray-300 text-sm leading-relaxed mb-6 flex-1">
                   {project.description}
                 </p>
                 
@@ -63,7 +63,7 @@ const Projects = () => {
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1.5 bg-blue-900/30 border border-blue-500/20 text-cyan-300 text-xs font-medium rounded-full shadow-[inset_0_0_10px_rgba(59,130,246,0.1)] group-hover:border-cyan-500/40 transition-colors duration-300"
+                      className="px-3 py-1.5 bg-white/5 border border-white/10 text-gray-300 text-xs font-medium rounded-full shadow-[inset_0_0_10px_rgba(255,255,255,0.05)] group-hover:border-cyan-500/40 transition-colors duration-300"
                     >
                       {tech}
                     </span>

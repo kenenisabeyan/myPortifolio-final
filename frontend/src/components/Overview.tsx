@@ -1,4 +1,5 @@
 import React from 'react'
+import ExpandableText from './ExpandableText'
 import { HiOutlineLightBulb, HiOutlineUsers, HiOutlineSparkles } from 'react-icons/hi'
 import homePageImg from '../assets/home-page.png'
 
@@ -33,10 +34,10 @@ const Overview = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Top Split Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20 lg:mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch mb-20 lg:mb-24">
           
           {/* Left: Text Content */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left relative z-10 transition-all duration-500">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left relative z-10 transition-all duration-500 h-full">
             <div className="flex items-center gap-3 bg-gray-100 dark:bg-cyan-950/40 py-2.5 px-6 rounded-full mb-8 dark:border dark:border-cyan-500/20 dark:shadow-[0_0_20px_rgba(34,211,238,0.1)] transition-colors hover:dark:bg-cyan-900/50 w-max mx-auto lg:mx-0">
               <span className="text-gray-500 dark:text-cyan-400 animate-pulse">❖</span>
               <span className="text-lg font-medium text-gray-500 uppercase dark:text-cyan-100 dark:tracking-widest">About Me</span>
@@ -44,18 +45,32 @@ const Overview = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight border-b-4 border-cyan-500/30 pb-3 inline-block mb-6">
               Who I <span className="text-cyan-400">Am</span>
             </h2>
-            <div className="text-base md:text-xl font-normal leading-relaxed text-gray-600 dark:text-cyan-50/90 space-y-6 dark:bg-[#030610]/60 lg:dark:bg-transparent p-4 lg:p-0 rounded-2xl lg:rounded-none lg:backdrop-blur-none backdrop-blur-md font-medium">
-              <p>
-                I engineer end-to-end web applications that fuse technical precision with strategic business logic. With a foundation in Computer Science and Management, my goal is to design scalable workflows rather than just write code.
-              </p>
-              <p>
-                From building automated management systems to evolving digital learning through my startup, <strong className="text-white">EDOT</strong>, I thrive on solving real-world challenges through clean architecture and innovative system design.
-              </p>
+            <div className="flex flex-col justify-between h-full text-base md:text-xl font-normal leading-relaxed text-gray-600 dark:text-cyan-50/90 space-y-6 dark:bg-[#030610]/60 lg:dark:bg-transparent p-4 lg:p-0 rounded-2xl lg:rounded-none lg:backdrop-blur-none backdrop-blur-md font-medium">
+              <ExpandableText
+                text="I’m Kenenisa Beyan, a Full-Stack Software Engineer focused on building scalable, production-grade digital platforms that solve real business problems. My work combines modern software engineering with strategic thinking to create systems that are not only functional, but reliable, maintainable, and built for growth."
+                maxLength={150}
+                className="leading-relaxed"
+              />
+              <ExpandableText
+                text="With academic foundations in Computer Science and Management, I approach development beyond code analyzing workflows, optimizing user experiences, and engineering architectures that support long-term scalability and operational efficiency."
+                maxLength={150}
+                className="leading-relaxed"
+              />
+              <ExpandableText
+                text="As the founder of EDOT, an evolving education technology platform, I’m actively designing solutions that modernize digital learning through intelligent system design, automation, and user-centered experiences. From backend architecture to frontend performance, I build with a strong focus on clean engineering standards, scalability, and real-world impact."
+                maxLength={150}
+                className="leading-relaxed"
+              />
+              <ExpandableText
+                text="I don’t believe in building template-based products. I focus on engineering digital systems that are fast, scalable, business-driven, and ready for production environments."
+                maxLength={150}
+                className="leading-relaxed"
+              />
             </div>
           </div>
 
           {/* Right: Graphic */}
-          <div className="bg-gray-100 dark:bg-[#030610]/60 dark:backdrop-blur-lg rounded-3xl dark:rounded-[2.5rem] min-h-[400px] flex justify-center items-center relative overflow-hidden border border-gray-200 dark:border-white/[0.05] group shadow-sm dark:shadow-2xl transition-all duration-300 transform w-full">
+          <div className="bg-gray-100 dark:bg-[#030610]/60 dark:backdrop-blur-lg rounded-3xl dark:rounded-[2.5rem] min-h-[460px] flex justify-center items-center relative overflow-hidden border border-gray-200 dark:border-white/[0.05] group shadow-sm dark:shadow-2xl transition-all duration-300 transform w-full">
             {/* Animated glowing backdrops */}
             <div className="absolute inset-0 bg-cyan-500/10 blur-[120px] scale-150 transform opacity-30 group-hover:opacity-70 transition-opacity duration-700 pointer-events-none hidden dark:block" />
             
@@ -65,7 +80,7 @@ const Overview = () => {
                <img 
                  src={homePageImg} 
                  alt="About Me Graphic" 
-                 className="max-w-full max-h-full object-contain rounded-2xl md:rounded-3xl shadow-xl dark:shadow-[0_0_30px_rgba(59,130,246,0.3)] transform transition-transform duration-1000 group-hover:scale-[1.05] dark:group-hover:scale-110 relative z-10"
+                 className="w-full h-full max-w-[520px] max-h-[520px] object-contain rounded-2xl md:rounded-3xl shadow-xl dark:shadow-[0_0_30px_rgba(59,130,246,0.3)] transform transition-transform duration-1000 group-hover:scale-[1.05] dark:group-hover:scale-110 relative z-10"
                />
             </div>
           </div>
@@ -77,22 +92,19 @@ const Overview = () => {
           {stats.map((item) => (
             <div 
               key={item.title} 
-              className={`group relative bg-white dark:bg-[#050A14]/80 border border-gray-100 dark:border-white/[0.05] dark:hover:border-${item.glowColor}-500/40 rounded-2xl p-8 overflow-hidden transform hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-[0_0_25px_rgba(34,211,238,0.15)] transition-all duration-300 dark:backdrop-blur-xl`}
+              className="group relative bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] rounded-[2rem] p-8 overflow-hidden transform hover:-translate-y-2 hover:shadow-[0_20px_80px_rgba(2,12,46,0.45)] transition-all duration-300 backdrop-blur-xl"
             >
-               {/* Dark mode only edge glow */}
-               <div className={`absolute top-0 right-0 w-32 h-32 bg-${item.glowColor}-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden dark:block`} />
+               <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-10 group-hover:opacity-70 transition-opacity duration-500 pointer-events-none" />
                
               <div className="relative z-10 flex flex-col h-full">
-                {/* Icon Container */}
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gray-50 dark:bg-black/20 mb-6 border border-gray-100 dark:border-${item.glowColor}-500/20`}>
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/10 dark:bg-white/5 mb-6 border border-white/10">
                   {item.icon}
                 </div>
                 
-                {/* Typography */}
-                <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
                   {item.title}
                 </h3>
-                <p className="text-sm md:text-base font-normal leading-relaxed text-gray-600 dark:text-gray-400 flex-grow">
+                <p className="text-sm md:text-base font-normal leading-relaxed text-gray-300 flex-grow">
                   {item.description}
                 </p>
               </div>

@@ -10,6 +10,7 @@ import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollArrow from './components/ScrollArrow'
+import ChatBot from './components/ChatBot'
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true)
@@ -40,6 +41,7 @@ function App() {
         <Contact />
         <Footer />
         <ScrollArrow />
+        <ChatBot />
       </div>
     </div>
   )

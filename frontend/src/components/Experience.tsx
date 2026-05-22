@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import ExpandableText from './ExpandableText'
 
 const experiences = [
   {
@@ -130,9 +131,11 @@ const Experience = () => {
                       {/* Dark mode internal glow behind text */}
                       <div className="absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       <div className="relative z-10 w-full flex flex-col">
-                        <p className="text-gray-300 text-[15px] leading-relaxed mb-6 font-normal">
-                          {exp.testimonial.text}
-                        </p>
+                        <ExpandableText
+                        text={exp.testimonial.text}
+                        maxLength={170}
+                        className="text-gray-300 text-[15px] leading-relaxed mb-6 font-normal"
+                      />
                         <div className="flex items-center gap-4 border-t border-white/10 pt-6">
                           <div className="w-10 h-10 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm shadow-[0_0_10px_rgba(0,0,0,0.5)]">
                             {exp.testimonial.companyName.trim().charAt(0).toUpperCase()}
@@ -169,9 +172,11 @@ const Experience = () => {
 
                       {/* Mobile Testimonial Add-on */}
                       <div className="md:hidden mt-8 bg-[#050A14]/80 p-6 rounded-2xl border border-white/[0.05] w-full shadow-lg relative backdrop-blur-xl transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-                        <p className="text-gray-300 text-sm leading-relaxed mb-6 font-normal">
-                          {exp.testimonial.text}
-                        </p>
+                        <ExpandableText
+                        text={exp.testimonial.text}
+                        maxLength={170}
+                        className="text-gray-300 text-sm leading-relaxed mb-6 font-normal"
+                      />
                         <div className="flex items-center gap-3 border-t border-white/10 pt-4">
                           <div className="w-8 h-8 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-xs shadow-[0_0_5px_rgba(0,0,0,0.8)]">
                             {exp.testimonial.companyName.trim().charAt(0).toUpperCase()}

@@ -1,4 +1,5 @@
 import React from 'react'
+import ExpandableText from './ExpandableText'
 import { SiReact, SiPython, SiNodedotjs, SiTailwindcss, SiMongodb, SiTypescript, SiJavascript, SiHtml5, SiCss, SiDocker, SiNextdotjs, SiExpress, SiDjango, SiMysql, SiPostgresql, SiCplusplus, SiGit, SiGithub, SiFastapi, SiTensorflow, SiPytorch, SiKeras, SiScikitlearn, SiSelenium, SiBootstrap, SiFramer, SiThreedotjs } from 'react-icons/si'
 import { FaJava, FaServer, FaDatabase, FaTools, FaLayerGroup, FaAws, FaBrain, FaRobot, FaSyncAlt, FaMicrochip, FaNetworkWired, FaSitemap } from 'react-icons/fa'
 import { projects } from '../data/data'
@@ -87,14 +88,14 @@ const Work = () => {
           {categoriesInfo.map((cat, idx) => (
             <div 
               key={idx} 
-              className="group flex flex-col bg-white dark:bg-[#050A14]/80 rounded-[1.5rem] border border-gray-100 dark:border-white/5 p-6 md:p-8 shadow-sm relative transition-all duration-300 h-full overflow-hidden hover:shadow-lg dark:hover:shadow-[0_0_30px_rgba(34,211,238,0.1)] dark:backdrop-blur-xl"
+              className="group flex flex-col bg-[#07101f]/90 dark:bg-[#020817]/95 rounded-[2rem] border border-white/[0.08] p-6 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative transition-all duration-300 h-full overflow-hidden hover:-translate-y-2 hover:shadow-[0_25px_80px_rgba(8,145,255,0.24)] backdrop-blur-xl"
             >
               {/* Corner Blob */}
-              <div className={`absolute top-[-30px] right-[-30px] w-28 h-28 ${cat.cornerColor} rounded-full opacity-50 dark:opacity-100`} />
+              <div className={`absolute top-[-30px] right-[-30px] w-28 h-28 ${cat.cornerColor} rounded-full opacity-40`} />
 
               {/* Title & Icon Header */}
               <div className="relative z-10 flex flex-col items-start mb-6 mt-2">
-                <div className={`w-14 h-14 flex items-center justify-center rounded-2xl bg-[#F6F8FA] dark:bg-white/5 mb-6 text-gray-800 dark:text-gray-200 shadow-sm transition-colors duration-300`}>
+                <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-white/10 dark:bg-white/5 mb-6 text-gray-200 shadow-sm transition-colors duration-300">
                   {cat.icon}
                 </div>
                 <h3 className="text-[20px] lg:text-[22px] font-bold text-white leading-snug">
@@ -106,10 +107,10 @@ const Work = () => {
               <div className="relative z-10 flex flex-col gap-4">
                 {categorizedTech[cat.id]?.map((item, i) => (
                    <div key={i} className="flex items-center gap-4">
-                     <div className="w-[42px] h-[42px] shrink-0 rounded-[12px] border border-gray-100 dark:border-white/10 flex items-center justify-center bg-white dark:bg-black/20 shadow-sm transition-colors duration-300 text-gray-600 dark:text-gray-400">
+                     <div className="w-[42px] h-[42px] shrink-0 rounded-[12px] border border-white/10 flex items-center justify-center bg-white/10 dark:bg-white/5 shadow-sm transition-colors duration-300 text-gray-200">
                         {item.icon}
                      </div>
-                     <span className="text-[15px] font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">
+                     <span className="text-[15px] font-medium text-gray-300 transition-colors duration-300">
                         {item.name}
                      </span>
                    </div>
@@ -204,10 +205,9 @@ const Work = () => {
           {projects.map((project, idx) => (
             <div
               key={idx}
-              className="group bg-white dark:bg-[#050A14]/80 rounded-2xl border border-gray-100 dark:border-white/[0.05] dark:hover:border-blue-500/40 overflow-hidden flex flex-col transform hover:-translate-y-2 hover:shadow-xl dark:shadow-2xl dark:hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] transition-all duration-500 dark:backdrop-blur-xl relative"
+              className="group bg-[#07101f]/90 dark:bg-[#020817]/95 rounded-[2rem] border border-white/[0.08] overflow-hidden flex flex-col transform hover:-translate-y-2 hover:shadow-[0_25px_90px_rgba(8,145,255,0.24)] transition-all duration-500 backdrop-blur-xl relative"
             >
-              {/* Dark mode internal glow behind image */}
-              <div className="absolute top-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 hidden dark:block" />
+              <div className="absolute top-4 right-4 w-24 h-24 rounded-full bg-cyan-500/10 blur-3xl opacity-50 pointer-events-none" />
 
               {/* Image Container */}
               <div className="relative z-10 w-full h-[200px] sm:h-[240px] overflow-hidden border-b border-gray-100 dark:border-white/5 bg-gray-50 dark:bg-black/50">
@@ -220,17 +220,19 @@ const Work = () => {
 
               {/* Content Container */}
               <div className="relative z-10 p-8 sm:p-10 flex-1 flex flex-col">
-                <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white dark:group-hover:text-cyan-400 mb-4 transition-colors duration-300">
+                <h3 className="text-xl md:text-2xl font-semibold text-white dark:group-hover:text-cyan-400 mb-4 transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-sm md:text-base font-normal text-gray-600 dark:text-gray-400 leading-relaxed flex-1 mb-6">
-                  {project.description}
-                </p>
+                <ExpandableText
+                  text={project.description}
+                  maxLength={150}
+                  className="text-sm md:text-base font-normal text-gray-300 leading-relaxed flex-1 mb-6"
+                />
                 
                 {/* Tech Tags */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech?.map((tech, techIdx) => (
-                    <span key={techIdx} className="px-4 py-1.5 bg-gray-50 border border-gray-200 dark:bg-blue-900/20 dark:border-blue-500/30 text-sm font-medium text-gray-500 dark:text-cyan-100 rounded-full">
+                    <span key={techIdx} className="px-4 py-1.5 bg-white/5 border border-white/10 text-sm font-medium text-gray-300 rounded-full">
                       {tech}
                     </span>
                   ))}

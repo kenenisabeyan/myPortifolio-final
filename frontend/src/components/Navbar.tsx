@@ -99,7 +99,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }: { isDarkMode?: boolean, toggleDa
         </div>
 
         {/* Center Nav */}
-        <ul className="hidden md:flex mx-auto space-x-10">
+        <ul className="hidden md:flex ml-auto space-x-10">
           {navItems.map((item) => (
             <li key={item} className="relative group flex flex-col items-center">
               <button 

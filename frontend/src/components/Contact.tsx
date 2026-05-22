@@ -10,11 +10,49 @@ const Contact = () => {
     message: ''
   });
   const [status, setStatus] = useState('idle');
+  const [errors, setErrors] = useState<{[key: string]: string}>({});
 
   const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
 
+  const validateForm = () => {
+    const newErrors: {[key: string]: string} = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+    }
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
+    }
+    
+    if (!formData.subject.trim()) {
+      newErrors.subject = 'Subject is required';
+    } else if (formData.subject.trim().length < 5) {
+      newErrors.subject = 'Subject must be at least 5 characters';
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: '' });
+    }
   };
 
   const showToast = (message: string, type: 'success' | 'error') => {
@@ -24,9 +62,16 @@ const Contact = () => {
 
   const sendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form before sending
+    if (!validateForm()) {
+      showToast("Please fix the errors above", 'error');
+      return;
+    }
+    
     setStatus('loading');
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || "https://kenenisa-2.onrender.com";
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5001";
       const res = await fetch(`${apiUrl}/contact`, {
         method: "POST",
         headers: {
@@ -36,16 +81,18 @@ const Contact = () => {
       });
 
       if (res.ok) {
-        showToast("Message sent successfully! I'll get back to you soon.", 'success');
+        showToast("✅ Message sent successfully! I'll get back to you soon.", 'success');
         setFormData({ name: '', email: '', subject: '', message: '' });
+        setErrors({});
         setStatus('idle');
       } else {
-        showToast("Failed to send message. Please try again later.", 'error');
+        const errorData = await res.json();
+        showToast(errorData.message || "Failed to send message. Please try again later.", 'error');
         setStatus('idle');
       }
     } catch (error) {
       console.error(error);
-      showToast("Network error. Failed to send message.", 'error');
+      showToast("❌ Network error. Please check your connection and try again.", 'error');
       setStatus('idle');
     }
   };
@@ -85,7 +132,7 @@ const Contact = () => {
         <div className="w-full grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
           
           {/* Left Container - Contact Info */}
-          <div className="lg:col-span-2 bg-gray-50 dark:bg-[#050A14]/80 rounded-3xl dark:rounded-[2.5rem] p-8 md:p-10 border border-gray-200 dark:border-white/[0.05] dark:hover:border-cyan-500/30 transition-all duration-300 dark:duration-500 flex flex-col gap-10 shadow-sm dark:shadow-2xl dark:backdrop-blur-xl group">
+          <div className="lg:col-span-2 bg-[#07101f]/90 dark:bg-[#020817]/95 rounded-[2rem] p-8 md:p-10 border border-white/[0.08] transition-all duration-300 flex flex-col gap-10 shadow-[0_20px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl group">
             
             {/* Location */}
             <div className="flex items-start gap-5">
@@ -93,8 +140,8 @@ const Contact = () => {
                 <FaMapMarkerAlt size={24} />
               </div>
               <div className="flex flex-col justify-center h-14 w-full overflow-hidden">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Location</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-base flex-1 overflow-hidden">Adama, Ethiopia</p>
+                <h3 className="text-lg font-bold text-white mb-1">Location</h3>
+                <p className="text-gray-300 text-base flex-1 overflow-hidden">Adama, Ethiopia</p>
               </div>
             </div>
 
@@ -104,8 +151,8 @@ const Contact = () => {
                 <FaEnvelope size={22} />
               </div>
               <div className="flex flex-col justify-center h-14 w-full overflow-hidden">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Email</h3>
-                <a href="mailto:kenenisab05@gmail.com" className="text-blue-600 dark:text-cyan-400 text-base hover:underline transition-all truncate block">
+                <h3 className="text-lg font-bold text-white mb-1">Email</h3>
+                <a href="mailto:kenenisab05@gmail.com" className="text-cyan-300 hover:text-cyan-200 text-base hover:underline transition-all truncate block">
                   kenenisab05@gmail.com
                 </a>
               </div>
@@ -113,7 +160,7 @@ const Contact = () => {
 
             {/* Follow Me */}
             <div className="relative z-50 pointer-events-auto">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Follow Me</h3>
+              <h3 className="text-xl font-bold text-white mb-4">Follow Me</h3>
               <div className="flex items-center gap-4">
                 <a href="https://github.com/kenenisabeyan" target="_blank" rel="noopener noreferrer" className="relative z-50 w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800">
                   <FaGithub size={24} className="text-[#181717] dark:text-white" />
@@ -128,7 +175,7 @@ const Contact = () => {
             </div>
 
             {/* Map container */}
-            <div className="mt-auto w-full h-[220px] rounded-2xl overflow-hidden relative group/map border border-gray-200 dark:border-white/10 shadow-sm">
+            <div className="mt-auto w-full h-[220px] rounded-2xl overflow-hidden relative group/map border border-white/[0.08] shadow-[0_20px_80px_rgba(0,0,0,0.18)]">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126115.11524316931!2d39.188!3d8.54!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b1fe3dafd5785%3A0x6bba8479ba0a5eb5!2sAdama!5e0!3m2!1sen!2set!4v1714470830154!5m2!1sen!2set" 
                 width="100%" 
@@ -138,7 +185,7 @@ const Contact = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 className="absolute inset-0 w-full h-full opacity-80 group-hover/map:opacity-100 transition-opacity duration-300 dark:filter dark:grayscale dark:contrast-125 dark:opacity-70 dark:group-hover/map:opacity-90 z-0"
               ></iframe>
-              <a href="https://maps.google.com/?q=Adama,Ethiopia" target="_blank" rel="noopener noreferrer" className="absolute top-4 left-4 z-10 bg-white/90 dark:bg-black/80 px-4 py-2 rounded-lg text-sm font-semibold text-blue-600 dark:text-cyan-400 flex items-center gap-2 shadow-lg hover:scale-105 transition-transform backdrop-blur-sm">
+              <a href="https://maps.google.com/?q=Adama,Ethiopia" target="_blank" rel="noopener noreferrer" className="absolute top-4 left-4 z-10 bg-white/10 dark:bg-white/10 px-4 py-2 rounded-lg text-sm font-semibold text-cyan-300 hover:text-white flex items-center gap-2 shadow-lg hover:scale-105 transition-transform backdrop-blur-sm">
                 Open in Maps
                 <FiExternalLink />
               </a>
@@ -146,7 +193,7 @@ const Contact = () => {
           </div>
           
           {/* Right Container - Form */}
-          <div className="lg:col-span-3 bg-gray-50 dark:bg-[#050A14]/80 rounded-3xl dark:rounded-[2.5rem] p-8 md:p-12 border border-gray-200 dark:border-white/[0.05] dark:hover:border-cyan-500/30 transition-all duration-300 dark:duration-500 relative group shadow-sm dark:shadow-2xl dark:backdrop-blur-xl transform hover:-translate-y-2 hover:shadow-2xl dark:hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]">
+          <div className="lg:col-span-3 bg-[#07101f]/90 dark:bg-[#020817]/95 rounded-[2rem] p-8 md:p-12 border border-white/[0.08] transition-all duration-300 relative group shadow-[0_20px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl transform hover:-translate-y-2 hover:shadow-[0_25px_90px_rgba(8,145,255,0.18)]">
             {/* Corner glowing accent */}
             <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/20 rounded-full blur-[80px] opacity-50 group-hover:opacity-100 group-hover:bg-cyan-500/20 transition-all duration-700 pointer-events-none hidden dark:block" />
             
@@ -159,56 +206,72 @@ const Contact = () => {
                             
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex flex-col gap-2 flex-1">
-                  <label className="text-sm font-medium dark:font-semibold text-gray-600 dark:text-gray-300 ml-1">Name</label>
+                  <label className="text-sm font-medium dark:font-semibold text-white ml-1">Name</label>
                   <input 
                     type="text" 
                     name="name" 
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your name" 
-                    required
-                    className="w-full px-5 py-4 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] text-base font-normal text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 dark:focus:ring-cyan-500/50 transition-all shadow-sm dark:shadow-inner dark:backdrop-blur-md" 
+                    className={`w-full px-5 py-4 bg-white/5 dark:bg-white/[0.02] border border-white/[0.08] text-base font-normal text-white placeholder-gray-400 dark:placeholder-gray-600 rounded-xl focus:outline-none focus:ring-2 transition-all shadow-sm dark:shadow-inner dark:backdrop-blur-md ${
+                      errors.name 
+                        ? 'border-red-500 dark:border-red-500/50 focus:ring-red-500/50' 
+                        : 'border-white/[0.08] dark:border-white/[0.08] focus:ring-blue-500/50 dark:focus:ring-cyan-500/50'
+                    }`}
                   />
+                  {errors.name && <p className="text-red-500 text-xs ml-1">{errors.name}</p>}
                 </div>
 
                 <div className="flex flex-col gap-2 flex-1">
-                  <label className="text-sm font-medium dark:font-semibold text-gray-600 dark:text-gray-300 ml-1">Email</label>
+                  <label className="text-sm font-medium dark:font-semibold text-white ml-1">Email</label>
                   <input 
                     type="email" 
                     name="email" 
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Your email" 
-                    required
-                    className="w-full px-5 py-4 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] text-base font-normal text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 dark:focus:ring-cyan-500/50 transition-all shadow-sm dark:shadow-inner dark:backdrop-blur-md" 
+                    className={`w-full px-5 py-4 bg-white/5 dark:bg-white/[0.02] border border-white/[0.08] text-base font-normal text-white placeholder-gray-400 dark:placeholder-gray-600 rounded-xl focus:outline-none focus:ring-2 transition-all shadow-sm dark:shadow-inner dark:backdrop-blur-md ${
+                      errors.email 
+                        ? 'border-red-500 dark:border-red-500/50 focus:ring-red-500/50' 
+                        : 'border-white/[0.08] dark:border-white/[0.08] focus:ring-blue-500/50 dark:focus:ring-cyan-500/50'
+                    }`}
                   />
+                  {errors.email && <p className="text-red-500 text-xs ml-1">{errors.email}</p>}
                 </div>
               </div>
 
               <div className="flex flex-col gap-2 relative">
-                <label className="text-sm font-medium dark:font-semibold text-gray-600 dark:text-gray-300 ml-1">Subject</label>
+                <label className="text-sm font-medium dark:font-semibold text-white ml-1">Subject</label>
                 <input 
                   type="text" 
                   name="subject" 
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Subject" 
-                  required
-                  className="w-full px-5 py-4 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] text-base font-normal text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 dark:focus:ring-cyan-500/50 transition-all shadow-sm dark:shadow-inner dark:backdrop-blur-md" 
+                  className={`w-full px-5 py-4 bg-white/5 dark:bg-white/[0.02] border border-white/[0.08] text-base font-normal text-white placeholder-gray-400 dark:placeholder-gray-600 rounded-xl focus:outline-none focus:ring-2 transition-all shadow-sm dark:shadow-inner dark:backdrop-blur-md ${
+                    errors.subject 
+                      ? 'border-red-500 dark:border-red-500/50 focus:ring-red-500/50' 
+                      : 'border-white/[0.08] dark:border-white/[0.08] focus:ring-blue-500/50 dark:focus:ring-cyan-500/50'
+                  }`}
                 />
+                {errors.subject && <p className="text-red-500 text-xs ml-1">{errors.subject}</p>}
               </div>
 
               <div className="flex flex-col gap-2 relative">
-                <label className="text-sm font-medium dark:font-semibold text-gray-600 dark:text-gray-300 ml-1">Message</label>
+                <label className="text-sm font-medium dark:font-semibold text-white ml-1">Message</label>
                 <textarea 
                   name="message" 
                   value={formData.message}
                   onChange={handleChange}
                   rows={6} 
                   placeholder="Your message" 
-                  required
-                  className="w-full px-5 py-4 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] text-base font-normal text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 dark:focus:ring-cyan-500/50 transition-all resize-none shadow-sm dark:shadow-inner dark:backdrop-blur-md"
+                  className={`w-full px-5 py-4 bg-white/5 dark:bg-white/[0.02] border border-white/[0.08] text-base font-normal text-white placeholder-gray-400 dark:placeholder-gray-600 rounded-xl focus:outline-none focus:ring-2 transition-all resize-none shadow-sm dark:shadow-inner dark:backdrop-blur-md ${
+                    errors.message 
+                      ? 'border-red-500 dark:border-red-500/50 focus:ring-red-500/50' 
+                      : 'border-white/[0.08] dark:border-white/[0.08] focus:ring-blue-500/50 dark:focus:ring-cyan-500/50'
+                  }`}
                 ></textarea>
+                {errors.message && <p className="text-red-500 text-xs ml-1">{errors.message}</p>}
               </div>
 
               <button 

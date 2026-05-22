@@ -1,4 +1,5 @@
 import React from 'react'
+import ExpandableText from './ExpandableText'
 
 const testimonials = [
   {
@@ -78,8 +79,8 @@ const Testimonials = () => {
 
 function TestimonialCard({ t }) {
   return (
-    <div className="group relative bg-white dark:bg-[#050A14]/80 border border-gray-200 dark:border-white/[0.05] dark:hover:border-cyan-500/40 p-8 rounded-3xl dark:rounded-[2rem] transition-all duration-300 dark:duration-500 flex flex-col h-full overflow-hidden shadow-sm dark:shadow-2xl hover:shadow-xl dark:hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] cursor-default dark:backdrop-blur-xl transform hover:-translate-y-2">
-      <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden dark:block" />
+    <div className="group relative bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] p-8 rounded-[2rem] transition-all duration-300 flex flex-col h-full overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.24)] hover:shadow-[0_25px_90px_rgba(8,145,255,0.18)] cursor-default backdrop-blur-xl transform hover:-translate-y-2">
+      <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-20 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none hidden dark:block" />
       <div className="relative z-10 flex text-gray-400 dark:text-cyan-400 mb-6 space-x-1">
         {[...Array(5)].map((_, i) => (
           <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
@@ -87,9 +88,13 @@ function TestimonialCard({ t }) {
           </svg>
         ))}
       </div>
-      <p className="relative z-10 text-gray-600 dark:text-gray-300 text-sm md:text-base dark:text-[15px] leading-relaxed mb-8 flex-1 font-normal dark:font-light italic">
-        "{t.text}"
-      </p>
+      <ExpandableText
+        text={`"${t.text}"`}
+        maxLength={140}
+        className="relative z-10 text-gray-300 text-sm md:text-base leading-relaxed mb-6 flex-1 font-normal italic"
+        moreLabel="Read more"
+        lessLabel="Show less"
+      />
       
       <div className="relative z-10 flex items-center gap-4 mt-auto">
         {/* Avatar Placeholder */}

@@ -86,10 +86,9 @@ const Education = () => {
                     
                     {/* Detail Container (Left or Right depending on Even/Odd) */}
                     <div className={`w-full md:w-1/2 flex justify-start pl-20 md:pl-0 mt-6 md:mt-0 ${isEven ? 'md:justify-end md:pr-12' : 'md:justify-start md:pl-12'}`}>
-                      <div className="bg-white dark:bg-[#050A14]/80 p-8 rounded-[1.5rem] border border-gray-100 dark:border-white/5 w-full max-w-[440px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-2xl transition-all duration-300 relative group overflow-hidden dark:backdrop-blur-xl hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_30px_rgba(34,211,238,0.1)] hover:-translate-y-1">
+                      <div className="bg-[#07101f]/90 dark:bg-[#020817]/95 p-8 rounded-[2rem] border border-white/[0.08] w-full max-w-[440px] shadow-[0_20px_80px_rgba(0,0,0,0.24)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl hover:-translate-y-1 hover:shadow-[0_25px_90px_rgba(8,145,255,0.24)]">
                         
-                        {/* Dark mode internal glow */}
-                        <div className="hidden dark:block absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="hidden dark:block absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-20 group-hover:opacity-70 transition-opacity duration-500" />
                         
                         <ul className="space-y-4 relative z-10">
                           {ed.details.map((item, i) => (
