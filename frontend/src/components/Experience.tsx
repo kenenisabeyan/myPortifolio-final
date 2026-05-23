@@ -13,7 +13,7 @@ const experiences = [
       'Delivering reliable solutions through clean code, clear communication, and consistent project execution.',
     ],
     iconColor: 'bg-cyan-500',
-    borderColor: 'border-l-cyan-500',
+    borderColor: 'border-l-cyan-500 border-t-cyan-500',
     icon: (
       <span className="text-white font-bold text-lg">e</span>
     ),
@@ -33,7 +33,7 @@ const experiences = [
       'Implemented data visualization and performance analytics using chart-based UI components to improve transparency and decision-making.',
     ],
     iconColor: 'bg-indigo-500',
-    borderColor: 'border-l-indigo-500',
+    borderColor: 'border-l-indigo-500 border-t-indigo-500',
     icon: (
       <span className="text-white font-bold text-lg">a</span>
     ),
@@ -52,7 +52,7 @@ const experiences = [
       'Collaborated on UI/UX implementation to deliver clean, consistent, and highly responsive user experiences.',
     ],
     iconColor: 'bg-blue-500',
-    borderColor: 'border-l-blue-500',
+    borderColor: 'border-l-blue-500 border-t-blue-500',
     icon: (
       <span className="text-white font-bold text-lg"></span>
     ),
@@ -168,7 +168,7 @@ const Experience = () => {
                   
                   {/* Left Side: Detail & Testimonial Container */}
                   <div className="hidden md:flex w-1/2 justify-end pr-16 mt-4">
-                    <div className={`bg-[#050A14]/80 p-8 rounded-3xl border border-white/[0.05] ${exp.borderColor} border-l-[6px] w-full max-w-[500px] shadow-2xl transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl`}>
+                    <div className={`bg-[#050A14]/80 p-8 rounded-[2rem] border border-white/[0.05] ${exp.borderColor} border-l-[6px] border-t-[6px] w-full max-w-[500px] shadow-2xl transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl`}>
                       
                       {/* Dark mode internal glow behind text */}
                       <div className="absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -213,7 +213,7 @@ const Experience = () => {
                       </ul>
 
                       {/* Mobile Testimonial Add-on */}
-                      <div className={`md:hidden mt-8 bg-[#050A14]/80 p-6 rounded-2xl border border-white/[0.05] ${exp.borderColor} border-l-[6px] w-full shadow-lg relative backdrop-blur-xl transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300`}>
+                      <div className={`md:hidden mt-8 bg-[#050A14]/80 p-6 rounded-[2rem] border border-white/[0.05] ${exp.borderColor} border-l-[6px] border-t-[6px] w-full shadow-lg relative backdrop-blur-xl transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300`}>
                         <ExpandableText
                         text={exp.testimonial.text}
                         maxLength={170}

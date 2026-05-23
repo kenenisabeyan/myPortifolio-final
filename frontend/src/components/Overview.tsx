@@ -9,21 +9,21 @@ const stats = [
     description: 'I design and build modern, scalable web applications with clean interfaces and smooth user experiences. I focus on performance, accessibility, and writing maintainable code.',
     icon: <HiOutlineLightBulb size={38} className="text-cyan-400 group-hover:rotate-12 transition-transform duration-500" />,
     glowColor: 'cyan',
-    borderColor: 'border-l-cyan-500'
+    borderColor: 'border-l-cyan-500 border-t-cyan-500'
   },
   {
     title: 'Collaborative Growth',
     description: 'I work on real projects and continuously improve by learning, building, and refining my skills. I focus on creating practical solutions that solve real problems and deliver value to users.',
     icon: <HiOutlineUsers size={38} className="text-blue-400 group-hover:-rotate-12 transition-transform duration-500" />,
     glowColor: 'blue',
-    borderColor: 'border-l-blue-500'
+    borderColor: 'border-l-blue-500 border-t-blue-500'
   },
   {
     title: 'Continuous Progress',
     description: 'I build consistently, improve my development speed, and focus on delivering high-quality applications. My goal is to create reliable, user-centered systems without compromising performance or design.',
     icon: <HiOutlineSparkles size={38} className="text-indigo-400 group-hover:scale-110 transition-transform duration-500" />,
     glowColor: 'indigo',
-    borderColor: 'border-l-indigo-500'
+    borderColor: 'border-l-indigo-500 border-t-indigo-500'
   },
 ]
 
@@ -95,7 +95,7 @@ const Overview = () => {
           {stats.map((item) => (
             <div 
               key={item.title} 
-              className={`group relative bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] ${item.borderColor} border-l-[6px] rounded-[2rem] p-8 overflow-hidden transform hover:-translate-y-2 hover:shadow-[0_20px_80px_rgba(2,12,46,0.45)] transition-all duration-300 backdrop-blur-xl`}
+              className={`group relative bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] ${item.borderColor} border-l-[6px] border-t-[6px] rounded-[2rem] p-8 overflow-hidden transform hover:-translate-y-2 hover:shadow-[0_20px_80px_rgba(2,12,46,0.45)] transition-all duration-300 backdrop-blur-xl`}
             >
                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-10 group-hover:opacity-70 transition-opacity duration-500 pointer-events-none" />
                

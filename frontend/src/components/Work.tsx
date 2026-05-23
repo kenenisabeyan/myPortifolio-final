@@ -3,6 +3,7 @@ import ExpandableText from './ExpandableText'
 import { SiReact, SiPython, SiNodedotjs, SiTailwindcss, SiMongodb, SiTypescript, SiJavascript, SiHtml5, SiCss, SiDocker, SiNextdotjs, SiExpress, SiDjango, SiMysql, SiPostgresql, SiCplusplus, SiGit, SiGithub, SiFastapi, SiTensorflow, SiPytorch, SiKeras, SiScikitlearn, SiSelenium, SiBootstrap, SiFramer, SiThreedotjs } from 'react-icons/si'
 import { FaJava, FaServer, FaDatabase, FaTools, FaLayerGroup, FaAws, FaBrain, FaRobot, FaSyncAlt, FaMicrochip, FaNetworkWired, FaSitemap } from 'react-icons/fa'
 import { projects } from '../data/data'
+import TechPlanets3D from './TechPlanets3D'
 
 const categorizedTech = {
   Frontend: [
@@ -34,43 +35,20 @@ const categorizedTech = {
 }
 
 const categoriesInfo = [
-  { name: "Frontend Development", id: "Frontend", icon: <FaLayerGroup size={22} />, cornerColor: "bg-blue-500/20", borderColor: "border-l-blue-500" },
-  { name: "Backend Development", id: "Backend", icon: <FaServer size={22} />, cornerColor: "bg-purple-500/20", borderColor: "border-l-purple-500" },
-  { name: "Database & Cloud", id: "Databases", icon: <FaDatabase size={22} />, cornerColor: "bg-teal-500/20", borderColor: "border-l-teal-500" },
-  { name: "🛠 Tools & DevOps", id: "DevTools", icon: <FaTools size={22} />, cornerColor: "bg-orange-500/20", borderColor: "border-l-orange-500" },
+  { name: "Frontend Development", id: "Frontend", icon: <FaLayerGroup size={22} />, cornerColor: "bg-blue-500/20", borderColor: "border-l-blue-500 border-t-blue-500" },
+  { name: "Backend Development", id: "Backend", icon: <FaServer size={22} />, cornerColor: "bg-purple-500/20", borderColor: "border-l-purple-500 border-t-purple-500" },
+  { name: "Database & Cloud", id: "Databases", icon: <FaDatabase size={22} />, cornerColor: "bg-teal-500/20", borderColor: "border-l-teal-500 border-t-teal-500" },
+  { name: "🛠 Tools & DevOps", id: "DevTools", icon: <FaTools size={22} />, cornerColor: "bg-orange-500/20", borderColor: "border-l-orange-500 border-t-orange-500" },
 ]
 
 const projectBorderColors = [
-  'border-l-cyan-500',
-  'border-l-blue-500',
-  'border-l-indigo-500',
-  'border-l-purple-500',
+  'border-l-cyan-500 border-t-cyan-500',
+  'border-l-blue-500 border-t-blue-500',
+  'border-l-indigo-500 border-t-indigo-500',
+  'border-l-purple-500 border-t-purple-500',
 ]
 
-const highlightsTech = [
-  { name: "Python", icon: <SiPython size={46} className="text-[#3776AB]" />, borderColor: "border-l-[#3776AB] border-t-[#3776AB]" },
-  { name: "Java", icon: <FaJava size={46} className="text-[#007396]" />, borderColor: "border-l-[#007396] border-t-[#007396]" },
-  { name: "Next.js", icon: <SiNextdotjs size={28} className="text-black dark:text-white" />, borderColor: "border-l-gray-900 border-t-gray-900 dark:border-l-white dark:border-t-white" },
-  { name: "Node.js", icon: <SiNodedotjs size={28} color="#339933" />, borderColor: "border-l-[#339933] border-t-[#339933]" },
-  { name: "Express", icon: <SiExpress size={28} className="text-black dark:text-white" />, borderColor: "border-l-gray-900 border-t-gray-900 dark:border-l-white dark:border-t-white" },
-  { name: "JavaScript", icon: <SiJavascript size={28} color="#F7DF1E" />, borderColor: "border-l-[#F7DF1E] border-t-[#F7DF1E]" },
-  { name: "TypeScript", icon: <SiTypescript size={28} color="#3178C6" />, borderColor: "border-l-[#3178C6] border-t-[#3178C6]" },
-  { name: "Django", icon: <SiDjango size={28} color="#092E20" />, borderColor: "border-l-[#092E20] border-t-[#092E20] dark:border-l-[#44B78B] dark:border-t-[#44B78B]" },
-  { name: "HTML", icon: <SiHtml5 size={28} color="#E34F26" />, borderColor: "border-l-[#E34F26] border-t-[#E34F26]" },
-  { name: "CSS", icon: <SiCss size={28} color="#1572B6" />, borderColor: "border-l-[#1572B6] border-t-[#1572B6]" },
-  { name: "Bootstrap", icon: <SiBootstrap size={28} color="#7952B3" />, borderColor: "border-l-[#7952B3] border-t-[#7952B3]" },
-  { name: "PostgreSQL", icon: <SiPostgresql size={28} color="#4169E1" />, borderColor: "border-l-[#4169E1] border-t-[#4169E1]" },
-  { name: "MongoDB", icon: <SiMongodb size={28} color="#47A248" />, borderColor: "border-l-[#47A248] border-t-[#47A248]" },
-  { name: "MySQL", icon: <SiMysql size={28} color="#4479A1" />, borderColor: "border-l-[#4479A1] border-t-[#4479A1]" },
-  { name: "GIT", icon: <SiGit size={28} color="#F05032" />, borderColor: "border-l-[#F05032] border-t-[#F05032]" },
-  { name: "GITHUB", icon: <SiGithub size={28} className="text-black dark:text-white" />, borderColor: "border-l-gray-900 border-t-gray-900 dark:border-l-white dark:border-t-white" },
-  { name: "React", icon: <SiReact size={32} color="#61DAFB" />, borderColor: "border-l-[#61DAFB] border-t-[#61DAFB]" },
-  { name: "Tailwind CSS", icon: <SiTailwindcss size={32} color="#38B2AC" />, borderColor: "border-l-[#38B2AC] border-t-[#38B2AC]" },
-  { name: "Three.js", icon: <SiThreedotjs size={32} className="text-black dark:text-white" />, borderColor: "border-l-gray-900 border-t-gray-900 dark:border-l-white dark:border-t-white" },
-  { name: "Algorithms", icon: <FaSitemap size={32} color="#44B78B" />, borderColor: "border-l-[#44B78B] border-t-[#44B78B]" },
-  { name: "Data Structures", icon: <FaLayerGroup size={32} color="#F05032" />, borderColor: "border-l-[#F05032] border-t-[#F05032]" },
-  { name: "C++", icon: <SiCplusplus size={32} color="#00599C" />, borderColor: "border-l-[#00599C] border-t-[#00599C]" },
-]
+
 
 const Work = () => {
   return (
@@ -95,7 +73,7 @@ const Work = () => {
           {categoriesInfo.map((cat, idx) => (
             <div 
               key={idx} 
-              className={`group flex flex-col bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] ${cat.borderColor} border-l-[6px] p-6 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative transition-all duration-300 h-full overflow-hidden hover:-translate-y-2 hover:shadow-[0_25px_80px_rgba(8,145,255,0.24)] backdrop-blur-xl`}
+              className={`group flex flex-col bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] ${cat.borderColor} border-l-[6px] border-t-[6px] rounded-[2rem] p-6 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative transition-all duration-300 h-full overflow-hidden hover:-translate-y-2 hover:shadow-[0_25px_80px_rgba(8,145,255,0.24)] backdrop-blur-xl`}
             >
               {/* Corner Blob */}
               <div className={`absolute top-[-30px] right-[-30px] w-28 h-28 ${cat.cornerColor} rounded-full opacity-40`} />
@@ -135,49 +113,9 @@ const Work = () => {
           </h3>
         </div>
         
-        {/* Infinite Marquee Highlights Grid - Multi-row Parallel */}
-        <div className="w-full flex justify-center overflow-hidden relative z-10 mb-16 px-4">
-          <div className="flex flex-col gap-6">
-            <div className="animate-marquee-left hover:animation-play-state-paused w-max flex items-center">
-              {[0, 1, 2].map(iteration => (
-                 <div key={`r1-${iteration}`} className="flex items-center gap-4 sm:gap-6 pr-4 sm:pr-6">
-                   {highlightsTech.slice(0, Math.ceil(highlightsTech.length / 2)).map((item, idx) => (
-                     <div 
-                       key={`${iteration}-${idx}`} 
-                       className={`flex flex-col items-center justify-center p-4 w-[110px] sm:w-[130px] h-[110px] sm:h-[130px] bg-[#050A14] border border-white/10 ${item.borderColor} border-t-[4px] border-l-[4px] rounded-full hover:border-cyan-500/50 transition-all duration-300 shadow-2xl flex-shrink-0 group`}
-                     >
-                       <div className="mb-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)] flex-1 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                         {item.icon}
-                       </div>
-                       <span className="text-[13px] text-gray-300 font-medium tracking-wide text-center group-hover:text-white transition-colors">
-                         {item.name}
-                       </span>
-                     </div>
-                   ))}
-                 </div>
-              ))}
-            </div>
-
-            <div className="animate-marquee-right hover:animation-play-state-paused w-max flex items-center">
-              {[0, 1, 2].map(iteration => (
-                 <div key={`r2-${iteration}`} className="flex items-center gap-4 sm:gap-6 pr-4 sm:pr-6">
-                   {highlightsTech.slice(Math.ceil(highlightsTech.length / 2)).map((item, idx) => (
-                     <div 
-                       key={`${iteration}-${idx}`} 
-                       className={`flex flex-col items-center justify-center p-4 w-[110px] sm:w-[130px] h-[110px] sm:h-[130px] bg-[#050A14] border border-white/10 ${item.borderColor} border-t-[4px] border-l-[4px] rounded-full hover:border-cyan-500/50 transition-all duration-300 shadow-2xl flex-shrink-0 group`}
-                     >
-                       <div className="mb-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)] flex-1 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                         {item.icon}
-                       </div>
-                       <span className="text-[13px] text-gray-300 font-medium tracking-wide text-center group-hover:text-white transition-colors">
-                         {item.name}
-                       </span>
-                     </div>
-                   ))}
-                 </div>
-              ))}
-            </div>
-          </div>
+        {/* 3D Tech Planets Orbiting */}
+        <div className="w-full h-[550px] relative z-10 mb-16 px-4">
+          <TechPlanets3D />
         </div>
 
         {/* Let's Discuss Your Project Button */}
@@ -212,7 +150,7 @@ const Work = () => {
           {projects.map((project, idx) => (
             <div
               key={idx}
-              className={`group bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] ${projectBorderColors[idx % projectBorderColors.length]} border-l-[6px] overflow-hidden flex flex-col transform hover:-translate-y-2 hover:shadow-[0_25px_90px_rgba(8,145,255,0.24)] transition-all duration-500 backdrop-blur-xl relative`}
+              className={`group bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] ${projectBorderColors[idx % projectBorderColors.length]} border-l-[6px] border-t-[6px] rounded-[2rem] overflow-hidden flex flex-col transform hover:-translate-y-2 hover:shadow-[0_25px_90px_rgba(8,145,255,0.24)] transition-all duration-500 backdrop-blur-xl relative`}
             >
               <div className="absolute top-4 right-4 w-24 h-24 rounded-full bg-cyan-500/10 blur-3xl opacity-50 pointer-events-none" />
 

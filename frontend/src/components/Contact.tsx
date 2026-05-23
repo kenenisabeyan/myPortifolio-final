@@ -129,7 +129,7 @@ const Contact = () => {
         <div className="w-full grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
           
           {/* Left Container - Contact Info */}
-          <div className="lg:col-span-2 bg-[#07101f]/90 dark:bg-[#020817]/95 rounded-[2rem] p-8 md:p-10 border border-white/[0.08] transition-all duration-300 flex flex-col gap-10 shadow-[0_20px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl group">
+          <div className="lg:col-span-2 bg-[#07101f]/90 dark:bg-[#020817]/95 rounded-[2rem] border border-white/[0.08] border-l-blue-500 border-t-blue-500 border-l-[6px] border-t-[6px] p-8 md:p-10 transition-all duration-300 flex flex-col gap-10 shadow-[0_20px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl transform hover:-translate-y-2 hover:shadow-[0_25px_90px_rgba(59,130,246,0.24)] group">
             
             {/* Location */}
             <div className="flex items-start gap-5">
@@ -190,7 +190,7 @@ const Contact = () => {
           </div>
           
           {/* Right Container - Form */}
-          <div className="lg:col-span-3 bg-[#07101f]/90 dark:bg-[#020817]/95 rounded-[2rem] p-8 md:p-12 border border-white/[0.08] transition-all duration-300 relative group shadow-[0_20px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl transform hover:-translate-y-2 hover:shadow-[0_25px_90px_rgba(8,145,255,0.18)]">
+          <div className="lg:col-span-3 bg-[#07101f]/90 dark:bg-[#020817]/95 rounded-[2rem] border border-white/[0.08] border-l-cyan-500 border-t-cyan-500 border-l-[6px] border-t-[6px] p-8 md:p-12 transition-all duration-300 relative group shadow-[0_20px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl transform hover:-translate-y-2 hover:shadow-[0_25px_90px_rgba(34,211,238,0.24)]">
             {/* Corner glowing accent */}
             <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/20 rounded-full blur-[80px] opacity-50 group-hover:opacity-100 group-hover:bg-cyan-500/20 transition-all duration-700 pointer-events-none hidden dark:block" />
             
