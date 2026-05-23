@@ -110,7 +110,7 @@ const Experience = () => {
       const windowHeight = window.innerHeight
       
       const totalHeight = rect.height
-      const visibleTop = Math.max(0, windowHeight / 2 - rect.top)
+      const visibleTop = Math.max(0, windowHeight * 0.7 - rect.top)
       const progress = Math.min(1, Math.max(0, visibleTop / totalHeight))
       
       setLineHeight(progress * 100)
@@ -142,12 +142,20 @@ const Experience = () => {
         </div>
 
         <div ref={containerRef} className="relative w-full max-w-6xl mx-auto">
-          {/* Vertical Center Line */}
-          <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 top-4 bottom-4 w-[4px] rounded-full z-[0] bg-gray-200 dark:bg-[#030610]/80 dark:border dark:border-white/[0.05] shadow-sm overflow-hidden">
+          {/* Vertical Center Line (Base Track) */}
+          <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 top-4 bottom-4 w-[4px] rounded-full z-[0] bg-gray-200 dark:bg-[#030610]/80 dark:border dark:border-white/[0.05] shadow-sm"></div>
+
+          {/* Active Moving colored Progress Line */}
+          <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 top-4 bottom-4 w-[6px] rounded-full z-[0] pointer-events-none">
             <div 
-              className="absolute top-0 left-0 w-full rounded-full bg-gradient-to-b from-cyan-400 via-blue-500 to-indigo-500 shadow-[0_0_15px_rgba(34,211,238,0.5)] transition-all duration-150 ease-out"
+              className="absolute top-0 left-0 w-full rounded-full bg-gradient-to-b from-cyan-400 via-blue-500 to-indigo-500 shadow-[0_0_15px_rgba(34,211,238,0.5)] transition-all duration-75 ease-out"
               style={{ height: `${lineHeight}%` }}
-            />
+            >
+              {/* Sharp glowing tip at the leading edge (bottom) */}
+              {lineHeight > 0 && lineHeight < 99 && (
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-[3px] w-[10px] h-[10px] rotate-45 bg-cyan-300 border border-cyan-400 shadow-[0_0_12px_rgba(34,211,238,1)] z-[30] transition-all duration-75 ease-out" />
+              )}
+            </div>
           </div>
 
           <div className="flex flex-col gap-16 md:gap-32">
