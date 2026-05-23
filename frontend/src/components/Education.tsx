@@ -8,7 +8,8 @@ const educationData = [
     details: [
       'Currently pursuing a specialized degree in Computer Science and Engineering, focusing on advanced software architecture and full-stack development.',
     ],
-    nodeColor: 'bg-cyan-500'
+    nodeColor: 'bg-cyan-500',
+    borderColor: 'border-l-cyan-500'
   },
   {
     title: 'Management (Weekend Program)',
@@ -17,7 +18,8 @@ const educationData = [
     details: [
       'Developing strategic management and organizational leadership skills through a rigorous weekend curriculum to complement technical expertise with business acumen.',
     ],
-    nodeColor: 'bg-purple-500'
+    nodeColor: 'bg-purple-500',
+    borderColor: 'border-l-purple-500'
   },
   {
     title: 'Entrepreneurship & Startup Innovation Fellow',
@@ -27,7 +29,8 @@ const educationData = [
       'Successfully completed the Early-Stage Startup Training Program in partnership with MinT, KOICA, and OSTA.',
       'Strategic Impact: Developed the EDOT Platform with a focus on transforming local creative ideas into scalable, product-ready services. Recognized for excellence in a competitive cohort of innovators aimed at driving national economic development and reducing technological reliance through local innovation.',
     ],
-    nodeColor: 'bg-blue-500'
+    nodeColor: 'bg-blue-500',
+    borderColor: 'border-l-blue-500'
   }
 ]
 
@@ -125,7 +128,7 @@ const Education = () => {
                     
                     {/* Detail Container (Left or Right depending on Even/Odd) */}
                     <div className={`w-full md:w-1/2 flex justify-start pl-20 md:pl-0 mt-6 md:mt-0 ${isEven ? 'md:justify-end md:pr-12' : 'md:justify-start md:pl-12'}`}>
-                      <div className="bg-[#07101f]/90 dark:bg-[#020817]/95 p-8 rounded-[2rem] border border-white/[0.08] w-full max-w-[500px] shadow-[0_20px_80px_rgba(0,0,0,0.24)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl hover:-translate-y-1 hover:shadow-[0_25px_90px_rgba(8,145,255,0.24)]">
+                      <div className={`bg-[#07101f]/90 dark:bg-[#020817]/95 p-8 rounded-[2rem] border border-white/[0.08] ${ed.borderColor} border-l-[6px] w-full max-w-[500px] shadow-[0_20px_80px_rgba(0,0,0,0.24)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl hover:-translate-y-1 hover:shadow-[0_25px_90px_rgba(8,145,255,0.24)]`}>
                         
                         <div className="hidden dark:block absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-20 group-hover:opacity-70 transition-opacity duration-500" />
                         
