@@ -55,31 +55,31 @@ export const testimonials = [
   {
     name: "Esther Howard",
     handle: "@estherhoward",
-    text: "I can't say enough good things about Adrian. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
+    text: "I can't say enough good things about Kenenisa. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
     rating: 5,
   },
   {
     name: "Guy Hawkins",
     handle: "@guyhawkins",
-    text: "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+    text: "Collaborating with Kenenisa was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Kenenisa's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Kenenisa is the ideal partner.",
     rating: 5,
   },
   {
     name: "Floyd Miles",
     handle: "@floydmiles",
-    text: "Adrian's expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He's a true professional!",
+    text: "Kenenisa's expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He's a true professional!",
     rating: 5,
   },
   {
     name: "Wade Warren",
     handle: "@wadewarren",
-    text: "Working with Adrian was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
+    text: "Working with Kenenisa was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
     rating: 5,
   },
   {
     name: "Marvin McKinney",
     handle: "@marvincmckinney",
-    text: "Adrian was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that's both modern and easy to navigate. Fantastic work overall.",
+    text: "Kenenisa was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that's both modern and easy to navigate. Fantastic work overall.",
     rating: 5,
   },
 ];

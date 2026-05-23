@@ -100,6 +100,32 @@ const RevealOnScroll = ({ children }) => {
 };
 
 const Experience = () => {
+  const [lineHeight, setLineHeight] = React.useState(0)
+  const containerRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return
+      const rect = containerRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      
+      const totalHeight = rect.height
+      const visibleTop = Math.max(0, windowHeight / 2 - rect.top)
+      const progress = Math.min(1, Math.max(0, visibleTop / totalHeight))
+      
+      setLineHeight(progress * 100)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleScroll)
+    handleScroll()
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
+
   return (
     <section id="experience" className="py-16 md:py-24 px-6 relative z-10 bg-gray-50 dark:bg-transparent">
       
@@ -115,9 +141,14 @@ const Experience = () => {
           </h2>
         </div>
 
-        <div className="relative w-full max-w-6xl mx-auto">
+        <div ref={containerRef} className="relative w-full max-w-6xl mx-auto">
           {/* Vertical Center Line */}
-          <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 top-4 bottom-4 w-[4px] rounded-full z-[0] bg-gray-200 dark:bg-[#030610]/80 dark:border dark:border-white/[0.05] shadow-sm"></div>
+          <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 top-4 bottom-4 w-[4px] rounded-full z-[0] bg-gray-200 dark:bg-[#030610]/80 dark:border dark:border-white/[0.05] shadow-sm overflow-hidden">
+            <div 
+              className="absolute top-0 left-0 w-full rounded-full bg-gradient-to-b from-cyan-400 via-blue-500 to-indigo-500 shadow-[0_0_15px_rgba(34,211,238,0.5)] transition-all duration-150 ease-out"
+              style={{ height: `${lineHeight}%` }}
+            />
+          </div>
 
           <div className="flex flex-col gap-16 md:gap-32">
             {experiences.map((exp, idx) => (

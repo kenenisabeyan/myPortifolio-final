@@ -81,7 +81,7 @@ const Contact = () => {
       });
 
       if (res.ok) {
-        showToast("✅ Message sent successfully! I'll get back to you soon.", 'success');
+        showToast("Message sent successfully! I'll get back to you soon.", 'success');
         setFormData({ name: '', email: '', subject: '', message: '' });
         setErrors({});
         setStatus('idle');
@@ -92,7 +92,7 @@ const Contact = () => {
       }
     } catch (error) {
       console.error(error);
-      showToast("❌ Network error. Please check your connection and try again.", 'error');
+      showToast("Network error. Please check your connection and try again.", 'error');
       setStatus('idle');
     }
   };
@@ -118,9 +118,6 @@ const Contact = () => {
           </div>
         )}
         <p className="font-medium">{toast.message}</p>
-        <button onClick={() => setToast({ ...toast, show: false })} className="ml-4 p-1 hover:bg-white/10 rounded-lg transition-colors">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
       </div>
 
       {/* Dark background ambients */}
