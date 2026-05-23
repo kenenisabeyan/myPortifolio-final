@@ -141,7 +141,7 @@ const Experience = () => {
           </h2>
         </div>
 
-        <div ref={containerRef} className="relative w-full max-w-6xl mx-auto">
+        <div ref={containerRef} className="relative w-full max-w-7xl mx-auto">
           {/* Vertical Center Line (Base Track) */}
           <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 top-4 bottom-4 w-[4px] rounded-full z-[0] bg-gray-200 dark:bg-[#030610]/80 dark:border dark:border-white/[0.05] shadow-sm"></div>
 
@@ -165,7 +165,7 @@ const Experience = () => {
                   
                   {/* Left Side: Detail & Testimonial Container */}
                   <div className="hidden md:flex w-1/2 justify-end pr-16 mt-4">
-                    <div className="bg-[#050A14]/80 p-8 rounded-3xl border border-white/[0.05] w-full max-w-[420px] shadow-2xl transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl">
+                    <div className="bg-[#050A14]/80 p-8 rounded-3xl border border-white/[0.05] w-full max-w-[500px] shadow-2xl transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl">
                       
                       {/* Dark mode internal glow behind text */}
                       <div className="absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -192,7 +192,7 @@ const Experience = () => {
 
                   {/* Right Side: Role Overview */}
                   <div className="w-full md:w-1/2 flex justify-start pl-20 md:pl-16 mt-6 md:mt-8">
-                    <div className="w-full max-w-[420px] relative z-10">
+                    <div className="w-full max-w-[500px] relative z-10">
                       <h3 className="text-lg md:text-xl font-semibold text-white mb-2 [text-shadow:0_2px_10px_rgba(0,0,0,1)]">{exp.title}</h3>
                       
                       <div className="flex items-center gap-2 mb-6">

@@ -5,7 +5,7 @@ import Overview from './components/Overview'
 import Work from './components/Work'
 import Experience from './components/Experience'
 import Education from './components/Education'
-import Skills from './components/Skills'
+import Services from './components/Skills'
 import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -36,7 +36,7 @@ function App() {
         <Work />
         <Experience />
         <Education />
-        {/* <Skills /> */}
+        {/* <Services /> */}
         {/* <Testimonials /> */}
         <Contact />
         <Footer />
