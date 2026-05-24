@@ -7,7 +7,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }: { isDarkMode?: boolean, toggleDa
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('Home')
 
-  const navItems = ['Home', 'Overview', 'Skills', 'Work', 'Experience', 'Education', 'Contact']
+  const navItems = ['Home', 'Overview', 'Skills', 'Work', 'Experience', 'Education', 'Testimonials', 'Contact']
 
   const scrollToSection = (section: string) => {
     if (section === 'Home') {
@@ -25,7 +25,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }: { isDarkMode?: boolean, toggleDa
     const handleScroll = () => {
       setScrolled(window.scrollY > 10)
 
-      const sections = ['home', 'overview', 'skills', 'work', 'experience', 'education', 'contact']
+      const sections = ['home', 'overview', 'skills', 'work', 'experience', 'education', 'testimonials', 'contact']
       let currentSection = 'Home'
 
       if (window.scrollY < 150) {

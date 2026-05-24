@@ -35,39 +35,38 @@ const testimonials = [
 ]
 
 const Testimonials = () => {
-  return null;
-  /*
   return (
-    <section id="testimonials" className="py-16 md:py-24 px-6 relative z-10 bg-gray-50 dark:bg-transparent dark:border-t dark:border-white/[0.05]">
+    <section id="testimonials" className="py-16 md:py-24 px-6 relative z-10 bg-transparent dark:border-t dark:border-white/[0.05]">
       
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 via-transparent to-transparent pointer-events-none hidden dark:block" />
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/5 via-transparent to-transparent pointer-events-none hidden dark:block" />
       <div className="max-w-7xl mx-auto flex flex-col items-center relative z-10 transition-all duration-300">
-        // 
-        // <div className="flex items-center gap-3 bg-white dark:bg-blue-900/20 border border-gray-200 dark:border-blue-500/30 py-2.5 px-6 rounded-full mb-6 w-max shadow-sm dark:shadow-[0_0_20px_rgba(59,130,246,0.15)] dark:backdrop-blur-md">
-        //   <span className="text-gray-500 dark:text-cyan-400 animate-pulse">❖</span>
-        //   <span className="text-sm text-gray-500 dark:text-cyan-50 font-semibold tracking-widest uppercase">Client Feedback Highlights</span>
-        // </div>
-        // 
-        // <h2 className="text-3xl md:text-4xl dark:text-4xl dark:md:text-6xl dark:lg:text-7xl font-bold dark:font-black text-center text-gray-900 dark:text-white mb-16 tracking-tight dark:tracking-tighter dark:drop-shadow-xl transition-all duration-300">
-        //   What People Say <span className="dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-cyan-400 dark:via-blue-500 dark:to-indigo-500">About Me.</span>
-        // </h2>
+        
+        {/* Section Header */}
+        <div className="flex items-center gap-3 bg-gray-100 dark:bg-blue-950/40 border border-gray-200 dark:border-blue-500/20 py-2.5 px-6 rounded-full mb-6 w-max shadow-sm dark:shadow-[0_0_20px_rgba(59,130,246,0.1)] dark:backdrop-blur-md">
+          <span className="text-gray-400 dark:text-cyan-400 animate-pulse">❖</span>
+          <span className="text-xs text-gray-500 dark:text-cyan-300 font-black tracking-widest uppercase">Client Feedback Highlights</span>
+        </div>
+        
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-center text-gray-900 dark:text-white mb-16 tracking-tight transition-all duration-300">
+          What People Say <span className="dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-cyan-400 dark:via-blue-500 dark:to-indigo-500">About Me.</span>
+        </h2>
 
-        // 3 Column Grid layout
+        {/* 3 Column Grid layout */}
         <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
           
-          // Column 1
+          {/* Column 1 */}
           <div className="w-full flex flex-col gap-6">
              <TestimonialCard t={testimonials[0]} />
              <TestimonialCard t={testimonials[3]} />
           </div>
 
-          // Column 2
+          {/* Column 2 */}
           <div className="w-full flex flex-col gap-6">
              <TestimonialCard t={testimonials[1]} />
              <TestimonialCard t={testimonials[4]} />
           </div>
 
-          // Column 3
+          {/* Column 3 */}
           <div className="w-full flex flex-col gap-6">
              <TestimonialCard t={testimonials[2]} />
              <TestimonialCard t={testimonials[5]} />
@@ -78,7 +77,6 @@ const Testimonials = () => {
       </div>
     </section>
   )
-  */
 }
 
 function TestimonialCard({ t }) {

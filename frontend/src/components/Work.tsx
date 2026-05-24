@@ -140,7 +140,7 @@ const Work = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight border-b-4 border-cyan-500/30 pb-3 inline-block mb-6">
               Featured <span className="text-cyan-400">Deployments.</span>
             </h2>
-            <p className="text-base md:text-lg font-normal leading-relaxed text-gray-600 dark:text-gray-400 max-w-2xl text-center md:text-left">
+            <p className="text-base md:text-lg font-medium leading-relaxed text-gray-750 dark:text-gray-200 max-w-2xl text-center md:text-left p-6 sm:p-8 bg-gradient-to-r from-[#050c18]/90 via-[#030610]/75 to-transparent border border-white/[0.05] rounded-3xl backdrop-blur-xl shadow-2xl">
               The following projects showcase my ability to solve complex problems, build dynamic user interfaces, and deliver production-ready software efficiently using modern high-tech stacks.
             </p>
           </div>

@@ -36,8 +36,8 @@ function App() {
         <Work />
         <Experience />
         <Education />
-        {/* <Services /> */}
-        {/* <Testimonials /> */}
+        <Services />
+        <Testimonials />
         <Contact />
         <Footer />
         <ScrollArrow />

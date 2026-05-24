@@ -195,19 +195,19 @@ const Experience = () => {
 
                   {/* Right Side: Role Overview */}
                   <div className="w-full md:w-1/2 flex justify-start pl-20 md:pl-16 mt-6 md:mt-8">
-                    <div className="w-full max-w-[500px] relative z-10">
-                      <h3 className="text-lg md:text-xl font-semibold text-white mb-2 [text-shadow:0_2px_10px_rgba(0,0,0,1)]">{exp.title}</h3>
+                    <div className="w-full max-w-[500px] relative z-10 bg-gradient-to-br from-[#050c18]/90 via-[#030610]/75 to-transparent backdrop-blur-xl border border-white/[0.05] p-8 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(34,211,238,0.12)] transition-all duration-300">
+                      <h3 className="text-lg md:text-xl font-semibold text-white mb-2">{exp.title}</h3>
                       
                       <div className="flex items-center gap-2 mb-6">
-                        <span className="text-sm font-medium text-gray-400 [text-shadow:0_2px_5px_rgba(0,0,0,0.8)]">{exp.company} {exp.company && '•'} {exp.period}</span>
+                        <span className="text-sm font-medium text-gray-400">{exp.company} {exp.company && '•'} {exp.period}</span>
                       </div>
                       
-                      <p className="text-xs font-semibold tracking-widest uppercase text-cyan-500 mb-4 pb-2 border-b border-white/10 [text-shadow:0_2px_5px_rgba(0,0,0,0.8)]">Technical Execution</p>
+                      <p className="text-xs font-semibold tracking-widest uppercase text-cyan-500 mb-4 pb-2 border-b border-white/10">Technical Execution</p>
                       <ul className="space-y-4">
                         {exp.responsibilities.map((item, i) => (
-                          <li key={i} className="flex items-start text-sm md:text-base text-gray-300 font-normal leading-relaxed group">
-                            <span className="mr-3 mt-2 w-1.5 h-1.5 bg-cyan-500/50 rounded-full flex-shrink-0 group-hover:bg-cyan-400 transition-colors duration-300 shadow-[0_0_5px_rgba(0,0,0,0.8)]"></span>
-                            <span className="[text-shadow:0_2px_8px_rgba(0,0,0,1)]">{item}</span>
+                          <li key={i} className="flex items-start text-sm md:text-base text-gray-200 font-normal leading-relaxed group">
+                            <span className="mr-3 mt-2 w-1.5 h-1.5 bg-cyan-500/50 rounded-full flex-shrink-0 group-hover:bg-cyan-400 transition-colors duration-300 shadow-[0_0_5px_rgba(34,211,238,0.5)]"></span>
+                            <span>{item}</span>
                           </li>
                         ))}
                       </ul>
