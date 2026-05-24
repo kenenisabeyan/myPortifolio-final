@@ -195,7 +195,7 @@ const Experience = () => {
 
                   {/* Right Side: Role Overview */}
                   <div className="w-full md:w-1/2 flex justify-start pl-20 md:pl-16 mt-6 md:mt-8">
-                    <div className="w-full max-w-[500px] relative z-10 bg-gradient-to-br from-[#050c18]/90 via-[#030610]/75 to-transparent backdrop-blur-xl border border-white/[0.05] p-8 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(34,211,238,0.12)] transition-all duration-300">
+                    <div className="w-full max-w-[500px] relative z-10 bg-gradient-to-br from-[#030610]/95 via-[#030610]/80 to-transparent backdrop-blur-xl border border-white/[0.05] p-8 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(34,211,238,0.12)] transition-all duration-300">
                       <h3 className="text-lg md:text-xl font-semibold text-white mb-2">{exp.title}</h3>
                       
                       <div className="flex items-center gap-2 mb-6">
