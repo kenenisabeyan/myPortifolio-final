@@ -63,9 +63,26 @@ const RevealOnScroll = ({ children }) => {
   );
 };
 
+import { usePortfolioData } from '../context/PortfolioContext'
+
+const staticEducationData = educationData
+
 const Education = () => {
   const [lineHeight, setLineHeight] = React.useState(0)
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const { data } = usePortfolioData()
+  const visibility = data?.visibility || {}
+
+  if (visibility.education === false) return null
+
+  const displayEducation = data?.education?.length ? data.education.map(e => ({
+    title: e.program || e.title,
+    university: e.institution || e.university,
+    date: e.period || e.date,
+    details: [e.description],
+    nodeColor: 'bg-cyan-500',
+    borderColor: 'border-l-cyan-500 border-t-cyan-500'
+  })) : staticEducationData
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,9 +108,9 @@ const Education = () => {
   }, [])
 
   return (
-    <section id="education" className="py-16 md:py-24 px-6 relative z-10 bg-white dark:bg-transparent transition-colors duration-500">
+    <section id="education" className="py-16 md:py-24 px-4 md:px-10 lg:px-16 relative z-10 bg-white dark:bg-transparent transition-colors duration-500">
       
-      <div className="max-w-7xl mx-auto flex flex-col items-center relative z-10">
+      <div className="max-w-[1700px] mx-auto flex flex-col items-center relative z-10">
         
         <div className="flex flex-col items-center text-center mb-20">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight border-b-4 border-cyan-500/30 pb-3 inline-block mb-6">
@@ -101,7 +118,7 @@ const Education = () => {
           </h2>
         </div>
 
-        <div ref={containerRef} className="relative w-full max-w-7xl mx-auto">
+        <div ref={containerRef} className="relative w-full max-w-[1700px] mx-auto">
           {/* Vertical Center Line (Base Track) */}
           <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 top-4 bottom-4 w-[4px] rounded-full z-[0] bg-gray-200 dark:bg-[#030610]/80 dark:border dark:border-white/[0.05] shadow-sm"></div>
 
@@ -119,7 +136,7 @@ const Education = () => {
           </div>
 
           <div className="flex flex-col gap-12 md:gap-20">
-            {educationData.map((ed, idx) => {
+            {displayEducation.map((ed, idx) => {
               const isEven = idx % 2 === 0;
 
               return (
@@ -128,7 +145,7 @@ const Education = () => {
                     
                     {/* Detail Container (Left or Right depending on Even/Odd) */}
                     <div className={`w-full md:w-1/2 flex justify-start pl-20 md:pl-0 mt-6 md:mt-0 ${isEven ? 'md:justify-end md:pr-12' : 'md:justify-start md:pl-12'}`}>
-                      <div className={`bg-[#07101f]/90 dark:bg-[#020817]/95 p-8 rounded-[2rem] border border-white/[0.08] ${ed.borderColor} border-l-[6px] border-t-[6px] w-full max-w-[500px] shadow-[0_20px_80px_rgba(0,0,0,0.24)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl hover:-translate-y-1 hover:shadow-[0_25px_90px_rgba(8,145,255,0.24)]`}>
+                      <div className={`bg-[#07101f]/90 dark:bg-[#020817]/95 p-8 rounded-[2rem] border border-white/[0.08] ${ed.borderColor} border-l-[6px] border-t-[6px] w-full max-w-[680px] shadow-[0_20px_80px_rgba(0,0,0,0.24)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl hover:-translate-y-1 hover:shadow-[0_25px_90px_rgba(8,145,255,0.24)]`}>
                         
                         <div className="hidden dark:block absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-20 group-hover:opacity-70 transition-opacity duration-500" />
                         
@@ -150,7 +167,7 @@ const Education = () => {
 
                     {/* Title & Info Container (Opposite of Detail Container) */}
                     <div className={`w-full md:w-1/2 flex flex-col justify-start pl-20 md:pl-0 mt-2 md:mt-0 ${isEven ? 'md:pl-12 md:items-start text-left' : 'md:pr-12 md:items-end md:text-right'}`}>
-                      <div className={`flex flex-col w-full max-w-[500px] ${isEven ? 'items-start' : 'md:items-end'}`}>
+                      <div className={`flex flex-col w-full max-w-[680px] ${isEven ? 'items-start' : 'md:items-end'}`}>
                         <div className="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-500 dark:text-cyan-300 rounded-full text-xs font-bold mb-3 border border-blue-100 dark:border-blue-500/30">
                           {ed.date}
                         </div>

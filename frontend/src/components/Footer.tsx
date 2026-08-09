@@ -3,8 +3,8 @@ import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <footer className="py-8 px-6 relative z-10 border-t border-gray-200 dark:border-white/[0.05] bg-gray-50 dark:bg-transparent">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer className="py-8 px-4 md:px-10 lg:px-16 relative z-10 border-t border-gray-200 dark:border-white/[0.05] bg-gray-50 dark:bg-transparent">
+      <div className="max-w-[1700px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <p className="text-gray-500 dark:text-gray-400 text-sm font-medium tracking-wide">© 2025 Kenenisa Beyan. All rights reserved.</p>
         
         {/* Social Network Portals */}
@@ -20,6 +20,9 @@ const Footer = () => {
           <a href="https://twitter.com/kenenisa94931" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-blue-400 dark:hover:text-cyan-400 transition-colors duration-300 transform hover:-translate-y-1 hover:scale-110">
             <span className="sr-only">Twitter</span>
             <FaTwitter className="text-[1.3rem]" />
+          </a>
+          <a href="/admin" className="text-gray-400/40 dark:text-gray-600 hover:text-cyan-400 transition-colors duration-300 text-xs font-mono tracking-wider opacity-60 hover:opacity-100 transition-opacity" title="Admin Gateway">
+            Admin Gateway
           </a>
         </div>
 

@@ -102,9 +102,18 @@ const RevealOnScroll = ({ children }) => {
   );
 };
 
+import { usePortfolioData } from '../context/PortfolioContext'
+
+const experiencesData = experiences
+
 const Experience = () => {
   const [lineHeight, setLineHeight] = React.useState(0)
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const { data } = usePortfolioData()
+  const visibility = data?.visibility || {}
+  const displayExperiences = data?.experiences?.length ? data.experiences : experiencesData
+
+  if (visibility.experience === false) return null
 
   useEffect(() => {
     const handleScroll = () => {
@@ -130,9 +139,9 @@ const Experience = () => {
   }, [])
 
   return (
-    <section id="experience" className="py-16 md:py-24 px-6 relative z-10 bg-gray-50 dark:bg-transparent">
+    <section id="experience" className="py-16 md:py-24 px-4 md:px-10 lg:px-16 relative z-10 bg-gray-50 dark:bg-transparent">
       
-      <div className="max-w-7xl mx-auto flex flex-col items-center relative z-10">
+      <div className="max-w-[1700px] mx-auto flex flex-col items-center relative z-10">
         
         <div className="flex flex-col items-center text-center mb-16">
           {/* <div className="flex items-center gap-3 bg-white dark:bg-blue-900/20 border border-gray-200 dark:border-blue-500/30 py-2.5 px-6 rounded-full mb-6 max-w-max shadow-sm dark:shadow-[0_0_20px_rgba(59,130,246,0.15)] dark:backdrop-blur-md">
@@ -144,7 +153,7 @@ const Experience = () => {
           </h2>
         </div>
 
-        <div ref={containerRef} className="relative w-full max-w-7xl mx-auto">
+        <div ref={containerRef} className="relative w-full max-w-[1700px] mx-auto">
           {/* Vertical Center Line (Base Track) */}
           <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 top-4 bottom-4 w-[4px] rounded-full z-[0] bg-gray-200 dark:bg-[#030610]/80 dark:border dark:border-white/[0.05] shadow-sm"></div>
 
@@ -162,13 +171,13 @@ const Experience = () => {
           </div>
 
           <div className="flex flex-col gap-16 md:gap-32">
-            {experiences.map((exp, idx) => (
+            {displayExperiences.map((exp, idx) => (
               <RevealOnScroll key={idx}>
                 <div className="relative flex flex-col md:flex-row items-center md:items-start w-full z-10">
                   
                   {/* Left Side: Detail & Testimonial Container */}
                   <div className="hidden md:flex w-1/2 justify-end pr-16 mt-4">
-                    <div className={`bg-[#050A14]/80 p-8 rounded-[2rem] border border-white/[0.05] ${exp.borderColor} border-l-[6px] border-t-[6px] w-full max-w-[500px] shadow-2xl transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl`}>
+                    <div className={`bg-[#050A14]/80 p-8 rounded-[2rem] border border-white/[0.05] ${exp.borderColor} border-l-[6px] border-t-[6px] w-full max-w-[680px] shadow-2xl transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl`}>
                       
                       {/* Dark mode internal glow behind text */}
                       <div className="absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -195,7 +204,7 @@ const Experience = () => {
 
                   {/* Right Side: Role Overview */}
                   <div className="w-full md:w-1/2 flex justify-start pl-20 md:pl-16 mt-6 md:mt-8">
-                    <div className="w-full max-w-[500px] relative z-10 bg-gradient-to-br from-[#030610]/95 via-[#030610]/80 to-transparent backdrop-blur-xl border border-white/[0.05] p-8 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(34,211,238,0.12)] transition-all duration-300">
+                    <div className="w-full max-w-[680px] relative z-10 bg-gradient-to-br from-[#030610]/95 via-[#030610]/80 to-transparent backdrop-blur-xl border border-white/[0.05] p-8 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(34,211,238,0.12)] transition-all duration-300">
                       <h3 className="text-lg md:text-xl font-semibold text-white mb-2">{exp.title}</h3>
                       
                       <div className="flex items-center gap-2 mb-6">

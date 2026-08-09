@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+gimport React, { useState } from 'react'
 import { FaMapMarkerAlt, FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { FiExternalLink } from 'react-icons/fi'
 
@@ -98,7 +98,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 px-6 relative z-10 bg-white dark:bg-transparent border-t border-gray-100 dark:border-white/[0.05]">
+    <section id="contact" className="py-16 md:py-24 px-4 md:px-10 lg:px-16 relative z-10 bg-white dark:bg-transparent border-t border-gray-100 dark:border-white/[0.05]">
       
       {/* Toast Notification Popup */}
       <div className={`fixed top-[15%] left-1/2 z-[100] transform -translate-x-1/2 transition-all duration-500 ease-out flex items-center gap-4 px-6 py-4 rounded-xl shadow-2xl backdrop-blur-xl border ${
@@ -124,7 +124,7 @@ const Contact = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-blue-900/10 via-transparent to-transparent pointer-events-none hidden dark:block" />
       <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-cyan-600/10 blur-[150px] rounded-full pointer-events-none hidden dark:block" />
 
-      <div className="max-w-7xl mx-auto flex flex-col items-center justify-center relative z-10 transition-all duration-300">
+      <div className="max-w-[1700px] mx-auto flex flex-col items-center justify-center relative z-10 transition-all duration-300">
         
         <div className="w-full grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
           

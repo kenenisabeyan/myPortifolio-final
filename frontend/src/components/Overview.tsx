@@ -29,12 +29,12 @@ const stats = [
 
 const Overview = () => {
   return (
-    <section id="overview" className="py-16 md:py-24 px-6 relative z-10 bg-gray-50 dark:bg-transparent dark:border-t dark:border-white/[0.05]">
+    <section id="overview" className="py-16 md:py-24 px-4 md:px-10 lg:px-16 relative z-10 bg-gray-50 dark:bg-transparent dark:border-t dark:border-white/[0.05]">
       
       {/* Subtle overlay gradients for contrast (Dark Mode Only) */}
       <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-cyan-600/10 blur-[130px] rounded-full pointer-events-none hidden dark:block" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1700px] mx-auto relative z-10">
         
         {/* Top Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch mb-20 lg:mb-24">
@@ -82,7 +82,7 @@ const Overview = () => {
                <div className="absolute inset-0 bg-blue-900/20 mix-blend-overlay z-20 pointer-events-none group-hover:bg-transparent transition-colors duration-700 hidden dark:block"></div>
                <img 
                  src={homePageImg} 
-                 alt="About Me Graphic" 
+                 alt="Kenenisa Beyan — Full-Stack Software Engineer Overview" 
                  className="w-full h-full max-w-[520px] max-h-[520px] object-contain rounded-2xl md:rounded-3xl shadow-xl dark:shadow-[0_0_30px_rgba(59,130,246,0.3)] transform transition-transform duration-1000 group-hover:scale-[1.05] dark:group-hover:scale-110 relative z-10"
                />
             </div>

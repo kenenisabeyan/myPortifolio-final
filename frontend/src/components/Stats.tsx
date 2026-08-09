@@ -17,10 +17,10 @@ const coreValues = [
 
 const Stats = () => {
   return (
-    <section className="py-20 px-6 relative z-10 border-t border-white/[0.05] bg-[#030610]">
+    <section className="py-20 px-4 md:px-10 lg:px-16 relative z-10 border-t border-white/[0.05] bg-[#030610]">
       <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 to-transparent pointer-events-none" />
       <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-cyan-600/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+      <div className="max-w-[1700px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
         {coreValues.map((val, idx) => (
           <div key={idx} className="group relative bg-[#050A14]/80 backdrop-blur-xl hover:bg-[#080d1a]/90 p-10 rounded-[2rem] border border-white/[0.05] hover:border-cyan-500/40 transition-all duration-500 flex flex-col justify-center overflow-hidden hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] hover:-translate-y-2 cursor-default">
             <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

@@ -7,7 +7,7 @@ const Projects = () => {
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-200/50 via-transparent to-transparent dark:from-blue-900/10 dark:via-transparent dark:to-transparent pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+      <div className="container mx-auto relative z-10 max-w-[1700px]">
         {/* Section Header */}
         <div className="flex flex-col items-center mb-16">
           <div className="inline-block px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-md mb-6 transform transition-transform hover:scale-105">

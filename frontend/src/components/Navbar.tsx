@@ -7,7 +7,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }: { isDarkMode?: boolean, toggleDa
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('Home')
 
-  const navItems = ['Home', 'Overview', 'Skills', 'Work', 'Experience', 'Education', 'Testimonials', 'Contact']
+  const navItems = ['Home', 'Overview', 'Approach', 'Skills', 'Capabilities', 'Work', 'Experience', 'Education', 'Testimonials', 'Contact']
 
   const scrollToSection = (section: string) => {
     if (section === 'Home') {
@@ -25,7 +25,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }: { isDarkMode?: boolean, toggleDa
     const handleScroll = () => {
       setScrolled(window.scrollY > 10)
 
-      const sections = ['home', 'overview', 'skills', 'work', 'experience', 'education', 'testimonials', 'contact']
+      const sections = ['home', 'overview', 'approach', 'skills', 'capabilities', 'work', 'experience', 'education', 'testimonials', 'contact']
       let currentSection = 'Home'
 
       if (window.scrollY < 150) {
@@ -88,7 +88,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }: { isDarkMode?: boolean, toggleDa
       {/* Decorative top border gradient line on scroll */}
       <div className={`absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent transition-opacity duration-500 ${scrolled ? 'opacity-100' : 'opacity-0'}`}></div>
 
-      <div className="max-w-7xl mx-auto flex justify-between items-center text-sm font-medium relative z-10">
+      <div className="max-w-[1700px] mx-auto flex justify-between items-center text-sm font-medium relative z-10">
         
         {/* Logo */}
         <div className="flex items-center group relative cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>

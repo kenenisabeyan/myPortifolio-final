@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Allow all OG images to be indexed
+Allow: /og/
+Allow: /og/projects/
+
+# Sitemap location
+Sitemap: https://kenenisabeyan.com/sitemap.xml

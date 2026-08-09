@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import {
   SiReact, SiNextdotjs, SiDjango, SiPython, SiJavascript, 
   SiTypescript, SiExpress, SiTailwindcss, SiHtml5, SiCss, 
-  SiMysql, SiPostgresql, SiMongodb, SiBootstrap, SiGit, SiGithub,
+  SiMysql, SiPostgresql, SiMongodb, SiBootstrap, SiGit, SiGithub,//
   SiCplusplus
 } from 'react-icons/si'
 import { FaJava, FaSitemap } from 'react-icons/fa'

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  sitemap.xml
+  
+  This is a single-page application (Vite + React SPA).
+  All content is served from a single URL: /
+  
+  Section anchors (#overview, #skills, #work, #experience, etc.)
+  are NOT separate URLs and are NOT included here, as they are
+  not indexable by search engine crawlers independently.
+  
+  If you ever migrate to a framework with real URL routing
+  (Next.js, Remix, etc.), update this sitemap to reflect
+  the actual public route structure.
+  
+  Update lastmod dates when significant content changes are made.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- ═══════════════════════════════════
+       HOMEPAGE (only real URL in this SPA)
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://kenenisabeyan.com/</loc>
+    <lastmod>2025-02-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+
+    <!-- Primary OG image for Google Image Search -->
+    <image:image>
+      <image:loc>https://kenenisabeyan.com/og/kenenisa-beyan-og.png</image:loc>
+      <image:title>Kenenisa Beyan — Full-Stack Software Engineer</image:title>
+      <image:caption>Engineering Scalable Digital Products for Modern Businesses</image:caption>
+    </image:image>
+
+    <!-- Profile photo -->
+    <image:image>
+      <image:loc>https://kenenisabeyan.com/og-image.png</image:loc>
+      <image:title>Kenenisa Beyan — Professional Portrait</image:title>
+    </image:image>
+  </url>
+
+</urlset>

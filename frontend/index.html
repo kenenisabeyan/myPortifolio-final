@@ -3,11 +3,257 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kenenisa Beyan | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       ENVIRONMENT CONFIGURATION & SEARCH ENGINE VERIFICATION
+       %VITE_SITE_URL% is replaced by Vite at build time using the VITE_SITE_URL in .env.
+       Google & Bing search console placeholders enable verification via environment variables.
+  ═══════════════════════════════════════════════════════════════ -->
+  <meta name="google-site-verification" content="%VITE_GOOGLE_SITE_VERIFICATION%" />
+  <meta name="msvalidate.01"             content="%VITE_BING_SITE_VERIFICATION%" />
+
+  <!-- ─────────────────────────────
+       FAVICON SYSTEM
+  ───────────────────────────── -->
+  <link rel="icon"             type="image/png"  href="/og-image.png" sizes="any" />
+  <link rel="apple-touch-icon"                   href="/og-image.png" />
+  <link rel="shortcut icon"                      href="/og-image.png" />
+
+  <!-- ─────────────────────────────
+       PRIMARY BRAND SEO METADATA
+       Targeting: Kenenisa Beyan, Kenenisa, Kenenisa Beyan Developer,
+       Kenenisa Beyan Software Engineer, Full-Stack Software Engineer.
+  ───────────────────────────── -->
+  <title>Kenenisa Beyan — Full-Stack Software Engineer</title>
+
+  <meta name="title"
+    content="Kenenisa Beyan — Full-Stack Software Engineer" />
+
+  <meta name="description"
+    content="Kenenisa Beyan is a Full-Stack Software Engineer building scalable, production-grade digital products and modern web platforms." />
+
+  <meta name="keywords"
+    content="Kenenisa Beyan, Kenenisa, Kenenisa Beyan developer, Kenenisa Beyan software engineer, Kenenisa software engineer, Kenenisa full stack developer, Kenenisa Beyan portfolio, Kenenisa Beyan GitHub, Kenenisa Beyan Ethiopia, EDOT Platform" />
+
+  <meta name="author"   content="Kenenisa Beyan" />
+  <meta name="robots"   content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="language" content="English" />
+
+  <!-- ─────────────────────────────
+       CANONICAL URL & SITE NAME
+  ───────────────────────────── -->
+  <link rel="canonical" href="%VITE_SITE_URL%/" />
+
+  <!-- ─────────────────────────────
+       OPEN GRAPH PROTOCOL
+  ───────────────────────────── -->
+  <meta property="og:type"         content="website" />
+  <meta property="og:url"          content="%VITE_SITE_URL%/" />
+  <meta property="og:site_name"    content="Kenenisa Beyan" />
+  <meta property="og:locale"       content="en_US" />
+
+  <meta property="og:title"
+    content="Kenenisa Beyan — Full-Stack Software Engineer" />
+
+  <meta property="og:description"
+    content="Kenenisa Beyan is a Full-Stack Software Engineer building scalable, production-grade digital products and modern web platforms." />
+
+  <meta property="og:image"
+    content="%VITE_SITE_URL%/og/kenenisa-beyan-og.png" />
+  <meta property="og:image:secure_url"
+    content="%VITE_SITE_URL%/og/kenenisa-beyan-og.png" />
+  <meta property="og:image:type"   content="image/png" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"
+    content="Kenenisa Beyan — Full-Stack Software Engineer. Engineering Scalable Digital Products for Modern Businesses." />
+
+  <!-- ─────────────────────────────
+       TWITTER / X CARD METADATA
+  ───────────────────────────── -->
+  <meta name="twitter:card"    content="summary_large_image" />
+  <meta name="twitter:site"    content="@kenenisa94931" />
+  <meta name="twitter:creator" content="@kenenisa94931" />
+
+  <meta name="twitter:title"
+    content="Kenenisa Beyan — Full-Stack Software Engineer" />
+
+  <meta name="twitter:description"
+    content="Kenenisa Beyan is a Full-Stack Software Engineer building scalable, production-grade digital products and modern web platforms." />
+
+  <meta name="twitter:image"
+    content="%VITE_SITE_URL%/og/kenenisa-beyan-og.png" />
+  <meta name="twitter:image:alt"
+    content="Kenenisa Beyan — Full-Stack Software Engineer" />
+
+  <!-- ─────────────────────────────
+       APPLE / MOBILE / PWA
+  ───────────────────────────── -->
+  <meta name="theme-color"               content="#07101f" />
+  <meta name="apple-mobile-web-app-title" content="Kenenisa Beyan" />
+  <meta name="application-name"           content="Kenenisa Beyan" />
+
+  <!-- ─────────────────────────────
+       SCHEMA.ORG STRUCTURED DATA GRAPH
+       Person + WebSite + WebPage + CreativeWorks (Software Applications)
+  ───────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "%VITE_SITE_URL%/#person",
+        "name": "Kenenisa Beyan",
+        "alternateName": [
+          "Kenenisa",
+          "Kenenisa Beyan Developer",
+          "Kenenisa Beyan Software Engineer"
+        ],
+        "url": "%VITE_SITE_URL%/",
+        "jobTitle": "Full-Stack Software Engineer",
+        "description": "Kenenisa Beyan is a Full-Stack Software Engineer building scalable, production-grade web platforms and founder of EDOT — Ethiopia's emerging ed-tech platform.",
+        "image": {
+          "@type": "ImageObject",
+          "url": "%VITE_SITE_URL%/og-image.png",
+          "width": 400,
+          "height": 400
+        },
+        "sameAs": [
+          "https://github.com/kenenisabeyan",
+          "https://www.linkedin.com/in/kenenisa/",
+          "https://twitter.com/kenenisa94931"
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "EDOT Platform"
+        },
+        "founder": {
+          "@type": "Organization",
+          "name": "EDOT Platform",
+          "url": "https://github.com/kenenisabeyan/edot"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Adama Science and Technology University (ASTU)"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "Ethiopia"
+        },
+        "knowsAbout": [
+          "React",
+          "Next.js",
+          "Node.js",
+          "TypeScript",
+          "Python",
+          "Django",
+          "PostgreSQL",
+          "MongoDB",
+          "Full-Stack Web Development",
+          "Software Architecture",
+          "Education Technology"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "%VITE_SITE_URL%/#website",
+        "url": "%VITE_SITE_URL%/",
+        "name": "Kenenisa Beyan",
+        "alternateName": "Kenenisa Beyan Portfolio",
+        "description": "Official personal portfolio of Kenenisa Beyan, Full-Stack Software Engineer.",
+        "about": {
+          "@id": "%VITE_SITE_URL%/#person"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "%VITE_SITE_URL%/#webpage",
+        "url": "%VITE_SITE_URL%/",
+        "name": "Kenenisa Beyan — Full-Stack Software Engineer",
+        "isPartOf": {
+          "@id": "%VITE_SITE_URL%/#website"
+        },
+        "about": {
+          "@id": "%VITE_SITE_URL%/#person"
+        },
+        "description": "Kenenisa Beyan is a Full-Stack Software Engineer building scalable, production-grade web platforms and digital products.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "%VITE_SITE_URL%/"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "%VITE_SITE_URL%/#project-edot",
+        "name": "EDOT Platform",
+        "description": "A modular, full-stack education ecosystem engineered to deliver scalable, structured learning experiences.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web",
+        "author": {
+          "@id": "%VITE_SITE_URL%/#person"
+        },
+        "url": "https://github.com/kenenisabeyan/edot"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "%VITE_SITE_URL%/#project-followflow",
+        "name": "FollowFlow",
+        "description": "A premium CRM and Task Tracking Dashboard designed for client workflow orchestration.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "author": {
+          "@id": "%VITE_SITE_URL%/#person"
+        },
+        "url": "https://github.com/kenenisabeyan/followflow"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "%VITE_SITE_URL%/#project-performance-evaluator",
+        "name": "Performance Evaluator",
+        "description": "A full-stack employee evaluation dashboard streamlining organizational performance assessments.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "author": {
+          "@id": "%VITE_SITE_URL%/#person"
+        },
+        "url": "https://github.com/kenenisabeyan/Performance-Evaluator"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "%VITE_SITE_URL%/#project-clientflow",
+        "name": "ClientFlow",
+        "description": "A comprehensive CRM platform for managing interactions with current and potential clients.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "author": {
+          "@id": "%VITE_SITE_URL%/#person"
+        },
+        "url": "https://github.com/kenenisabeyan/clientflow"
+      }
+    ]
+  }
+  </script>
+
+  <!-- ─────────────────────────────
+       FONTS
+  ───────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
 </head>
 
 <body class="text-base leading-relaxed text-white font-sans bg-[#030610]">

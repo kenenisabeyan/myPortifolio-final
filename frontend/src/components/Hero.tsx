@@ -2,8 +2,20 @@ import React from 'react'
 import kenoImg from '../assets/keno.jpg'
 import Background3D from './Background3D'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { usePortfolioData } from '../context/PortfolioContext'
 
 const Hero = () => {
+  const { data } = usePortfolioData()
+  const settings = data?.siteSettings || {}
+  const visibility = data?.visibility || {}
+
+  if (visibility.hero === false) return null
+
+  const heroPhoto = settings.heroPhotoUrl || kenoImg
+  const githubUrl = settings.githubUrl || 'https://github.com/kenenisabeyan'
+  const linkedinUrl = settings.linkedinUrl || 'https://www.linkedin.com/in/kenenisa/'
+  const twitterUrl = settings.twitterUrl || 'https://twitter.com/kenenisa94931'
+
   const scrollToWork = () => {
     document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -11,7 +23,7 @@ const Hero = () => {
   return (
     <section id="hero" className="relative min-h-[100vh] flex items-center overflow-hidden pt-20 bg-transparent">
       <Background3D />
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-[1700px] mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
         {/* Left side: Original Typography integrated carefully */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left pt-6 order-2 lg:order-1 relative z-20">
@@ -38,13 +50,13 @@ const Hero = () => {
             
             {/* Subtle Bio Text */}
             <p className="text-base md:text-lg font-medium leading-relaxed text-blue-50 max-w-2xl relative z-30 [text-shadow:0_2px_10px_rgba(0,0,0,1)]">
-              Full-Stack Software Engineer focused on
-               <span className="inline-block relative mx-2">
+              Full-Stack Software Engineer focused on{' '}
+              <span className="inline-block relative">
                 <span className="relative text-cyan-400 font-bold">
                   Architecting scalable
-                 </span>
-               </span>
-               , production-grade web platforms with performance, reliability, and user experience at the core.
+                </span>
+              </span>
+              , production-grade web platforms with performance, reliability, and user experience at the core.
             </p>
           </div>
 
@@ -147,8 +159,8 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/60 to-transparent mix-blend-overlay z-10 block"></div>
                 
                 <img 
-                  src={kenoImg} 
-                  alt="Kenenisa Beyan" 
+                  src={heroPhoto} 
+                  alt="Kenenisa Beyan — Full-Stack Software Engineer" 
                   className="w-full h-full object-cover object-center" 
                 />
               </div>

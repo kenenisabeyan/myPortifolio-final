@@ -34,12 +34,21 @@ const testimonials = [
   },
 ]
 
+import { usePortfolioData } from '../context/PortfolioContext'
+
+const staticTestimonials = testimonials
+
 const Testimonials = () => {
+  const { data } = usePortfolioData()
+  const visibility = data?.visibility || {}
+  const displayTestimonials = data?.testimonials?.length ? data.testimonials : staticTestimonials
+
+  if (visibility.testimonials === false) return null
   return (
-    <section id="testimonials" className="py-16 md:py-24 px-6 relative z-10 bg-transparent dark:border-t dark:border-white/[0.05]">
+    <section id="testimonials" className="py-16 md:py-24 px-4 md:px-10 lg:px-16 relative z-10 bg-transparent dark:border-t dark:border-white/[0.05]">
       
       <div className="absolute inset-0 bg-gradient-to-b from-blue-900/5 via-transparent to-transparent pointer-events-none hidden dark:block" />
-      <div className="max-w-7xl mx-auto flex flex-col items-center relative z-10 transition-all duration-300">
+      <div className="max-w-[1700px] mx-auto flex flex-col items-center relative z-10 transition-all duration-300">
         
         {/* Section Header */}
         <div className="flex items-center gap-3 bg-gray-100 dark:bg-blue-950/40 border border-gray-200 dark:border-blue-500/20 py-2.5 px-6 rounded-full mb-6 w-max shadow-sm dark:shadow-[0_0_20px_rgba(59,130,246,0.1)] dark:backdrop-blur-md">
