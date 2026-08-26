@@ -34,6 +34,14 @@ export async function apiFetch(endpoint: string, options: RequestInit = {}) {
     throw new Error(data.message || `Request failed with status ${response.status}`);
   }
 
+  // Trigger real-time broadcast to sync public frontend instantly on any admin edit
+  if (options.method && options.method !== 'GET') {
+    window.dispatchEvent(new CustomEvent('portfolio-data-updated'));
+    try {
+      localStorage.setItem('portfolio_last_updated', Date.now().toString());
+    } catch (e) {}
+  }
+
   return data;
 }
 

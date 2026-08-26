@@ -154,33 +154,6 @@ const CoreGlobe = ({ isDark }) => {
 
 import { usePortfolioData } from '../context/PortfolioContext'
 
-const ICON_MAP: Record<string, { icon: any, defaultColor: string }> = {
-  'Next.js': { icon: SiNextdotjs, defaultColor: '#ffffff' },
-  'React': { icon: SiReact, defaultColor: '#61DAFB' },
-  'Node.js': { icon: SiNodedotjs, defaultColor: '#339933' },
-  'Express': { icon: SiExpress, defaultColor: '#ffffff' },
-  'JavaScript': { icon: SiJavascript, defaultColor: '#F7DF1E' },
-  'TypeScript': { icon: SiTypescript, defaultColor: '#3178C6' },
-  'Python': { icon: SiPython, defaultColor: '#3776AB' },
-  'Django': { icon: SiDjango, defaultColor: '#44B78B' },
-  'HTML': { icon: SiHtml5, defaultColor: '#E34F26' },
-  'CSS': { icon: SiCss, defaultColor: '#1572B6' },
-  'Tailwind CSS': { icon: SiTailwindcss, defaultColor: '#38B2AC' },
-  'Bootstrap': { icon: SiBootstrap, defaultColor: '#7952B3' },
-  'Three.js': { icon: SiThreedotjs, defaultColor: '#ffffff' },
-  'C++': { icon: SiCplusplus, defaultColor: '#00599C' },
-  'MongoDB': { icon: SiMongodb, defaultColor: '#47A248' },
-  'PostgreSQL': { icon: SiPostgresql, defaultColor: '#4169E1' },
-  'MySQL': { icon: SiMysql, defaultColor: '#4479A1' },
-  'GIT': { icon: SiGit, defaultColor: '#F05032' },
-  'Git': { icon: SiGit, defaultColor: '#F05032' },
-  'GITHUB': { icon: SiGithub, defaultColor: '#ffffff' },
-  'GitHub': { icon: SiGithub, defaultColor: '#ffffff' },
-  'Java': { icon: FaJava, defaultColor: '#f89820' },
-  'Algorithms': { icon: FaSitemap, defaultColor: '#44B78B' },
-  'Data Structures': { icon: FaLayerGroup, defaultColor: '#F05032' },
-}
-
 const TechPlanets3D = () => {
   const { data } = usePortfolioData()
   const [isDark, setIsDark] = useState(true)

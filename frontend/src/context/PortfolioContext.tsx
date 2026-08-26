@@ -89,6 +89,13 @@ const PortfolioContext = createContext<PortfolioContextType>({
   refreshData: async () => {},
 });
 
+export const triggerRealtimeSync = () => {
+  window.dispatchEvent(new CustomEvent('portfolio-data-updated'));
+  try {
+    localStorage.setItem('portfolio_last_updated', Date.now().toString());
+  } catch (e) {}
+};
+
 export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [data, setData] = useState<PortfolioDataResponse>(defaultContextValue);
   const [loading, setLoading] = useState(true);
@@ -106,6 +113,30 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
   useEffect(() => {
     loadData();
+
+    // 1. Instant Custom Event broadcast listener on admin edits
+    const handleUpdate = () => {
+      loadData();
+    };
+
+    window.addEventListener('portfolio-data-updated', handleUpdate);
+
+    // 2. Cross-tab synchronization listener
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === 'portfolio_last_updated') {
+        loadData();
+      }
+    };
+    window.addEventListener('storage', handleStorage);
+
+    // 3. Real-time background polling every 3 seconds for zero-delay synchronization
+    const interval = setInterval(loadData, 3000);
+
+    return () => {
+      window.removeEventListener('portfolio-data-updated', handleUpdate);
+      window.removeEventListener('storage', handleStorage);
+      clearInterval(interval);
+    };
   }, []);
 
   return (
