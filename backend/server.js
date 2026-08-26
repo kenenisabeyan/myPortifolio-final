@@ -135,6 +135,8 @@ app.get('/api/public/portfolio', (req, res) => {
       .sort((a, b) => new Date(b.publishedAt || b.createdAt) - new Date(a.publishedAt || a.createdAt));
 
     const siteSettings = db.get('site_settings');
+    const eventsGallery = db.get('events_gallery') || [];
+    const galleryPhotos = db.get('gallery_photos') || [];
 
     res.json({
       success: true,
@@ -149,6 +151,8 @@ app.get('/api/public/portfolio', (req, res) => {
         testimonials,
         blogs,
         news,
+        eventsGallery,
+        galleryPhotos,
         siteSettings
       }
     });
@@ -509,6 +513,8 @@ createCrudEndpoints('achievements', 'achievements');
 createCrudEndpoints('testimonials', 'testimonials');
 createCrudEndpoints('blogs', 'blogs');
 createCrudEndpoints('news', 'news');
+createCrudEndpoints('events-gallery', 'events_gallery');
+createCrudEndpoints('gallery-photos', 'gallery_photos');
 
 
 // ═══════════════════════════════════════════════════════════════

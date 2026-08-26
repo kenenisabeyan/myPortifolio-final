@@ -14,10 +14,13 @@ import Experience from './components/Experience'
 import Education from './components/Education'
 import HowIWork from './components/HowIWork'
 import CurrentlyBuilding from './components/CurrentlyBuilding'
-import Achievements from './components/Achievements'
+import AchievementsAndEvents from './components/AchievementsAndEvents'
+import GallerySection from './components/GallerySection'
 import EngineeringActivity from './components/EngineeringActivity'
 import Testimonials from './components/Testimonials'
 import CareerDirection from './components/CareerDirection'
+import ArchitectureStandards from './components/ArchitectureStandards'
+import BlogSection from './components/BlogSection'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollArrow from './components/ScrollArrow'
@@ -72,6 +75,7 @@ function App() {
             <WhatIBring />
             <Services />
             <EngineeringCapabilities />
+            <ArchitectureStandards />
             <ProblemsISolve />
             <Work />
             <EngineeringChallenges />
@@ -79,8 +83,10 @@ function App() {
             <Education />
             <HowIWork />
             <CurrentlyBuilding />
-            <Achievements />
+            <AchievementsAndEvents />
+            <GallerySection />
             <EngineeringActivity />
+            <BlogSection />
             <Testimonials />
             <CareerDirection />
             <Contact />

@@ -6,6 +6,8 @@ import { usePortfolioData } from '../context/PortfolioContext'
 const Contact = () => {
   const { data } = usePortfolioData()
   const visibility = data?.visibility || {}
+  const settings = data?.siteSettings || {}
+  const contactContent = data?.sectionContent?.contact || {}
 
   if (visibility.contact === false) return null
 

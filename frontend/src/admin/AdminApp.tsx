@@ -5,6 +5,8 @@ import AdminSidebar, { TabKey } from './components/AdminSidebar'
 import DashboardOverviewTab from './tabs/DashboardOverviewTab'
 import ContentManagerTab from './tabs/ContentManagerTab'
 import ProjectsTab from './tabs/ProjectsTab'
+import EventsGalleryTab from './tabs/EventsGalleryTab'
+import GalleryPhotosTab from './tabs/GalleryPhotosTab'
 import ExperienceTab from './tabs/ExperienceTab'
 import EducationTab from './tabs/EducationTab'
 import SkillsTab from './tabs/SkillsTab'
@@ -87,6 +89,10 @@ const AdminApp: React.FC = () => {
         return <ContentManagerTab />
       case 'projects':
         return <ProjectsTab />
+      case 'events-gallery':
+        return <EventsGalleryTab />
+      case 'gallery-photos':
+        return <GalleryPhotosTab />
       case 'experience':
         return <ExperienceTab />
       case 'education':

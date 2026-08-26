@@ -155,8 +155,39 @@ const CoreGlobe = ({ isDark }) => {
   )
 }
 
+import { usePortfolioData } from '../context/PortfolioContext'
+
+const ICON_MAP: Record<string, { icon: any, defaultColor: string }> = {
+  'Next.js': { icon: SiNextdotjs, defaultColor: '#ffffff' },
+  'React': { icon: SiReact, defaultColor: '#61DAFB' },
+  'Node.js': { icon: SiNodedotjs, defaultColor: '#339933' },
+  'Express': { icon: SiExpress, defaultColor: '#ffffff' },
+  'JavaScript': { icon: SiJavascript, defaultColor: '#F7DF1E' },
+  'TypeScript': { icon: SiTypescript, defaultColor: '#3178C6' },
+  'Python': { icon: SiPython, defaultColor: '#3776AB' },
+  'Django': { icon: SiDjango, defaultColor: '#44B78B' },
+  'HTML': { icon: SiHtml5, defaultColor: '#E34F26' },
+  'CSS': { icon: SiCss, defaultColor: '#1572B6' },
+  'Tailwind CSS': { icon: SiTailwindcss, defaultColor: '#38B2AC' },
+  'Bootstrap': { icon: SiBootstrap, defaultColor: '#7952B3' },
+  'Three.js': { icon: SiThreedotjs, defaultColor: '#ffffff' },
+  'C++': { icon: SiCplusplus, defaultColor: '#00599C' },
+  'MongoDB': { icon: SiMongodb, defaultColor: '#47A248' },
+  'PostgreSQL': { icon: SiPostgresql, defaultColor: '#4169E1' },
+  'MySQL': { icon: SiMysql, defaultColor: '#4479A1' },
+  'GIT': { icon: SiGit, defaultColor: '#F05032' },
+  'Git': { icon: SiGit, defaultColor: '#F05032' },
+  'GITHUB': { icon: SiGithub, defaultColor: '#ffffff' },
+  'GitHub': { icon: SiGithub, defaultColor: '#ffffff' },
+  'Java': { icon: FaJava, defaultColor: '#f89820' },
+  'Algorithms': { icon: FaSitemap, defaultColor: '#44B78B' },
+  'Data Structures': { icon: FaLayerGroup, defaultColor: '#F05032' },
+}
+
 const TechPlanets3D = () => {
+  const { data } = usePortfolioData()
   const [isDark, setIsDark] = useState(true)
+  const planetsContent = data?.sectionContent?.['3d-planets'] || {}
 
   useEffect(() => {
     setIsDark(document.documentElement.classList.contains('dark'))
@@ -171,37 +202,49 @@ const TechPlanets3D = () => {
     return () => observer.disconnect()
   }, [])
 
-  // 22 tech items allocated to 3 distinct orbital rings
-  const ring1Items = useMemo(() => [
-    { name: "Next.js", icon: SiNextdotjs, color: isDark ? '#ffffff' : '#000000' },
-    { name: "React", icon: SiReact, color: '#61DAFB' },
-    { name: "Node.js", icon: SiNodedotjs, color: '#339933' },
-    { name: "Express", icon: SiExpress, color: isDark ? '#ffffff' : '#000000' },
-    { name: "JavaScript", icon: SiJavascript, color: '#F7DF1E' },
-    { name: "TypeScript", icon: SiTypescript, color: '#3178C6' }
-  ], [isDark])
+  const defaultRing1 = [
+    { name: "Next.js", color: isDark ? '#ffffff' : '#000000' },
+    { name: "React", color: '#61DAFB' },
+    { name: "Node.js", color: '#339933' },
+    { name: "Express", color: isDark ? '#ffffff' : '#000000' },
+    { name: "JavaScript", color: '#F7DF1E' },
+    { name: "TypeScript", color: '#3178C6' }
+  ]
 
-  const ring2Items = useMemo(() => [
-    { name: "Python", icon: SiPython, color: '#3776AB' },
-    { name: "Django", icon: SiDjango, color: isDark ? '#44B78B' : '#092E20' },
-    { name: "HTML", icon: SiHtml5, color: '#E34F26' },
-    { name: "CSS", icon: SiCss, color: '#1572B6' },
-    { name: "Tailwind CSS", icon: SiTailwindcss, color: '#38B2AC' },
-    { name: "Bootstrap", icon: SiBootstrap, color: '#7952B3' },
-    { name: "Three.js", icon: SiThreedotjs, color: isDark ? '#ffffff' : '#000000' },
-    { name: "C++", icon: SiCplusplus, color: '#00599C' }
-  ], [isDark])
+  const defaultRing2 = [
+    { name: "Python", color: '#3776AB' },
+    { name: "Django", color: isDark ? '#44B78B' : '#092E20' },
+    { name: "HTML", color: '#E34F26' },
+    { name: "CSS", color: '#1572B6' },
+    { name: "Tailwind CSS", color: '#38B2AC' },
+    { name: "Bootstrap", color: '#7952B3' },
+    { name: "Three.js", color: isDark ? '#ffffff' : '#000000' },
+    { name: "C++", color: '#00599C' }
+  ]
 
-  const ring3Items = useMemo(() => [
-    { name: "MongoDB", icon: SiMongodb, color: '#47A248' },
-    { name: "PostgreSQL", icon: SiPostgresql, color: '#4169E1' },
-    { name: "MySQL", icon: SiMysql, color: '#4479A1' },
-    { name: "GIT", icon: SiGit, color: '#F05032' },
-    { name: "GITHUB", icon: SiGithub, color: isDark ? '#ffffff' : '#000000' },
-    { name: "Java", icon: FaJava, color: '#f89820' },
-    { name: "Algorithms", icon: FaSitemap, color: '#44B78B' },
-    { name: "Data Structures", icon: FaLayerGroup, color: '#F05032' }
-  ], [isDark])
+  const defaultRing3 = [
+    { name: "MongoDB", color: '#47A248' },
+    { name: "PostgreSQL", color: '#4169E1' },
+    { name: "MySQL", color: '#4479A1' },
+    { name: "GIT", color: '#F05032' },
+    { name: "GITHUB", color: isDark ? '#ffffff' : '#000000' },
+    { name: "Java", color: '#f89820' },
+    { name: "Algorithms", color: '#44B78B' },
+    { name: "Data Structures", color: '#F05032' }
+  ]
+
+  const mapItems = (items: any[]) => items.map(item => {
+    const entry = ICON_MAP[item.name] || ICON_MAP['React']
+    return {
+      name: item.name,
+      icon: entry.icon,
+      color: item.color || entry.defaultColor
+    }
+  })
+
+  const ring1Items = useMemo(() => mapItems(planetsContent.ring1?.length ? planetsContent.ring1 : defaultRing1), [planetsContent, isDark])
+  const ring2Items = useMemo(() => mapItems(planetsContent.ring2?.length ? planetsContent.ring2 : defaultRing2), [planetsContent, isDark])
+  const ring3Items = useMemo(() => mapItems(planetsContent.ring3?.length ? planetsContent.ring3 : defaultRing3), [planetsContent, isDark])
 
   return (
     <div className="w-full h-full relative overflow-hidden bg-transparent rounded-[2rem] border border-white/[0.05] bg-[#07101f]/30 dark:bg-[#020817]/40 backdrop-blur-md">

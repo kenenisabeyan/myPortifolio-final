@@ -21,6 +21,8 @@ export type TabKey =
   | 'overview'
   | 'visibility'
   | 'projects'
+  | 'events-gallery'
+  | 'gallery-photos'
   | 'experience'
   | 'education'
   | 'skills'
@@ -44,6 +46,8 @@ const menuItems: { key: TabKey; label: string; icon: React.ReactNode }[] = [
   { key: 'overview', label: 'Overview', icon: <FaChartPie size={16} /> },
   { key: 'visibility', label: 'Section Visibility', icon: <FaEye size={16} /> },
   { key: 'projects', label: 'Projects & Case Studies', icon: <FaFolderOpen size={16} /> },
+  { key: 'events-gallery', label: 'Events & Recognitions', icon: <FaAward size={16} /> },
+  { key: 'gallery-photos', label: 'Photo Gallery CMS', icon: <FaPhotoVideo size={16} /> },
   { key: 'experience', label: 'Experience', icon: <FaBriefcase size={16} /> },
   { key: 'education', label: 'Education', icon: <FaGraduationCap size={16} /> },
   { key: 'skills', label: 'Skills & Capabilities', icon: <FaCode size={16} /> },

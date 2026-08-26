@@ -39,6 +39,8 @@
     "github-activity": true,
     "testimonials": true,
     "career-direction": true,
+    "events-gallery": true,
+    "gallery-section": true,
     "contact": true
   },
   "projects": [
@@ -496,6 +498,370 @@
   ],
   "contact_messages": [],
   "analytics_events": [
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787740058246-l5mybd",
+      "timestamp": "2026-08-26T14:17:00.165Z",
+      "id": "anal-1787753820168-iqpxr",
+      "createdAt": "2026-08-26T14:17:00.168Z",
+      "updatedAt": "2026-08-26T14:17:00.168Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787750689602-j0iii5",
+      "timestamp": "2026-08-26T14:17:00.122Z",
+      "id": "anal-1787753820124-mfog3",
+      "createdAt": "2026-08-26T14:17:00.124Z",
+      "updatedAt": "2026-08-26T14:17:00.124Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787750689602-j0iii5",
+      "timestamp": "2026-08-26T14:17:00.082Z",
+      "id": "anal-1787753820085-dnxot",
+      "createdAt": "2026-08-26T14:17:00.085Z",
+      "updatedAt": "2026-08-26T14:17:00.085Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787751886087-ks1eph",
+      "timestamp": "2026-08-26T14:16:59.985Z",
+      "id": "anal-1787753819989-jt0ie",
+      "createdAt": "2026-08-26T14:16:59.989Z",
+      "updatedAt": "2026-08-26T14:16:59.989Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787740058246-l5mybd",
+      "timestamp": "2026-08-26T14:16:59.970Z",
+      "id": "anal-1787753819973-ajsw9",
+      "createdAt": "2026-08-26T14:16:59.973Z",
+      "updatedAt": "2026-08-26T14:16:59.973Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787751886087-ks1eph",
+      "timestamp": "2026-08-26T14:16:59.869Z",
+      "id": "anal-1787753819872-6jmzk",
+      "createdAt": "2026-08-26T14:16:59.872Z",
+      "updatedAt": "2026-08-26T14:16:59.872Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787740388980-fgtdfl",
+      "timestamp": "2026-08-26T14:16:59.814Z",
+      "id": "anal-1787753819819-1mo29",
+      "createdAt": "2026-08-26T14:16:59.819Z",
+      "updatedAt": "2026-08-26T14:16:59.819Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787740388980-fgtdfl",
+      "timestamp": "2026-08-26T14:16:59.789Z",
+      "id": "anal-1787753819791-j7ya0",
+      "createdAt": "2026-08-26T14:16:59.791Z",
+      "updatedAt": "2026-08-26T14:16:59.791Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787750689602-j0iii5",
+      "timestamp": "2026-08-26T14:14:11.167Z",
+      "id": "anal-1787753651172-1r3vk",
+      "createdAt": "2026-08-26T14:14:11.173Z",
+      "updatedAt": "2026-08-26T14:14:11.173Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787750689602-j0iii5",
+      "timestamp": "2026-08-26T14:14:11.145Z",
+      "id": "anal-1787753651147-d7c0a",
+      "createdAt": "2026-08-26T14:14:11.147Z",
+      "updatedAt": "2026-08-26T14:14:11.147Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787751886087-ks1eph",
+      "timestamp": "2026-08-26T14:03:54.331Z",
+      "id": "anal-1787753034335-yj6hs",
+      "createdAt": "2026-08-26T14:03:54.335Z",
+      "updatedAt": "2026-08-26T14:03:54.335Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787740388980-fgtdfl",
+      "timestamp": "2026-08-26T14:03:54.211Z",
+      "id": "anal-1787753034215-rx6hl",
+      "createdAt": "2026-08-26T14:03:54.215Z",
+      "updatedAt": "2026-08-26T14:03:54.215Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787751886087-ks1eph",
+      "timestamp": "2026-08-26T14:03:54.147Z",
+      "id": "anal-1787753034149-ribbz",
+      "createdAt": "2026-08-26T14:03:54.149Z",
+      "updatedAt": "2026-08-26T14:03:54.149Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787740388980-fgtdfl",
+      "timestamp": "2026-08-26T14:03:54.085Z",
+      "id": "anal-1787753034086-eufbm",
+      "createdAt": "2026-08-26T14:03:54.086Z",
+      "updatedAt": "2026-08-26T14:03:54.087Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787740058246-l5mybd",
+      "timestamp": "2026-08-26T14:03:37.335Z",
+      "id": "anal-1787753017337-odd3q",
+      "createdAt": "2026-08-26T14:03:37.337Z",
+      "updatedAt": "2026-08-26T14:03:37.337Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787740058246-l5mybd",
+      "timestamp": "2026-08-26T14:03:37.323Z",
+      "id": "anal-1787753017327-wdpgc",
+      "createdAt": "2026-08-26T14:03:37.327Z",
+      "updatedAt": "2026-08-26T14:03:37.327Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "direct",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787751886087-ks1eph",
+      "timestamp": "2026-08-26T13:44:46.184Z",
+      "id": "anal-1787751886187-3aho3",
+      "createdAt": "2026-08-26T13:44:46.187Z",
+      "updatedAt": "2026-08-26T13:44:46.187Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "direct",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787751886087-ks1eph",
+      "timestamp": "2026-08-26T13:44:46.104Z",
+      "id": "anal-1787751886107-15yh5",
+      "createdAt": "2026-08-26T13:44:46.107Z",
+      "updatedAt": "2026-08-26T13:44:46.107Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787750689602-j0iii5",
+      "timestamp": "2026-08-26T13:24:49.632Z",
+      "id": "anal-1787750689633-e9koi",
+      "createdAt": "2026-08-26T13:24:49.633Z",
+      "updatedAt": "2026-08-26T13:24:49.633Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787750689602-j0iii5",
+      "timestamp": "2026-08-26T13:24:49.628Z",
+      "id": "anal-1787750689629-apdkg",
+      "createdAt": "2026-08-26T13:24:49.629Z",
+      "updatedAt": "2026-08-26T13:24:49.629Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "direct",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787750212125-a6nw9b",
+      "timestamp": "2026-08-26T13:16:52.171Z",
+      "id": "anal-1787750212174-tjuxw",
+      "createdAt": "2026-08-26T13:16:52.174Z",
+      "updatedAt": "2026-08-26T13:16:52.174Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "direct",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787750212125-a6nw9b",
+      "timestamp": "2026-08-26T13:16:52.158Z",
+      "id": "anal-1787750212160-cvs9c",
+      "createdAt": "2026-08-26T13:16:52.160Z",
+      "updatedAt": "2026-08-26T13:16:52.160Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787740388980-fgtdfl",
+      "timestamp": "2026-08-26T13:16:50.256Z",
+      "id": "anal-1787750210387-kyb7e",
+      "createdAt": "2026-08-26T13:16:50.387Z",
+      "updatedAt": "2026-08-26T13:16:50.387Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787740388980-fgtdfl",
+      "timestamp": "2026-08-26T13:16:50.209Z",
+      "id": "anal-1787750210215-uy9qa",
+      "createdAt": "2026-08-26T13:16:50.221Z",
+      "updatedAt": "2026-08-26T13:16:50.221Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787740058246-l5mybd",
+      "timestamp": "2026-08-26T13:16:49.778Z",
+      "id": "anal-1787750209792-9i0hp",
+      "createdAt": "2026-08-26T13:16:49.792Z",
+      "updatedAt": "2026-08-26T13:16:49.792Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787740058246-l5mybd",
+      "timestamp": "2026-08-26T13:16:49.616Z",
+      "id": "anal-1787750209629-0m2vd",
+      "createdAt": "2026-08-26T13:16:49.629Z",
+      "updatedAt": "2026-08-26T13:16:49.629Z"
+    },
     {
       "type": "page_view",
       "section": "home",
@@ -1102,6 +1468,486 @@
       "detail": "Initial CMS database structure initialized and seeded successfully.",
       "adminEmail": "system",
       "timestamp": "2026-08-09T14:10:19.187Z"
+    }
+  ],
+  "section_content": {
+    "hero": {
+      "badge": "FULL-STACK SOFTWARE ENGINEER",
+      "titleLine1": "Engineering Scalable",
+      "titleLine2": "Digital Products",
+      "subtitle": "CSE Student at ASTU & Full-Stack Engineer building high-performance web platforms, role-based dashboards, and RESTful API systems.",
+      "ctaPrimaryText": "Explore Deployments",
+      "ctaSecondaryText": "Get In Touch"
+    },
+    "overview": {
+      "heading": "Engineering Systems with Purpose & Precision.",
+      "subheading": "I bridge user experience with resilient backend architecture, delivering software that scales cleanly.",
+      "paragraph1": "I am a Full-Stack Software Engineer and Computer Science & Engineering student at ASTU. My development philosophy revolves around clean architecture, end-to-end data integrity, and high-performance user interfaces.",
+      "paragraph2": "From designing relational database schemas in PostgreSQL and MongoDB to crafting responsive frontends in React and Next.js, I take full ownership of the digital product lifecycle."
+    },
+    "snapshot": {
+      "role": "Full-Stack Software Engineer",
+      "education": "CSE Student at ASTU & Management Student at Arsi University",
+      "leadership": "Founder of EDOT Platform & MinT Startup Innovation Fellow",
+      "coreStacks": "PERN, MERN & Django (Python)",
+      "architecture": "Multi-Role Systems, RBAC, REST APIs & Schema Design",
+      "focus": "Data-Driven Dashboards & Production-Grade Web Applications"
+    },
+    "approach": {
+      "heading": "Engineering Approach",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Understand the Problem",
+          "desc": "I start by understanding the users, business requirements, workflows, constraints, and expected outcomes before writing code."
+        },
+        {
+          "step": "02",
+          "title": "Design the System",
+          "desc": "I translate requirements into scalable application architecture, database structures, APIs, authentication flows, and maintainable frontend systems."
+        },
+        {
+          "step": "03",
+          "title": "Build for Production",
+          "desc": "I focus on clean architecture, reusable components, security, performance, accessibility, error handling, and reliable data flows."
+        },
+        {
+          "step": "04",
+          "title": "Test & Refine",
+          "desc": "I validate functionality, identify edge cases, improve performance, and continuously refine the product based on real requirements."
+        },
+        {
+          "step": "05",
+          "title": "Deploy & Maintain",
+          "desc": "I take applications beyond development by handling deployment, environment configuration, version control, and ongoing improvements."
+        }
+      ]
+    },
+    "what-i-bring": {
+      "heading": "What I Bring to Your Team",
+      "items": [
+        {
+          "title": "Product Thinking",
+          "desc": "I don't treat development as simply writing code. I think about users, workflows, business requirements, scalability, and long-term maintainability."
+        },
+        {
+          "title": "Full-Stack Ownership",
+          "desc": "I can work across the frontend, backend, database, authentication, APIs, and deployment layers of a product."
+        },
+        {
+          "title": "Real Project Experience",
+          "desc": "I have worked on real platforms involving multi-role systems, dashboards, authentication, structured workflows, APIs, databases, and production-oriented development."
+        },
+        {
+          "title": "Fast Learning & Adaptability",
+          "desc": "I continuously learn new technologies and adapt to existing codebases, development standards, and team workflows."
+        },
+        {
+          "title": "Team Collaboration",
+          "desc": "I value code reviews, clear communication, documentation, Git workflows, and learning from experienced engineers."
+        },
+        {
+          "title": "Ownership",
+          "desc": "When I take responsibility for a feature or system, I focus on understanding the requirement, implementing it properly, testing it, and delivering a reliable result."
+        }
+      ]
+    },
+    "problems-i-solve": {
+      "heading": "Problems I Solve",
+      "items": [
+        {
+          "title": "Fragmented & Manual Workflows",
+          "desc": "Transforming paper-based or scattered processes into unified digital platforms with role-based permissions and real-time dashboards."
+        },
+        {
+          "title": "Complex Data & Access Controls",
+          "desc": "Architecting secure multi-role access control (RBAC), authentication flows, and protected API endpoints."
+        },
+        {
+          "title": "Legacy & Outdated Websites",
+          "desc": "Modernizing outdated interfaces while improving usability, responsiveness, performance, and maintainability."
+        },
+        {
+          "title": "Education Technology",
+          "desc": "Building digital learning systems that improve how educational content, learners, instructors, and progress are managed."
+        }
+      ]
+    },
+    "how-i-work": {
+      "heading": "How I Work Workflow",
+      "phases": [
+        {
+          "phase": "01",
+          "title": "Understand Requirements",
+          "desc": "I clarify requirements and understand the actual problem before implementation."
+        },
+        {
+          "phase": "02",
+          "title": "Break Down Complexity",
+          "desc": "I divide large requirements into manageable features and technical tasks."
+        },
+        {
+          "phase": "03",
+          "title": "Communicate Clearly",
+          "desc": "I communicate progress, blockers, assumptions, and technical decisions early."
+        },
+        {
+          "phase": "04",
+          "title": "Build Collaboratively",
+          "desc": "I use Git workflows, code reviews, reusable architecture, and team conventions."
+        },
+        {
+          "phase": "05",
+          "title": "Review & Improve",
+          "desc": "I use feedback, testing, and iteration to continuously improve the quality of the product."
+        }
+      ]
+    },
+    "currently-building": {
+      "heading": "Currently Building & Learning",
+      "building": [
+        {
+          "title": "EDOT",
+          "desc": "Modular education technology platform for digital learning workflows."
+        },
+        {
+          "title": "Production Applications",
+          "desc": "Full-stack web applications with authentication, RBAC, and analytics."
+        },
+        {
+          "title": "Business Platforms",
+          "desc": "Real-world evaluation dashboards & CRM task tracking systems."
+        }
+      ],
+      "learning": [
+        "Advanced Cloud Infrastructure (AWS / Docker)",
+        "System Architecture & Microservices Patterns",
+        "AI & LLM Integration for Automation",
+        "Performance Optimization & Caching (Redis)"
+      ]
+    },
+    "career-direction": {
+      "heading": "Where I'm Going",
+      "quote": "I'm building toward becoming a highly capable Software Engineer who can contribute across product development — from understanding business requirements and designing systems to implementing, deploying, and continuously improving production software.",
+      "openToRoles": [
+        "Full-Stack Engineering",
+        "Software Engineering",
+        "Backend Engineering",
+        "Product Development",
+        "Startup Collaboration"
+      ]
+    },
+    "services": {
+      "heading": "Technical Skills & Services",
+      "items": [
+        {
+          "title": "Frontend Architecture",
+          "desc": "React, Next.js, Tailwind CSS"
+        },
+        {
+          "title": "Backend Systems",
+          "desc": "Node.js, Express, Django"
+        },
+        {
+          "title": "Data Engine",
+          "desc": "PostgreSQL, MongoDB, Prisma"
+        },
+        {
+          "title": "AI Integration",
+          "desc": "LLM APIs, Automation"
+        },
+        {
+          "title": "Interactive UX",
+          "desc": "Motion, State-Driven UI"
+        },
+        {
+          "title": "Version & CI/CD",
+          "desc": "Git, Vercel, Deployment"
+        }
+      ]
+    },
+    "capabilities": {
+      "heading": "Engineering Capabilities",
+      "categories": [
+        {
+          "category": "Frontend Engineering",
+          "items": [
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Responsive Architecture",
+            "Component Architecture",
+            "State Management"
+          ]
+        },
+        {
+          "category": "Backend Engineering",
+          "items": [
+            "Node.js",
+            "Express",
+            "Django",
+            "REST APIs",
+            "Business Logic",
+            "API Integration"
+          ]
+        },
+        {
+          "category": "Database Engineering",
+          "items": [
+            "PostgreSQL",
+            "MongoDB",
+            "Prisma",
+            "Database Schema Design",
+            "Relationships",
+            "Data Modeling"
+          ]
+        },
+        {
+          "category": "Authentication & Authorization",
+          "items": [
+            "Authentication",
+            "Authorization",
+            "Role-Based Access Control",
+            "NextAuth",
+            "Secure Application Workflows"
+          ]
+        },
+        {
+          "category": "System Architecture",
+          "items": [
+            "Modular Architecture",
+            "API Design",
+            "Multi-Role Systems",
+            "Scalable Application Structure",
+            "Separation of Concerns"
+          ]
+        },
+        {
+          "category": "DevOps & Deployment",
+          "items": [
+            "Git",
+            "GitHub",
+            "Docker",
+            "CI/CD",
+            "Deployment",
+            "Environment Configuration"
+          ]
+        }
+      ]
+    },
+    "engineering-challenges": {
+      "heading": "Engineering Challenges I've Solved",
+      "challenges": [
+        {
+          "title": "Multi-Role Access & Permissions",
+          "desc": "Architected granular role-based permissions (RBAC) ensuring data isolation between students, instructors, and admins."
+        },
+        {
+          "title": "Real-time Analytics & Tracking",
+          "desc": "Implemented event-driven analytics pipelines for real-time traffic monitoring and activity logging."
+        },
+        {
+          "title": "Responsive Product Interfaces",
+          "desc": "Built interfaces that remain usable across desktop, tablet, and mobile environments."
+        },
+        {
+          "title": "Production-Oriented Architecture",
+          "desc": "Focused on modular, maintainable systems rather than one-off pages or template-based products."
+        }
+      ]
+    },
+    "github-activity": {
+      "heading": "Engineering Activity",
+      "subheading": "Explore my repositories, code structure, and development commits on GitHub.",
+      "repos": [
+        {
+          "name": "edot",
+          "desc": "Modular full-stack education ecosystem engineered for scalable digital learning experiences.",
+          "tech": "React, Node.js, Express, PostgreSQL",
+          "link": "https://github.com/kenenisabeyan/edot"
+        },
+        {
+          "name": "followflow",
+          "desc": "Premium CRM and task tracking dashboard with Django REST backend and React 19 UI.",
+          "tech": "React 19, TypeScript, Django, SQLite",
+          "link": "https://github.com/kenenisabeyan/followflow"
+        },
+        {
+          "name": "Performance-Evaluator",
+          "desc": "Full-stack employee evaluation dashboard built with Next.js 15+ App Router, MongoDB and NextAuth.",
+          "tech": "Next.js, MongoDB, NextAuth, Tailwind",
+          "link": "https://github.com/kenenisabeyan/Performance-Evaluator"
+        }
+      ]
+    },
+    "contact": {
+      "heading": "Let's Connect & Build.",
+      "subtitle": "Open for engineering roles, technical consultations, and startup development opportunities.",
+      "locationText": "Adama / Addis Ababa, Ethiopia",
+      "emailText": "kenenisab05@gmail.com",
+      "availabilityText": "Available for Remote & On-site Engineering Roles"
+    },
+    "3d-planets": {
+      "ring1": [
+        {
+          "name": "Next.js",
+          "color": "#ffffff"
+        },
+        {
+          "name": "React",
+          "color": "#61DAFB"
+        },
+        {
+          "name": "Node.js",
+          "color": "#339933"
+        },
+        {
+          "name": "Express",
+          "color": "#ffffff"
+        },
+        {
+          "name": "JavaScript",
+          "color": "#F7DF1E"
+        },
+        {
+          "name": "TypeScript",
+          "color": "#3178C6"
+        }
+      ],
+      "ring2": [
+        {
+          "name": "Python",
+          "color": "#3776AB"
+        },
+        {
+          "name": "Django",
+          "color": "#44B78B"
+        },
+        {
+          "name": "HTML",
+          "color": "#E34F26"
+        },
+        {
+          "name": "CSS",
+          "color": "#1572B6"
+        },
+        {
+          "name": "Tailwind CSS",
+          "color": "#38B2AC"
+        },
+        {
+          "name": "Bootstrap",
+          "color": "#7952B3"
+        },
+        {
+          "name": "Three.js",
+          "color": "#ffffff"
+        },
+        {
+          "name": "C++",
+          "color": "#00599C"
+        }
+      ],
+      "ring3": [
+        {
+          "name": "MongoDB",
+          "color": "#47A248"
+        },
+        {
+          "name": "PostgreSQL",
+          "color": "#4169E1"
+        },
+        {
+          "name": "MySQL",
+          "color": "#4479A1"
+        },
+        {
+          "name": "Git",
+          "color": "#F05032"
+        },
+        {
+          "name": "GitHub",
+          "color": "#ffffff"
+        },
+        {
+          "name": "Java",
+          "color": "#f89820"
+        },
+        {
+          "name": "Algorithms",
+          "color": "#44B78B"
+        },
+        {
+          "name": "Data Structures",
+          "color": "#F05032"
+        }
+      ]
+    }
+  },
+  "events_gallery": [
+    {
+      "id": "event-1",
+      "title": "MinT & KOICA Early-Stage Startup Innovation Recognition",
+      "campaignName": "Ministry of Innovation & Technology (MinT) & KOICA Campaign",
+      "eventDate": "February 2025",
+      "description": "Invited and officially recognized as a Fellow for the EDOT Platform during the National Startup Incubation Program in partnership with MinT, KOICA, and OSTA.",
+      "photoUrl": "/src/assets/home-page.png",
+      "recognitionBadge": "Startup Innovation Fellow",
+      "visibility": true,
+      "order": 1
+    },
+    {
+      "id": "event-2",
+      "title": "ASTU Annual Software & Engineering Technology Showcase",
+      "campaignName": "ASTU Computer Science & Engineering Department",
+      "eventDate": "December 2024",
+      "description": "Invited to demonstrate full-stack software architectures, multi-role RBAC systems, and custom database optimization techniques to faculty and industry partners.",
+      "photoUrl": "/src/assets/edotpage.png",
+      "recognitionBadge": "Top Project Exhibitor",
+      "visibility": true,
+      "order": 2
+    }
+  ],
+  "gallery_photos": [
+    {
+      "id": "photo-1",
+      "title": "MinT Startup Incubation Program",
+      "category": "Events",
+      "photoUrl": "/src/assets/home-page.png",
+      "caption": "Recognized at the Ministry of Innovation & Technology startup initiative.",
+      "date": "February 2025",
+      "visibility": true,
+      "order": 1
+    },
+    {
+      "id": "photo-2",
+      "title": "EDOT Educational Platform Demo",
+      "category": "Projects",
+      "photoUrl": "/src/assets/edotpage.png",
+      "caption": "Demonstrating modular digital learning platform architecture.",
+      "date": "January 2025",
+      "visibility": true,
+      "order": 2
+    },
+    {
+      "id": "photo-3",
+      "title": "ASTU Computer Science Technical Showcase",
+      "category": "Events",
+      "photoUrl": "/src/assets/edodphoto.png",
+      "caption": "Presenting full-stack web architectures and database indexing.",
+      "date": "December 2024",
+      "visibility": true,
+      "order": 3
+    },
+    {
+      "id": "photo-4",
+      "title": "FollowFlow CRM System Interface",
+      "category": "Projects",
+      "photoUrl": "/src/assets/followflow.png",
+      "caption": "Django REST & React 19 task tracking dashboard.",
+      "date": "November 2024",
+      "visibility": true,
+      "order": 4
     }
   ]
 }

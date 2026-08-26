@@ -22,6 +22,7 @@
 
 import { useEffect } from 'react'
 import { siteConfig } from '../config/siteConfig'
+import { usePortfolioData } from '../context/PortfolioContext'
 
 interface SEOProps {
   /** Overrides the default tab title. Appended with " — Kenenisa Beyan" */
@@ -31,20 +32,35 @@ interface SEOProps {
 }
 
 export function SEO({ title, description }: SEOProps) {
-  const resolvedTitle = title
-    ? `${title} — ${siteConfig.name}`
-    : siteConfig.title
+  const { data } = usePortfolioData()
+  const settings = data?.siteSettings || {}
 
-  const resolvedDescription = description ?? siteConfig.description
+  const resolvedTitle = title
+    ? `${title} — ${settings.siteTitle || siteConfig.name}`
+    : (settings.siteTitle || siteConfig.title)
+
+  const resolvedDescription = description ?? (settings.metaDescription || siteConfig.description)
+  const faviconUrl = settings.faviconUrl
 
   useEffect(() => {
     // Update browser tab title
     document.title = resolvedTitle
 
-    // Update meta description (runtime only — crawler reads index.html)
+    // Update meta description
     const descTag = document.querySelector('meta[name="description"]')
     if (descTag) descTag.setAttribute('content', resolvedDescription)
-  }, [resolvedTitle, resolvedDescription])
+
+    // Update dynamic favicon icon
+    if (faviconUrl) {
+      let iconTag = document.querySelector<HTMLLinkElement>('link[rel="icon"]')
+      if (!iconTag) {
+        iconTag = document.createElement('link')
+        iconTag.rel = 'icon'
+        document.head.appendChild(iconTag)
+      }
+      iconTag.href = faviconUrl
+    }
+  }, [resolvedTitle, resolvedDescription, faviconUrl])
 
   return null
 }

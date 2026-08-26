@@ -21,6 +21,8 @@ export interface PortfolioDataResponse {
   testimonials: any[];
   blogs: any[];
   news: any[];
+  eventsGallery: any[];
+  galleryPhotos: any[];
   siteSettings: any;
 }
 
@@ -46,6 +48,8 @@ export async function fetchPublicPortfolioData(): Promise<PortfolioDataResponse>
         testimonials: Array.isArray(json.data.testimonials) && json.data.testimonials.length ? json.data.testimonials : staticData.testimonials,
         blogs: json.data.blogs || [],
         news: json.data.news || [],
+        eventsGallery: json.data.eventsGallery || [],
+        galleryPhotos: json.data.galleryPhotos || [],
         siteSettings: json.data.siteSettings || {},
       };
     }

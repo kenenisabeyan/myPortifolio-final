@@ -61,6 +61,8 @@ const defaultSeedData = {
     'github-activity': true,
     testimonials: true,
     'career-direction': true,
+    'events-gallery': true,
+    'gallery-section': true,
     contact: true,
   },
   section_content: {
@@ -197,6 +199,36 @@ const defaultSeedData = {
       locationText: 'Adama / Addis Ababa, Ethiopia',
       emailText: 'kenenisab05@gmail.com',
       availabilityText: 'Available for Remote & On-site Engineering Roles'
+    },
+    '3d-planets': {
+      ring1: [
+        { name: 'Next.js', color: '#ffffff' },
+        { name: 'React', color: '#61DAFB' },
+        { name: 'Node.js', color: '#339933' },
+        { name: 'Express', color: '#ffffff' },
+        { name: 'JavaScript', color: '#F7DF1E' },
+        { name: 'TypeScript', color: '#3178C6' }
+      ],
+      ring2: [
+        { name: 'Python', color: '#3776AB' },
+        { name: 'Django', color: '#44B78B' },
+        { name: 'HTML', color: '#E34F26' },
+        { name: 'CSS', color: '#1572B6' },
+        { name: 'Tailwind CSS', color: '#38B2AC' },
+        { name: 'Bootstrap', color: '#7952B3' },
+        { name: 'Three.js', color: '#ffffff' },
+        { name: 'C++', color: '#00599C' }
+      ],
+      ring3: [
+        { name: 'MongoDB', color: '#47A248' },
+        { name: 'PostgreSQL', color: '#4169E1' },
+        { name: 'MySQL', color: '#4479A1' },
+        { name: 'Git', color: '#F05032' },
+        { name: 'GitHub', color: '#ffffff' },
+        { name: 'Java', color: '#f89820' },
+        { name: 'Algorithms', color: '#44B78B' },
+        { name: 'Data Structures', color: '#F05032' }
+      ]
     }
   },
   projects: [
@@ -494,6 +526,72 @@ const defaultSeedData = {
       date: 'February 2025',
       visibility: true,
       publishedAt: new Date().toISOString()
+    }
+  ],
+  events_gallery: [
+    {
+      id: 'event-1',
+      title: 'MinT & KOICA Early-Stage Startup Innovation Recognition',
+      campaignName: 'Ministry of Innovation & Technology (MinT) & KOICA Campaign',
+      eventDate: 'February 2025',
+      description: 'Invited and officially recognized as a Fellow for the EDOT Platform during the National Startup Incubation Program.',
+      photoUrl: '/src/assets/home-page.png',
+      recognitionBadge: 'Startup Innovation Fellow',
+      visibility: true,
+      order: 1
+    },
+    {
+      id: 'event-2',
+      title: 'ASTU Annual Software & Engineering Technology Showcase',
+      campaignName: 'ASTU Computer Science & Engineering Department',
+      eventDate: 'December 2024',
+      description: 'Invited to demonstrate full-stack software architectures, multi-role RBAC systems, and custom database optimization techniques.',
+      photoUrl: '/src/assets/edotpage.png',
+      recognitionBadge: 'Top Project Exhibitor',
+      visibility: true,
+      order: 2
+    }
+  ],
+  gallery_photos: [
+    {
+      id: 'photo-1',
+      title: 'MinT Startup Incubation Program',
+      category: 'Events',
+      photoUrl: '/src/assets/home-page.png',
+      caption: 'Recognized at the Ministry of Innovation & Technology startup initiative.',
+      date: 'February 2025',
+      visibility: true,
+      order: 1
+    },
+    {
+      id: 'photo-2',
+      title: 'EDOT Educational Platform Demo',
+      category: 'Projects',
+      photoUrl: '/src/assets/edotpage.png',
+      caption: 'Demonstrating modular digital learning platform architecture.',
+      date: 'January 2025',
+      visibility: true,
+      order: 2
+    },
+    {
+      id: 'photo-3',
+      title: 'ASTU Computer Science Technical Showcase',
+      category: 'Events',
+      photoUrl: '/src/assets/edodphoto.png',
+      caption: 'Presenting full-stack web architectures and database indexing.',
+      date: 'December 2024',
+      visibility: true,
+      order: 3
+    },
+    {
+      id: 'photo-4',
+      title: 'FollowFlow CRM System Interface',
+      category: 'Projects',
+      photoUrl: '/src/assets/followflow.png',
+      caption: 'Django REST & React 19 task tracking dashboard.',
+      date: 'November 2024',
+      visibility: true,
+      order: 4
     }
   ],
   media: [],

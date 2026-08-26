@@ -18,9 +18,13 @@ const allSections = [
   { key: 'how-i-work', name: 'How I Work Workflow', category: 'Philosophy' },
   { key: 'currently-building', name: 'Currently Building & Learning', category: 'Status' },
   { key: 'achievements', name: 'Achievements & Recognition', category: 'Experience' },
+  { key: 'events-gallery', name: 'Events & Recognition Gallery', category: 'Experience' },
+  { key: 'gallery-section', name: 'Photo & Media Gallery', category: 'Experience' },
   { key: 'github-activity', name: 'Engineering Activity / GitHub', category: 'Status' },
   { key: 'testimonials', name: 'Client Testimonials', category: 'Feedback' },
-  { key: 'career-direction', name: 'Career Direction', category: 'Main' },
+  { key: '3d-planets', name: '3D Rotating Tech Planets', category: 'Main' },
+  { key: 'architecture-standards', name: 'Architecture & Quality Standards', category: 'Philosophy' },
+  { key: 'blogs', name: 'Technical Writings & Articles', category: 'Status' },
   { key: 'contact', name: 'Contact Section', category: 'Main' },
 ]
 

@@ -28,6 +28,7 @@ const defaultContextValue: PortfolioDataResponse = {
     'github-activity': true,
     testimonials: true,
     'career-direction': true,
+    'events-gallery': true,
     contact: true,
   },
   sectionContent: {},
@@ -67,6 +68,8 @@ const defaultContextValue: PortfolioDataResponse = {
   testimonials: staticData.testimonials,
   blogs: [],
   news: [],
+  eventsGallery: [],
+  galleryPhotos: [],
   siteSettings: {
     siteTitle: 'Kenenisa Beyan — Full-Stack Software Engineer',
     metaDescription: 'Kenenisa Beyan is a Full-Stack Software Engineer building scalable, production-grade digital products and modern web platforms.',

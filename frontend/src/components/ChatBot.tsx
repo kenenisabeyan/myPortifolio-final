@@ -15,13 +15,16 @@ const SUGGESTED_PROMPTS = [
   { text: 'What\'s your tech stack?' },
 ]
 
+import { usePortfolioData } from '../context/PortfolioContext'
+
 const ChatBot = () => {
+  const { data: portfolioData } = usePortfolioData()
   const [isOpen, setIsOpen] = useState(false)
   const [input, setInput] = useState('')
   const [messages, setMessages] = useState<ChatMessage[]>([
     { 
       role: 'assistant', 
-      text: 'Hi! I\'m Kenenisa\'s AI assistant. I can help you learn about my skills, featured projects, professional experience, and opportunities. What would you like to know?',
+      text: 'Hi! I\'m Kenenisa\'s AI Assistant. Ask me anything about Kenenisa\'s full-stack projects, Python & React skills, MinT/KOICA awards, ASTU education, or contact details!',
       id: 'initial'
     },
   ])
@@ -33,31 +36,36 @@ const ChatBot = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
   const chatbotRef = useRef<HTMLDivElement | null>(null)
 
-  // Convert chat history to the format the API expects
-  const getConversationHistory = () => {
-    return messages.map(msg => ({
-      role: msg.role,
-      content: msg.text
-    }))
-  }
-
-  // Auto-resize textarea
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto'
-      textareaRef.current.style.height = Math.min(textareaRef.current.scrollHeight, 120) + 'px'
+  const generateSmartAnswer = (query: string): string => {
+    const q = query.toLowerCase()
+    
+    if (q.includes('skill') || q.includes('stack') || q.includes('tech') || q.includes('python') || q.includes('react')) {
+      const skillNames = portfolioData?.skills?.map((s: any) => s.name).join(', ') || 'React, Next.js, TypeScript, Node.js, Express, Python, Django, PostgreSQL, MongoDB, Docker, Git'
+      return `Kenenisa is a Full-Stack Software Engineer proficient in:\n\n• Core Stacks: ${skillNames}\n• Frontend: React 19, Next.js, Tailwind CSS, TypeScript\n• Backend: Node.js, Express, Django (Python), RESTful APIs, RBAC\n• Databases: PostgreSQL, MongoDB, Prisma, Schema Design`
     }
-  }, [input])
 
-  // Copy message to clipboard
-  const copyToClipboard = (text: string, id: string) => {
-    navigator.clipboard.writeText(text)
-    setCopiedId(id)
-    setTimeout(() => setCopiedId(null), 2000)
+    if (q.includes('project') || q.includes('built') || q.includes('edot') || q.includes('work') || q.includes('app')) {
+      const projTitles = portfolioData?.projects?.map((p: any) => `• ${p.title}: ${p.description}`).join('\n\n') || 'EDOT Platform, FollowFlow CRM, Performance Evaluator'
+      return `Here are some of Kenenisa's featured production projects:\n\n${projTitles}`
+    }
+
+    if (q.includes('event') || q.includes('award') || q.includes('mint') || q.includes('koica') || q.includes('recogni')) {
+      const eventsList = portfolioData?.eventsGallery?.map((e: any) => `• ${e.title} (${e.eventDate}): ${e.description}`).join('\n\n') || 'MinT & KOICA Startup Innovation Fellow'
+      return `Kenenisa's Recognitions & Invited Events:\n\n${eventsList}`
+    }
+
+    if (q.includes('education') || q.includes('astu') || q.includes('study') || q.includes('degree') || q.includes('university')) {
+      return `Kenenisa's Academic Dual Qualifications:\n\n1. B.Sc. in Computer Science & Engineering — Adama Science and Technology University (ASTU) (2021 - Present)\n2. B.A. in Management — Arsi University (2022 - Present)`
+    }
+
+    if (q.includes('contact') || q.includes('email') || q.includes('hire') || q.includes('reach') || q.includes('touch')) {
+      const email = portfolioData?.siteSettings?.contactEmail || 'kenenisab05@gmail.com'
+      const github = portfolioData?.siteSettings?.githubUrl || 'https://github.com/kenenisabeyan'
+      return `You can get in touch with Kenenisa directly:\n\n• Email: ${email}\n• Location: Adama / Addis Ababa, Ethiopia\n• GitHub: ${github}\n• Availability: Open for Remote & On-site Engineering Roles!`
+    }
+
+    return `Kenenisa Beyan is a Full-Stack Software Engineer building scalable digital platforms, role-based dashboards, and REST APIs. Feel free to explore the portfolio projects or reach out via email at ${portfolioData?.siteSettings?.contactEmail || 'kenenisab05@gmail.com'}!`
   }
-
-  // Generate unique ID for messages
-  const generateId = () => Math.random().toString(36).substring(2, 11)
 
   const sendMessage = async () => {
     const trimmed = input.trim()
@@ -79,24 +87,23 @@ const ChatBot = () => {
         }),
       })
 
-      if (!response.ok) {
-        throw new Error(`Chat request failed: ${response.statusText}`)
+      if (response.ok) {
+        const data = await response.json()
+        const assistantMsgId = generateId()
+        setMessages((current) => [...current, { 
+          role: 'assistant', 
+          text: data.reply || generateSmartAnswer(trimmed),
+          id: assistantMsgId
+        }])
+      } else {
+        throw new Error('Fallback to smart context engine')
       }
-
-      const data = await response.json()
+    } catch (error) {
       const assistantMsgId = generateId()
       setMessages((current) => [...current, { 
         role: 'assistant', 
-        text: data.reply || 'Sorry, I could not respond.',
+        text: generateSmartAnswer(trimmed),
         id: assistantMsgId
-      }])
-    } catch (error) {
-      console.error('chat request error', error)
-      const errorMsgId = generateId()
-      setMessages((current) => [...current, { 
-        role: 'assistant', 
-        text: 'I\'m temporarily offline, but feel free to use the contact form to reach me directly! 📧',
-        id: errorMsgId
       }])
     } finally {
       setLoading(false)
