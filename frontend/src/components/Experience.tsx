@@ -177,29 +177,33 @@ const Experience = () => {
                   
                   {/* Left Side: Detail & Testimonial Container */}
                   <div className="hidden md:flex w-1/2 justify-end pr-16 mt-4">
-                    <div className={`bg-[#050A14]/80 p-8 rounded-[2rem] border border-white/[0.05] ${exp.borderColor} border-l-[6px] border-t-[6px] w-full max-w-[680px] shadow-2xl transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl`}>
-                      
-                      {/* Dark mode internal glow behind text */}
-                      <div className="absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <div className="relative z-10 w-full flex flex-col">
-                        <ExpandableText
-                        text={exp.testimonial.text}
-                        maxLength={170}
-                        className="text-gray-300 text-[15px] leading-relaxed mb-6 font-normal"
-                      />
-                        <div className="flex items-center gap-4 border-t border-white/10 pt-6">
-                          <div className="w-10 h-10 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm shadow-[0_0_10px_rgba(0,0,0,0.5)]">
-                            {exp.testimonial.companyName.trim().charAt(0).toUpperCase()}
+                    {exp.testimonial ? (
+                      <div className={`bg-[#050A14]/80 p-8 rounded-[2rem] border border-white/[0.05] ${exp.borderColor || 'border-l-cyan-500 border-t-cyan-500'} border-l-[6px] border-t-[6px] w-full max-w-[680px] shadow-2xl transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] transition-all duration-300 relative group overflow-hidden backdrop-blur-xl`}>
+                        
+                        {/* Dark mode internal glow behind text */}
+                        <div className="absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="relative z-10 w-full flex flex-col">
+                          <ExpandableText
+                            text={exp.testimonial.text || ''}
+                            maxLength={170}
+                            className="text-gray-300 text-[15px] leading-relaxed mb-6 font-normal"
+                          />
+                          <div className="flex items-center gap-4 border-t border-white/10 pt-6">
+                            <div className="w-10 h-10 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+                              {exp.testimonial.companyName ? exp.testimonial.companyName.trim().charAt(0).toUpperCase() : 'E'}
+                            </div>
+                            <span className="text-white font-semibold text-sm tracking-wide">{exp.testimonial.companyName || ''}</span>
                           </div>
-                          <span className="text-white font-semibold text-sm tracking-wide">{exp.testimonial.companyName}</span>
                         </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className="w-full max-w-[680px]" />
+                    )}
                   </div>
 
                   {/* Center Node Icon */}
                   <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center z-[20] top-8 md:top-1/2 md:-translate-y-1/2">
-                    <div className={`w-6 h-6 rounded-full ${exp.iconColor} border-4 border-white dark:border-[#050A14]`} style={{ boxShadow: '0 0 15px rgba(34,211,238,0.3)' }}></div>
+                    <div className={`w-6 h-6 rounded-full ${exp.iconColor || 'bg-cyan-500'} border-4 border-white dark:border-[#050A14]`} style={{ boxShadow: '0 0 15px rgba(34,211,238,0.3)' }}></div>
                   </div>
 
                   {/* Right Side: Role Overview */}
@@ -213,7 +217,7 @@ const Experience = () => {
                       
                       <p className="text-xs font-semibold tracking-widest uppercase text-cyan-500 mb-4 pb-2 border-b border-white/10">Technical Execution</p>
                       <ul className="space-y-4">
-                        {exp.responsibilities.map((item, i) => (
+                        {(exp.responsibilities || []).map((item, i) => (
                           <li key={i} className="flex items-start text-sm md:text-base text-gray-200 font-normal leading-relaxed group">
                             <span className="mr-3 mt-2 w-1.5 h-1.5 bg-cyan-500/50 rounded-full flex-shrink-0 group-hover:bg-cyan-400 transition-colors duration-300 shadow-[0_0_5px_rgba(34,211,238,0.5)]"></span>
                             <span>{item}</span>
@@ -222,19 +226,21 @@ const Experience = () => {
                       </ul>
 
                       {/* Mobile Testimonial Add-on */}
-                      <div className={`md:hidden mt-8 bg-[#050A14]/80 p-6 rounded-[2rem] border border-white/[0.05] ${exp.borderColor} border-l-[6px] border-t-[6px] w-full shadow-lg relative backdrop-blur-xl transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300`}>
-                        <ExpandableText
-                        text={exp.testimonial.text}
-                        maxLength={170}
-                        className="text-gray-300 text-sm leading-relaxed mb-6 font-normal"
-                      />
-                        <div className="flex items-center gap-3 border-t border-white/10 pt-4">
-                          <div className="w-8 h-8 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-xs shadow-[0_0_5px_rgba(0,0,0,0.8)]">
-                            {exp.testimonial.companyName.trim().charAt(0).toUpperCase()}
+                      {exp.testimonial && (
+                        <div className={`md:hidden mt-8 bg-[#050A14]/80 p-6 rounded-[2rem] border border-white/[0.05] ${exp.borderColor || 'border-l-cyan-500 border-t-cyan-500'} border-l-[6px] border-t-[6px] w-full shadow-lg relative backdrop-blur-xl transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300`}>
+                          <ExpandableText
+                            text={exp.testimonial.text || ''}
+                            maxLength={170}
+                            className="text-gray-300 text-sm leading-relaxed mb-6 font-normal"
+                          />
+                          <div className="flex items-center gap-3 border-t border-white/10 pt-4">
+                            <div className="w-8 h-8 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-xs shadow-[0_0_5px_rgba(0,0,0,0.8)]">
+                              {exp.testimonial.companyName ? exp.testimonial.companyName.trim().charAt(0).toUpperCase() : 'E'}
+                            </div>
+                            <span className="text-white font-semibold text-xs tracking-wide">{exp.testimonial.companyName || ''}</span>
                           </div>
-                          <span className="text-white font-semibold text-xs tracking-wide">{exp.testimonial.companyName}</span>
                         </div>
-                      </div>
+                      )}
 
                     </div>
                   </div>

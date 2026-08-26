@@ -40,7 +40,21 @@ const challengeItems = [
   }
 ]
 
+import { usePortfolioData } from '../context/PortfolioContext'
+
 const EngineeringChallenges: React.FC = () => {
+  const { data } = usePortfolioData()
+  const visibility = data?.visibility || {}
+  const challengesContent = data?.sectionContent?.['engineering-challenges'] || {}
+
+  if (visibility['engineering-challenges'] === false) return null
+
+  const displayChallenges = (challengesContent.challenges?.length ? challengesContent.challenges : challengeItems).map((item: any, idx: number) => ({
+    ...item,
+    icon: challengeItems[idx % challengeItems.length]?.icon,
+    borderColor: item.borderColor || challengeItems[idx % challengeItems.length]?.borderColor || 'border-l-cyan-500 border-t-cyan-500'
+  }))
+
   return (
     <section id="engineering-challenges" className="py-16 md:py-24 px-4 md:px-10 lg:px-16 relative z-10 bg-transparent dark:border-t dark:border-white/[0.05]">
       <div className="max-w-[1700px] mx-auto flex flex-col relative z-10">
@@ -51,12 +65,12 @@ const EngineeringChallenges: React.FC = () => {
             <span className="text-xs text-gray-500 font-semibold tracking-widest uppercase dark:text-cyan-100">Technical Solutions</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight border-b-4 border-cyan-500/30 pb-3 inline-block mb-4">
-            Engineering Challenges <span className="text-cyan-400">I've Solved</span>
+            {challengesContent.heading || 'Engineering Challenges I\'ve Solved'}
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {challengeItems.map((item, idx) => (
+          {displayChallenges.map((item: any, idx: number) => (
             <div 
               key={idx}
               className={`group relative bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] ${item.borderColor} border-l-[6px] border-t-[6px] rounded-[2rem] p-8 overflow-hidden transform hover:-translate-y-2 hover:shadow-[0_25px_90px_rgba(8,145,255,0.2)] transition-all duration-300 backdrop-blur-xl`}

@@ -12,6 +12,7 @@ const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/
 
 export interface PortfolioDataResponse {
   visibility: Record<string, boolean>;
+  sectionContent: Record<string, any>;
   projects: any[];
   experiences: any[];
   education: any[];
@@ -36,12 +37,13 @@ export async function fetchPublicPortfolioData(): Promise<PortfolioDataResponse>
     if (json.success && json.data) {
       return {
         visibility: json.data.visibility || {},
-        projects: json.data.projects?.length ? json.data.projects : staticData.projects,
-        experiences: json.data.experiences?.length ? json.data.experiences : staticData.experiences,
-        education: json.data.education?.length ? json.data.education : [],
-        skills: json.data.skills?.length ? json.data.skills : staticData.skills,
-        achievements: json.data.achievements?.length ? json.data.achievements : [],
-        testimonials: json.data.testimonials?.length ? json.data.testimonials : staticData.testimonials,
+        sectionContent: json.data.sectionContent || {},
+        projects: Array.isArray(json.data.projects) && json.data.projects.length ? json.data.projects : staticData.projects,
+        experiences: Array.isArray(json.data.experiences) && json.data.experiences.length ? json.data.experiences : staticData.experiences,
+        education: Array.isArray(json.data.education) ? json.data.education : [],
+        skills: Array.isArray(json.data.skills) && json.data.skills.length ? json.data.skills : staticData.skills,
+        achievements: Array.isArray(json.data.achievements) ? json.data.achievements : [],
+        testimonials: Array.isArray(json.data.testimonials) && json.data.testimonials.length ? json.data.testimonials : staticData.testimonials,
         blogs: json.data.blogs || [],
         news: json.data.news || [],
         siteSettings: json.data.siteSettings || {},
@@ -74,6 +76,7 @@ export async function fetchPublicPortfolioData(): Promise<PortfolioDataResponse>
       'career-direction': true,
       contact: true,
     },
+    sectionContent: {},
     projects: staticData.projects,
     experiences: staticData.experiences,
     education: [],

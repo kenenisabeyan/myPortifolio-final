@@ -34,7 +34,28 @@ const snapshotItems = [
   }
 ]
 
+import { usePortfolioData } from '../context/PortfolioContext'
+
 const ProfessionalSnapshot: React.FC = () => {
+  const { data } = usePortfolioData()
+  const visibility = data?.visibility || {}
+  const snapshotContent = data?.sectionContent?.snapshot || {}
+
+  if (visibility.snapshot === false) return null
+
+  const itemsToRender = [
+    { key: 'role', title: 'Role', defaultDetail: 'Full-Stack Software Engineer', icon: <FaUserCheck className="text-cyan-400" size={20} /> },
+    { key: 'education', title: 'Education', defaultDetail: 'CSE Student at ASTU & Management Student at Arsi University', icon: <FaGraduationCap className="text-blue-400" size={20} /> },
+    { key: 'leadership', title: 'Leadership', defaultDetail: 'Founder of EDOT Platform & MinT Startup Innovation Fellow', icon: <FaRocket className="text-indigo-400" size={20} /> },
+    { key: 'coreStacks', title: 'Core Stacks', defaultDetail: 'PERN, MERN & Django (Python)', icon: <FaCode className="text-teal-400" size={20} /> },
+    { key: 'architecture', title: 'Architecture', defaultDetail: 'Multi-Role Systems, RBAC, REST APIs & Schema Design', icon: <FaCogs className="text-purple-400" size={20} /> },
+    { key: 'focus', title: 'Focus', defaultDetail: 'Data-Driven Dashboards & Production-Grade Web Applications', icon: <FaProjectDiagram className="text-cyan-300" size={20} /> },
+  ].map(item => ({
+    icon: item.icon,
+    title: item.title,
+    detail: snapshotContent[item.key] || item.defaultDetail
+  }))
+
   return (
     <section id="snapshot" className="py-12 px-4 md:px-10 lg:px-16 relative z-10 bg-transparent dark:border-t dark:border-white/[0.05]">
       <div className="max-w-[1700px] mx-auto flex flex-col relative z-10">
@@ -52,7 +73,7 @@ const ProfessionalSnapshot: React.FC = () => {
 
         {/* Compact Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {snapshotItems.map((item, idx) => (
+          {itemsToRender.map((item, idx) => (
             <div 
               key={idx}
               className="bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] border-l-cyan-500 border-t-cyan-500 border-l-[4px] border-t-[4px] rounded-[1.5rem] p-6 flex items-start gap-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_60px_rgba(34,211,238,0.15)] backdrop-blur-xl"

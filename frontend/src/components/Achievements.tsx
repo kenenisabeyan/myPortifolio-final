@@ -22,8 +22,14 @@ const galleryImages: GalleryImage[] = [
   },
 ]
 
+import { usePortfolioData } from '../context/PortfolioContext'
+
 const Achievements: React.FC = () => {
   const [lightbox, setLightbox] = useState<GalleryImage | null>(null)
+  const { data } = usePortfolioData()
+  const visibility = data?.visibility || {}
+
+  if (visibility.achievements === false) return null
 
   return (
     <section id="achievements" className="py-24 md:py-32 px-4 md:px-10 lg:px-16 relative z-10 bg-transparent dark:border-t dark:border-white/[0.05]">

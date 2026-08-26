@@ -92,7 +92,39 @@ const SeoSettingsTab: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-xs uppercase font-semibold text-gray-300 mb-1">Favicon Icon URL</label>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={settings.faviconUrl || ''}
+                  onChange={e => setSettings({ ...settings, faviconUrl: e.target.value })}
+                  placeholder="/favicon.ico or /uploads/..."
+                  className="flex-1 bg-black/50 border border-white/10 rounded-xl p-2.5 text-xs text-white"
+                />
+                <label className="px-3 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold hover:bg-cyan-500/20 cursor-pointer flex items-center shrink-0">
+                  Upload
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={async (e) => {
+                      const file = e.target.files?.[0]
+                      if (file) {
+                        const formData = new FormData()
+                        formData.append('file', file)
+                        try {
+                          const res = await adminApi.uploadMedia(formData)
+                          if (res.data?.url) setSettings({ ...settings, faviconUrl: res.data.url })
+                        } catch (err) { alert('Upload failed') }
+                      }
+                    }}
+                  />
+                </label>
+              </div>
+            </div>
+
             <div>
               <label className="block text-xs uppercase font-semibold text-gray-300 mb-1">Hero Profile Photo URL</label>
               <div className="flex gap-2">

@@ -52,7 +52,21 @@ const capabilityCategories = [
   }
 ]
 
+import { usePortfolioData } from '../context/PortfolioContext'
+
 const EngineeringCapabilities: React.FC = () => {
+  const { data } = usePortfolioData()
+  const visibility = data?.visibility || {}
+  const capabilitiesContent = data?.sectionContent?.capabilities || {}
+
+  if (visibility.capabilities === false) return null
+
+  const displayCategories = (capabilitiesContent.categories?.length ? capabilitiesContent.categories : capabilityCategories).map((cat: any, idx: number) => ({
+    ...cat,
+    icon: capabilityCategories[idx % capabilityCategories.length]?.icon,
+    borderColor: cat.borderColor || capabilityCategories[idx % capabilityCategories.length]?.borderColor || 'border-l-cyan-500 border-t-cyan-500'
+  }))
+
   return (
     <section id="capabilities" className="py-16 md:py-24 px-4 md:px-10 lg:px-16 relative z-10 bg-transparent dark:border-t dark:border-white/[0.05]">
       <div className="max-w-[1700px] mx-auto flex flex-col relative z-10">
@@ -63,7 +77,7 @@ const EngineeringCapabilities: React.FC = () => {
             <span className="text-xs text-gray-500 font-semibold tracking-widest uppercase dark:text-cyan-100">Technical Depth</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight border-b-4 border-cyan-500/30 pb-3 inline-block mb-4">
-            Engineering <span className="text-cyan-400">Capabilities</span>
+            {capabilitiesContent.heading || 'Engineering Capabilities'}
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl mt-2">
             Architectural and operational capabilities across full-stack engineering layers.
@@ -71,7 +85,7 @@ const EngineeringCapabilities: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {capabilityCategories.map((cat, idx) => (
+          {displayCategories.map((cat: any, idx: number) => (
             <div 
               key={idx}
               className={`bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] ${cat.borderColor} border-l-[6px] border-t-[6px] rounded-[2rem] p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_80px_rgba(8,145,255,0.2)] backdrop-blur-xl`}

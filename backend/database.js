@@ -63,6 +63,142 @@ const defaultSeedData = {
     'career-direction': true,
     contact: true,
   },
+  section_content: {
+    hero: {
+      badge: 'FULL-STACK SOFTWARE ENGINEER',
+      titleLine1: 'Engineering Scalable',
+      titleLine2: 'Digital Products',
+      subtitle: 'CSE Student at ASTU & Full-Stack Engineer building high-performance web platforms, role-based dashboards, and RESTful API systems.',
+      ctaPrimaryText: 'Explore Deployments',
+      ctaSecondaryText: 'Get In Touch',
+    },
+    overview: {
+      heading: 'Engineering Systems with Purpose & Precision.',
+      subheading: 'I bridge user experience with resilient backend architecture, delivering software that scales cleanly.',
+      paragraph1: 'I am a Full-Stack Software Engineer and Computer Science & Engineering student at ASTU. My development philosophy revolves around clean architecture, end-to-end data integrity, and high-performance user interfaces.',
+      paragraph2: 'From designing relational database schemas in PostgreSQL and MongoDB to crafting responsive frontends in React and Next.js, I take full ownership of the digital product lifecycle.',
+    },
+    snapshot: {
+      role: 'Full-Stack Software Engineer',
+      education: 'CSE Student at ASTU & Management Student at Arsi University',
+      leadership: 'Founder of EDOT Platform & MinT Startup Innovation Fellow',
+      coreStacks: 'PERN, MERN & Django (Python)',
+      architecture: 'Multi-Role Systems, RBAC, REST APIs & Schema Design',
+      focus: 'Data-Driven Dashboards & Production-Grade Web Applications',
+    },
+    approach: {
+      heading: 'Engineering Approach',
+      steps: [
+        { step: '01', title: 'Understand the Problem', desc: 'I start by understanding the users, business requirements, workflows, constraints, and expected outcomes before writing code.' },
+        { step: '02', title: 'Design the System', desc: 'I translate requirements into scalable application architecture, database structures, APIs, authentication flows, and maintainable frontend systems.' },
+        { step: '03', title: 'Build for Production', desc: 'I focus on clean architecture, reusable components, security, performance, accessibility, error handling, and reliable data flows.' },
+        { step: '04', title: 'Test & Refine', desc: 'I validate functionality, identify edge cases, improve performance, and continuously refine the product based on real requirements.' },
+        { step: '05', title: 'Deploy & Maintain', desc: 'I take applications beyond development by handling deployment, environment configuration, version control, and ongoing improvements.' },
+      ]
+    },
+    'what-i-bring': {
+      heading: 'What I Bring to Your Team',
+      items: [
+        { title: 'Product Thinking', desc: "I don't treat development as simply writing code. I think about users, workflows, business requirements, scalability, and long-term maintainability." },
+        { title: 'Full-Stack Ownership', desc: 'I can work across the frontend, backend, database, authentication, APIs, and deployment layers of a product.' },
+        { title: 'Real Project Experience', desc: 'I have worked on real platforms involving multi-role systems, dashboards, authentication, structured workflows, APIs, databases, and production-oriented development.' },
+        { title: 'Fast Learning & Adaptability', desc: 'I continuously learn new technologies and adapt to existing codebases, development standards, and team workflows.' },
+        { title: 'Team Collaboration', desc: 'I value code reviews, clear communication, documentation, Git workflows, and learning from experienced engineers.' },
+        { title: 'Ownership', desc: 'When I take responsibility for a feature or system, I focus on understanding the requirement, implementing it properly, testing it, and delivering a reliable result.' }
+      ]
+    },
+    'problems-i-solve': {
+      heading: 'Problems I Solve',
+      items: [
+        { title: 'Fragmented & Manual Workflows', desc: 'Transforming paper-based or scattered processes into unified digital platforms with role-based permissions and real-time dashboards.' },
+        { title: 'Complex Data & Access Controls', desc: 'Architecting secure multi-role access control (RBAC), authentication flows, and protected API endpoints.' },
+        { title: 'Legacy & Outdated Websites', desc: 'Modernizing outdated interfaces while improving usability, responsiveness, performance, and maintainability.' },
+        { title: 'Education Technology', desc: 'Building digital learning systems that improve how educational content, learners, instructors, and progress are managed.' }
+      ]
+    },
+    'how-i-work': {
+      heading: 'How I Work Workflow',
+      phases: [
+        { phase: '01', title: 'Understand Requirements', desc: 'I clarify requirements and understand the actual problem before implementation.' },
+        { phase: '02', title: 'Break Down Complexity', desc: 'I divide large requirements into manageable features and technical tasks.' },
+        { phase: '03', title: 'Communicate Clearly', desc: 'I communicate progress, blockers, assumptions, and technical decisions early.' },
+        { phase: '04', title: 'Build Collaboratively', desc: 'I use Git workflows, code reviews, reusable architecture, and team conventions.' },
+        { phase: '05', title: 'Review & Improve', desc: 'I use feedback, testing, and iteration to continuously improve the quality of the product.' }
+      ]
+    },
+    'currently-building': {
+      heading: 'Currently Building & Learning',
+      building: [
+        { title: 'EDOT', desc: 'Modular education technology platform for digital learning workflows.' },
+        { title: 'Production Applications', desc: 'Full-stack web applications with authentication, RBAC, and analytics.' },
+        { title: 'Business Platforms', desc: 'Real-world evaluation dashboards & CRM task tracking systems.' }
+      ],
+      learning: [
+        'Advanced Cloud Infrastructure (AWS / Docker)',
+        'System Architecture & Microservices Patterns',
+        'AI & LLM Integration for Automation',
+        'Performance Optimization & Caching (Redis)'
+      ]
+    },
+    'career-direction': {
+      heading: 'Where I\'m Going',
+      quote: 'I\'m building toward becoming a highly capable Software Engineer who can contribute across product development — from understanding business requirements and designing systems to implementing, deploying, and continuously improving production software.',
+      openToRoles: [
+        'Full-Stack Engineering',
+        'Software Engineering',
+        'Backend Engineering',
+        'Product Development',
+        'Startup Collaboration'
+      ]
+    },
+    services: {
+      heading: 'Technical Skills & Services',
+      items: [
+        { title: 'Frontend Architecture', desc: 'React, Next.js, Tailwind CSS' },
+        { title: 'Backend Systems', desc: 'Node.js, Express, Django' },
+        { title: 'Data Engine', desc: 'PostgreSQL, MongoDB, Prisma' },
+        { title: 'AI Integration', desc: 'LLM APIs, Automation' },
+        { title: 'Interactive UX', desc: 'Motion, State-Driven UI' },
+        { title: 'Version & CI/CD', desc: 'Git, Vercel, Deployment' }
+      ]
+    },
+    capabilities: {
+      heading: 'Engineering Capabilities',
+      categories: [
+        { category: 'Frontend Engineering', items: ['React', 'Next.js', 'TypeScript', 'Responsive Architecture', 'Component Architecture', 'State Management'] },
+        { category: 'Backend Engineering', items: ['Node.js', 'Express', 'Django', 'REST APIs', 'Business Logic', 'API Integration'] },
+        { category: 'Database Engineering', items: ['PostgreSQL', 'MongoDB', 'Prisma', 'Database Schema Design', 'Relationships', 'Data Modeling'] },
+        { category: 'Authentication & Authorization', items: ['Authentication', 'Authorization', 'Role-Based Access Control', 'NextAuth', 'Secure Application Workflows'] },
+        { category: 'System Architecture', items: ['Modular Architecture', 'API Design', 'Multi-Role Systems', 'Scalable Application Structure', 'Separation of Concerns'] },
+        { category: 'DevOps & Deployment', items: ['Git', 'GitHub', 'Docker', 'CI/CD', 'Deployment', 'Environment Configuration'] }
+      ]
+    },
+    'engineering-challenges': {
+      heading: 'Engineering Challenges I\'ve Solved',
+      challenges: [
+        { title: 'Multi-Role Access & Permissions', desc: 'Architected granular role-based permissions (RBAC) ensuring data isolation between students, instructors, and admins.' },
+        { title: 'Real-time Analytics & Tracking', desc: 'Implemented event-driven analytics pipelines for real-time traffic monitoring and activity logging.' },
+        { title: 'Responsive Product Interfaces', desc: 'Built interfaces that remain usable across desktop, tablet, and mobile environments.' },
+        { title: 'Production-Oriented Architecture', desc: 'Focused on modular, maintainable systems rather than one-off pages or template-based products.' }
+      ]
+    },
+    'github-activity': {
+      heading: 'Engineering Activity',
+      subheading: 'Explore my repositories, code structure, and development commits on GitHub.',
+      repos: [
+        { name: 'edot', desc: 'Modular full-stack education ecosystem engineered for scalable digital learning experiences.', tech: 'React, Node.js, Express, PostgreSQL', link: 'https://github.com/kenenisabeyan/edot' },
+        { name: 'followflow', desc: 'Premium CRM and task tracking dashboard with Django REST backend and React 19 UI.', tech: 'React 19, TypeScript, Django, SQLite', link: 'https://github.com/kenenisabeyan/followflow' },
+        { name: 'Performance-Evaluator', desc: 'Full-stack employee evaluation dashboard built with Next.js 15+ App Router, MongoDB and NextAuth.', tech: 'Next.js, MongoDB, NextAuth, Tailwind', link: 'https://github.com/kenenisabeyan/Performance-Evaluator' }
+      ]
+    },
+    contact: {
+      heading: 'Let\'s Connect & Build.',
+      subtitle: 'Open for engineering roles, technical consultations, and startup development opportunities.',
+      locationText: 'Adama / Addis Ababa, Ethiopia',
+      emailText: 'kenenisab05@gmail.com',
+      availabilityText: 'Available for Remote & On-site Engineering Roles'
+    }
+  },
   projects: [
     {
       id: 'proj-1',

@@ -1,8 +1,14 @@
-gimport React, { useState } from 'react'
+import React, { useState } from 'react';
 import { FaMapMarkerAlt, FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { FiExternalLink } from 'react-icons/fi'
+import { usePortfolioData } from '../context/PortfolioContext'
 
 const Contact = () => {
+  const { data } = usePortfolioData()
+  const visibility = data?.visibility || {}
+
+  if (visibility.contact === false) return null
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -138,7 +144,9 @@ const Contact = () => {
               </div>
               <div className="flex flex-col justify-center h-14 w-full overflow-hidden">
                 <h3 className="text-lg font-bold text-white mb-1">Location</h3>
-                <p className="text-gray-300 text-base flex-1 overflow-hidden">Adama, Ethiopia</p>
+                <p className="text-gray-300 text-base flex-1 overflow-hidden">
+                  {contactContent.locationText || 'Adama, Ethiopia'}
+                </p>
               </div>
             </div>
 
@@ -149,8 +157,8 @@ const Contact = () => {
               </div>
               <div className="flex flex-col justify-center h-14 w-full overflow-hidden">
                 <h3 className="text-lg font-bold text-white mb-1">Email</h3>
-                <a href="mailto:kenenisab05@gmail.com" className="text-cyan-300 hover:text-cyan-200 text-base hover:underline transition-all truncate block">
-                  kenenisab05@gmail.com
+                <a href={`mailto:${settings.contactEmail || contactContent.emailText || 'kenenisab05@gmail.com'}`} className="text-cyan-300 hover:text-cyan-200 text-base hover:underline transition-all truncate block">
+                  {settings.contactEmail || contactContent.emailText || 'kenenisab05@gmail.com'}
                 </a>
               </div>
             </div>
@@ -159,13 +167,13 @@ const Contact = () => {
             <div className="relative z-50 pointer-events-auto">
               <h3 className="text-xl font-bold text-white mb-4">Follow Me</h3>
               <div className="flex items-center gap-4">
-                <a href="https://github.com/kenenisabeyan" target="_blank" rel="noopener noreferrer" className="relative z-50 w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800">
+                <a href={settings.githubUrl || "https://github.com/kenenisabeyan"} target="_blank" rel="noopener noreferrer" className="relative z-50 w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800">
                   <FaGithub size={24} className="text-[#181717] dark:text-white" />
                 </a>
-                <a href="https://www.linkedin.com/in/kenenisa/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BIRSH8H%2FpRiWfMypD2meSJA%3D%3D" target="_blank" rel="noopener noreferrer" className="relative z-50 w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800">
+                <a href={settings.linkedinUrl || "https://www.linkedin.com/in/kenenisa/"} target="_blank" rel="noopener noreferrer" className="relative z-50 w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800">
                   <FaLinkedin size={24} className="text-[#0A66C2]" />
                 </a>
-                <a href="https://twitter.com/kenenisa94931" target="_blank" rel="noopener noreferrer" className="relative z-50 w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800">
+                <a href={settings.twitterUrl || "https://twitter.com/kenenisa94931"} target="_blank" rel="noopener noreferrer" className="relative z-50 w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800">
                   <FaTwitter size={24} className="text-[#1DA1F2]" />
                 </a>
               </div>

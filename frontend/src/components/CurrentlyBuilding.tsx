@@ -1,7 +1,14 @@
 import React from 'react'
 import { FaHammer, FaLaptopCode, FaChartLine } from 'react-icons/fa'
 
+import { usePortfolioData } from '../context/PortfolioContext'
+
 const CurrentlyBuilding: React.FC = () => {
+  const { data } = usePortfolioData()
+  const visibility = data?.visibility || {}
+
+  if (visibility['currently-building'] === false) return null
+
   return (
     <section id="currently-building" className="py-16 md:py-24 px-4 md:px-10 lg:px-16 relative z-10 bg-transparent dark:border-t dark:border-white/[0.05]">
       <div className="max-w-[1700px] mx-auto flex flex-col relative z-10">

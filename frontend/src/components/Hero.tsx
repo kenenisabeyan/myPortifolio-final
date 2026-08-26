@@ -8,6 +8,7 @@ const Hero = () => {
   const { data } = usePortfolioData()
   const settings = data?.siteSettings || {}
   const visibility = data?.visibility || {}
+  const heroContent = data?.sectionContent?.hero || {}
 
   if (visibility.hero === false) return null
 
@@ -15,6 +16,11 @@ const Hero = () => {
   const githubUrl = settings.githubUrl || 'https://github.com/kenenisabeyan'
   const linkedinUrl = settings.linkedinUrl || 'https://www.linkedin.com/in/kenenisa/'
   const twitterUrl = settings.twitterUrl || 'https://twitter.com/kenenisa94931'
+
+  const heroBadge = heroContent.badge || 'FULL-STACK SOFTWARE ENGINEER'
+  const heroTitleLine1 = heroContent.titleLine1 || 'Engineering Scalable'
+  const heroTitleLine2 = heroContent.titleLine2 || 'Digital Products'
+  const heroSubtitle = heroContent.subtitle || 'Full-Stack Software Engineer focused on architecting scalable, production-grade web platforms with performance, reliability, and user experience at the core.'
 
   const scrollToWork = () => {
     document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })
@@ -30,33 +36,25 @@ const Hero = () => {
           
           {/* Role Badge / Subheading */}
           <div className="mb-6">
-            <span className="text-lg md:text-xl font-medium text-gray-600 dark:text-cyan-400"></span>
+            <span className="text-lg md:text-xl font-medium text-gray-600 dark:text-cyan-400">{heroBadge}</span>
           </div>
 
           {/* Glass plate behind text for legibility over 3D backgrounds */}
           <div className="relative z-20 bg-[#030610]/60 backdrop-blur-lg p-6 sm:p-8 rounded-[2rem] border border-white/[0.05] shadow-[0_0_40px_rgba(0,0,0,1)] mb-10 w-full max-w-[520px] mx-auto lg:mx-0">
             {/* Main Headline */}
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-white mb-6 [text-shadow:0_4px_20px_rgba(0,0,0,1)] relative z-30">
-               Engineering Scalable    <br className="hidden lg:block" />
+               {heroTitleLine1} <br className="hidden lg:block" />
                <span className="inline-block relative mt-2 mr-2 md:mr-3 lg:mr-0">
                  <span className="absolute -inset-1 blur-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 opacity-40 animate-pulse"></span>
                  <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400">
-                   Digital Products 
+                   {heroTitleLine2}
                  </span>
                </span>
-               <br className="hidden lg:block" />
-               for Modern Businesses
             </h1>
             
             {/* Subtle Bio Text */}
             <p className="text-base md:text-lg font-medium leading-relaxed text-blue-50 max-w-2xl relative z-30 [text-shadow:0_2px_10px_rgba(0,0,0,1)]">
-              Full-Stack Software Engineer focused on{' '}
-              <span className="inline-block relative">
-                <span className="relative text-cyan-400 font-bold">
-                  Architecting scalable
-                </span>
-              </span>
-              , production-grade web platforms with performance, reliability, and user experience at the core.
+              {heroSubtitle}
             </p>
           </div>
 

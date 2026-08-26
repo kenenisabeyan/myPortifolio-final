@@ -101,8 +101,9 @@ const activeVisitors = new Map();
 app.get('/api/public/portfolio', (req, res) => {
   try {
     const visibility = db.get('section_visibility') || {};
+    const sectionContent = db.get('section_content') || {};
     const projects = db.get('projects')
-      .filter(p => p.visibility !== false && p.status === 'published')
+      .filter(p => p.visibility !== false && p.status !== 'draft')
       .sort((a, b) => (a.order || 0) - (b.order || 0));
 
     const experiences = db.get('experiences')
@@ -139,6 +140,7 @@ app.get('/api/public/portfolio', (req, res) => {
       success: true,
       data: {
         visibility,
+        sectionContent,
         projects,
         experiences,
         education,
@@ -438,6 +440,29 @@ app.post('/api/admin/visibility', authenticateAdmin, (req, res) => {
   db.set('section_visibility', current);
 
   logAudit('TOGGLE_VISIBILITY', `Toggled section '${section}' to ${visible ? 'Visible' : 'Hidden'}`, req.admin.email);
+  res.json({ success: true, data: current });
+});
+
+// GET Section Text Content (Admin)
+app.get('/api/admin/section-content', authenticateAdmin, (req, res) => {
+  res.json({ success: true, data: db.get('section_content') || {} });
+});
+
+// UPDATE Section Text Content (Admin)
+app.put('/api/admin/section-content', authenticateAdmin, (req, res) => {
+  const current = db.get('section_content') || {};
+  const updated = { ...current, ...req.body };
+  db.set('section_content', updated);
+  logAudit('UPDATE_SECTION_CONTENT', `Updated text content for portfolio sections`, req.admin.email);
+  res.json({ success: true, data: updated });
+});
+
+app.put('/api/admin/section-content/:sectionKey', authenticateAdmin, (req, res) => {
+  const { sectionKey } = req.params;
+  const current = db.get('section_content') || {};
+  current[sectionKey] = req.body;
+  db.set('section_content', current);
+  logAudit('UPDATE_SECTION_CONTENT', `Updated text content for section '${sectionKey}'`, req.admin.email);
   res.json({ success: true, data: current });
 });
 

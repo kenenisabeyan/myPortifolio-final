@@ -89,6 +89,7 @@ const Testimonials = () => {
 }
 
 function TestimonialCard({ t }) {
+  if (!t) return null;
   return (
     <div className="group relative bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] p-8 rounded-[2rem] transition-all duration-300 flex flex-col h-full overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.24)] hover:shadow-[0_25px_90px_rgba(8,145,255,0.18)] cursor-default backdrop-blur-xl transform hover:-translate-y-2">
       <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-20 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none hidden dark:block" />

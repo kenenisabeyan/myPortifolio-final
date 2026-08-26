@@ -34,7 +34,20 @@ const services = [
   },
 ]
 
+import { usePortfolioData } from '../context/PortfolioContext'
+
 const Services = () => {
+  const { data } = usePortfolioData()
+  const visibility = data?.visibility || {}
+  const servicesContent = data?.sectionContent?.services || {}
+
+  if (visibility.services === false) return null
+
+  const displayServices = (servicesContent.items?.length ? servicesContent.items : services).map((item: any, idx: number) => ({
+    ...item,
+    icon: services[idx % services.length]?.icon
+  }))
+
   return (
     <section id="skills" className="py-16 md:py-24 px-4 md:px-10 lg:px-16 relative z-10 bg-transparent dark:border-t dark:border-white/[0.05]">
       
@@ -52,13 +65,13 @@ const Services = () => {
           </div>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white inline-block">
-            My <span className="dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-cyan-400 dark:via-blue-500 dark:to-indigo-500">Service Modules.</span>
+            {servicesContent.heading || 'Technical Skills & Services'}
           </h2>
         </div>
 
         {/* Floating Skill Capsules */}
         <div className="flex flex-wrap items-center justify-center gap-8 w-full max-w-[1700px] mx-auto transition-all duration-300">
-          {services.map((service, idx) => (
+          {displayServices.map((service: any, idx: number) => (
             <div 
               key={idx} 
               className="group relative bg-[#ffffff]/60 dark:bg-[#050A14]/40 dark:backdrop-blur-xl hover:bg-white dark:hover:bg-[#080d1a]/60 rounded-[3rem] py-16 px-6 border border-gray-200 dark:border-white/[0.05] dark:hover:border-cyan-500/40 transition-all duration-500 flex flex-col items-center justify-center w-[220px] h-[380px] hover:shadow-xl dark:hover:shadow-[0_0_40px_rgba(34,211,238,0.15)] cursor-default overflow-hidden transform hover:-translate-y-3"

@@ -30,6 +30,7 @@ const defaultContextValue: PortfolioDataResponse = {
     'career-direction': true,
     contact: true,
   },
+  sectionContent: {},
   projects: staticData.projects,
   experiences: staticData.experiences,
   education: [

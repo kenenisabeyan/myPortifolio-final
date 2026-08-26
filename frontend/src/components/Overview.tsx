@@ -27,7 +27,18 @@ const stats = [
   },
 ]
 
+import { usePortfolioData } from '../context/PortfolioContext'
+
 const Overview = () => {
+  const { data } = usePortfolioData()
+  const visibility = data?.visibility || {}
+  const overviewContent = data?.sectionContent?.overview || {}
+
+  if (visibility.overview === false) return null
+
+  const p1 = overviewContent.paragraph1 || "I’m Kenenisa Beyan, a Full-Stack Software Engineer focused on building scalable, production-grade digital platforms that solve real business problems. My work combines modern software engineering with strategic thinking to create systems that are not only functional, but reliable, maintainable, and built for growth."
+  const p2 = overviewContent.paragraph2 || "With academic foundations in Computer Science and Management, I approach development beyond code analyzing workflows, optimizing user experiences, and engineering architectures that support long-term scalability and operational efficiency."
+
   return (
     <section id="overview" className="py-16 md:py-24 px-4 md:px-10 lg:px-16 relative z-10 bg-gray-50 dark:bg-transparent dark:border-t dark:border-white/[0.05]">
       
@@ -50,12 +61,12 @@ const Overview = () => {
             </h2>
             <div className="flex flex-col justify-between h-full text-base md:text-xl font-normal leading-relaxed text-gray-600 dark:text-cyan-50/90 space-y-6 dark:bg-[#030610]/60 lg:dark:bg-transparent p-4 lg:p-0 rounded-2xl lg:rounded-none lg:backdrop-blur-none backdrop-blur-md font-medium">
               <ExpandableText
-                text="I’m Kenenisa Beyan, a Full-Stack Software Engineer focused on building scalable, production-grade digital platforms that solve real business problems. My work combines modern software engineering with strategic thinking to create systems that are not only functional, but reliable, maintainable, and built for growth."
+                text={p1}
                 maxLength={150}
                 className="leading-relaxed"
               />
               <ExpandableText
-                text="With academic foundations in Computer Science and Management, I approach development beyond code analyzing workflows, optimizing user experiences, and engineering architectures that support long-term scalability and operational efficiency."
+                text={p2}
                 maxLength={150}
                 className="leading-relaxed"
               />

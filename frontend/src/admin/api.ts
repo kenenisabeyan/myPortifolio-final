@@ -114,5 +114,9 @@ export const adminApi = {
   getSettings: () => apiFetch('/api/admin/settings'),
   updateSettings: (data: any) => apiFetch('/api/admin/settings', { method: 'PUT', body: JSON.stringify(data) }),
 
+  getSectionContent: () => apiFetch('/api/admin/section-content'),
+  updateSectionContent: (data: any) => apiFetch('/api/admin/section-content', { method: 'PUT', body: JSON.stringify(data) }),
+  updateSingleSectionContent: (sectionKey: string, data: any) => apiFetch(`/api/admin/section-content/${sectionKey}`, { method: 'PUT', body: JSON.stringify(data) }),
+
   getAuditLogs: () => apiFetch('/api/admin/audit-logs'),
 };
