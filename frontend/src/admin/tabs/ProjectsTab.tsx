@@ -308,20 +308,26 @@ const ProjectsTab: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold uppercase text-gray-300 mb-1">GitHub URL</label>
+                  <label className="block text-xs font-semibold uppercase text-gray-300 mb-1">
+                    GitHub URL <span className="text-gray-500 font-normal lowercase">(optional)</span>
+                  </label>
                   <input
                     type="url"
                     value={editingProject.githubUrl || ''}
                     onChange={(e) => setEditingProject({ ...editingProject, githubUrl: e.target.value })}
+                    placeholder="https://github.com/username/repository (Optional)"
                     className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold uppercase text-gray-300 mb-1">Live Demo URL</label>
+                  <label className="block text-xs font-semibold uppercase text-gray-300 mb-1">
+                    Live Demo / Official Website URL <span className="text-gray-500 font-normal lowercase">(optional)</span>
+                  </label>
                   <input
                     type="url"
                     value={editingProject.liveUrl || ''}
                     onChange={(e) => setEditingProject({ ...editingProject, liveUrl: e.target.value })}
+                    placeholder="e.g. https://kenenisa-one.vercel.app/ or https://my-official-demo.com (Optional)"
                     className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none"
                   />
                 </div>

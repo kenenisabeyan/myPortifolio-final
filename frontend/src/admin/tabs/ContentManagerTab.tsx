@@ -19,6 +19,7 @@ const allSections = [
   { key: 'currently-building', name: 'Currently Building & Learning', category: 'Status' },
   { key: 'achievements', name: 'Achievements & Recognition', category: 'Experience' },
   { key: 'events-gallery', name: 'Events & Recognition Gallery', category: 'Experience' },
+  { key: 'achievements-and-events', name: 'Achievements & Events Master Section', category: 'Experience' },
   { key: 'gallery-section', name: 'Photo & Media Gallery', category: 'Experience' },
   { key: 'github-activity', name: 'Engineering Activity / GitHub', category: 'Status' },
   { key: 'testimonials', name: 'Client Testimonials', category: 'Feedback' },

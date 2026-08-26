@@ -63,6 +63,7 @@ const defaultSeedData = {
     'career-direction': true,
     'events-gallery': true,
     'gallery-section': true,
+    'achievements-and-events': true,
     contact: true,
   },
   section_content: {
@@ -240,7 +241,7 @@ const defaultSeedData = {
       image: '/src/assets/edotpage.png',
       link: 'https://github.com/kenenisabeyan/edot',
       githubUrl: 'https://github.com/kenenisabeyan/edot',
-      liveUrl: '',
+      liveUrl: 'https://kenenisa-one.vercel.app/',
       tech: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'PostgreSQL'],
       featured: true,
       status: 'published',

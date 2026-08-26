@@ -41,6 +41,7 @@
     "career-direction": true,
     "events-gallery": true,
     "gallery-section": true,
+    "achievements-and-events": true,
     "contact": true
   },
   "projects": [
@@ -52,7 +53,7 @@
       "image": "/src/assets/edotpage.png",
       "link": "https://github.com/kenenisabeyan/edot",
       "githubUrl": "https://github.com/kenenisabeyan/edot",
-      "liveUrl": "",
+      "liveUrl": "https://kenenisa-one.vercel.app/",
       "tech": [
         "React",
         "Tailwind CSS",
@@ -93,7 +94,8 @@
           "PostgreSQL"
         ]
       },
-      "createdAt": "2026-08-09T14:10:19.187Z"
+      "createdAt": "2026-08-09T14:10:19.187Z",
+      "updatedAt": "2026-08-26T14:32:58.519Z"
     },
     {
       "id": "proj-2",
@@ -259,7 +261,8 @@
         "Delivering reliable solutions through clean code, clear communication, and consistent project execution."
       ],
       "visibility": true,
-      "order": 1
+      "order": 1,
+      "updatedAt": "2026-08-26T14:33:53.983Z"
     },
     {
       "id": "exp-2",
@@ -399,13 +402,13 @@
   "testimonials": [
     {
       "id": "test-1",
-      "name": "Ermias alo",
+      "name": "Ermias",
       "handle": "@ermiasalemayehu",
       "text": "I can't say enough good things about Kenenisa. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
       "rating": 5,
       "visibility": true,
       "order": 1,
-      "updatedAt": "2026-08-26T11:43:36.117Z",
+      "updatedAt": "2026-08-26T14:34:46.258Z",
       "avatar": "/uploads/file-1787744615266-961726101.jpg"
     },
     {
@@ -466,7 +469,8 @@
       "status": "published",
       "visibility": true,
       "publishedAt": "2026-08-09T14:10:19.187Z",
-      "views": 142
+      "views": 142,
+      "updatedAt": "2026-08-26T14:34:57.046Z"
     }
   ],
   "news": [
@@ -498,6 +502,160 @@
   ],
   "contact_messages": [],
   "analytics_events": [
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787754949661-nui8vh",
+      "timestamp": "2026-08-26T14:43:30.063Z",
+      "id": "anal-1787755410074-wibq2",
+      "createdAt": "2026-08-26T14:43:30.074Z",
+      "updatedAt": "2026-08-26T14:43:30.074Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787754949661-nui8vh",
+      "timestamp": "2026-08-26T14:43:29.899Z",
+      "id": "anal-1787755409906-zj53x",
+      "createdAt": "2026-08-26T14:43:29.906Z",
+      "updatedAt": "2026-08-26T14:43:29.906Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "direct",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787754949661-nui8vh",
+      "timestamp": "2026-08-26T14:35:50.331Z",
+      "id": "anal-1787754950346-rn8rg",
+      "createdAt": "2026-08-26T14:35:50.347Z",
+      "updatedAt": "2026-08-26T14:35:50.347Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "direct",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787754949661-nui8vh",
+      "timestamp": "2026-08-26T14:35:50.200Z",
+      "id": "anal-1787754950215-uwqmc",
+      "createdAt": "2026-08-26T14:35:50.215Z",
+      "updatedAt": "2026-08-26T14:35:50.215Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "direct",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787750212125-a6nw9b",
+      "timestamp": "2026-08-26T14:31:51.460Z",
+      "id": "anal-1787754711471-yj83b",
+      "createdAt": "2026-08-26T14:31:51.471Z",
+      "updatedAt": "2026-08-26T14:31:51.471Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "direct",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787750212125-a6nw9b",
+      "timestamp": "2026-08-26T14:31:51.405Z",
+      "id": "anal-1787754711408-hf2qz",
+      "createdAt": "2026-08-26T14:31:51.408Z",
+      "updatedAt": "2026-08-26T14:31:51.408Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "direct",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787754520786-br3wfq",
+      "timestamp": "2026-08-26T14:28:41.158Z",
+      "id": "anal-1787754521162-tn00y",
+      "createdAt": "2026-08-26T14:28:41.162Z",
+      "updatedAt": "2026-08-26T14:28:41.162Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "direct",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787754520786-br3wfq",
+      "timestamp": "2026-08-26T14:28:40.940Z",
+      "id": "anal-1787754520961-fy903",
+      "createdAt": "2026-08-26T14:28:40.961Z",
+      "updatedAt": "2026-08-26T14:28:40.961Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787750689602-j0iii5",
+      "timestamp": "2026-08-26T14:24:37.541Z",
+      "id": "anal-1787754277545-vpy7y",
+      "createdAt": "2026-08-26T14:24:37.545Z",
+      "updatedAt": "2026-08-26T14:24:37.545Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "http://localhost:5174/",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787750689602-j0iii5",
+      "timestamp": "2026-08-26T14:24:37.478Z",
+      "id": "anal-1787754277483-0o1s4",
+      "createdAt": "2026-08-26T14:24:37.483Z",
+      "updatedAt": "2026-08-26T14:24:37.483Z"
+    },
+    {
+      "type": "page_view",
+      "section": "home",
+      "projectId": null,
+      "device": "desktop",
+      "referrer": "direct",
+      "anonymizedIp": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Sa",
+      "sessionId": "sess-1787753907508-9efd4d",
+      "timestamp": "2026-08-26T14:18:34.889Z",
+      "id": "anal-1787753915019-bjc4d",
+      "createdAt": "2026-08-26T14:18:35.019Z",
+      "updatedAt": "2026-08-26T14:18:35.019Z"
+    },
     {
       "type": "page_view",
       "section": "home",
@@ -1354,6 +1512,60 @@
     }
   ],
   "audit_logs": [
+    {
+      "action": "UPDATE_BLOGS",
+      "detail": "Updated item in blogs: blog-1",
+      "adminEmail": "kenenisab05@gmail.com",
+      "timestamp": "2026-08-26T14:34:57.074Z",
+      "id": "audi-1787754897106-gk45q",
+      "createdAt": "2026-08-26T14:34:57.106Z",
+      "updatedAt": "2026-08-26T14:34:57.107Z"
+    },
+    {
+      "action": "UPDATE_TESTIMONIALS",
+      "detail": "Updated item in testimonials: test-1",
+      "adminEmail": "kenenisab05@gmail.com",
+      "timestamp": "2026-08-26T14:34:46.268Z",
+      "id": "audi-1787754886288-p6c1i",
+      "createdAt": "2026-08-26T14:34:46.288Z",
+      "updatedAt": "2026-08-26T14:34:46.288Z"
+    },
+    {
+      "action": "UPDATE_EXPERIENCES",
+      "detail": "Updated item in experiences: exp-1",
+      "adminEmail": "kenenisab05@gmail.com",
+      "timestamp": "2026-08-26T14:33:53.996Z",
+      "id": "audi-1787754834013-3pm89",
+      "createdAt": "2026-08-26T14:33:54.014Z",
+      "updatedAt": "2026-08-26T14:33:54.014Z"
+    },
+    {
+      "action": "UPDATE_PROJECTS",
+      "detail": "Updated item in projects: proj-1",
+      "adminEmail": "kenenisab05@gmail.com",
+      "timestamp": "2026-08-26T14:32:58.528Z",
+      "id": "audi-1787754778548-5o7b7",
+      "createdAt": "2026-08-26T14:32:58.548Z",
+      "updatedAt": "2026-08-26T14:32:58.548Z"
+    },
+    {
+      "action": "TOGGLE_VISIBILITY",
+      "detail": "Toggled section 'capabilities' to Visible",
+      "adminEmail": "kenenisab05@gmail.com",
+      "timestamp": "2026-08-26T14:28:13.700Z",
+      "id": "audi-1787754493714-sc035",
+      "createdAt": "2026-08-26T14:28:13.714Z",
+      "updatedAt": "2026-08-26T14:28:13.714Z"
+    },
+    {
+      "action": "TOGGLE_VISIBILITY",
+      "detail": "Toggled section 'capabilities' to Hidden",
+      "adminEmail": "kenenisab05@gmail.com",
+      "timestamp": "2026-08-26T14:28:10.670Z",
+      "id": "audi-1787754490677-rlcb0",
+      "createdAt": "2026-08-26T14:28:10.678Z",
+      "updatedAt": "2026-08-26T14:28:10.678Z"
+    },
     {
       "action": "UPDATE_TESTIMONIALS",
       "detail": "Updated item in testimonials: test-1",

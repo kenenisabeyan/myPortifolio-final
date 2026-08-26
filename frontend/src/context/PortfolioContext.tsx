@@ -29,6 +29,7 @@ const defaultContextValue: PortfolioDataResponse = {
     testimonials: true,
     'career-direction': true,
     'events-gallery': true,
+    'achievements-and-events': true,
     contact: true,
   },
   sectionContent: {},

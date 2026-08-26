@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import ExpandableText from './ExpandableText'
 import { SiReact, SiPython, SiNodedotjs, SiTailwindcss, SiMongodb, SiTypescript, SiJavascript, SiHtml5, SiCss, SiDocker, SiNextdotjs, SiExpress, SiDjango, SiMysql, SiPostgresql, SiCplusplus, SiGit, SiGithub, SiFastapi, SiTensorflow, SiPytorch, SiKeras, SiScikitlearn, SiSelenium, SiBootstrap, SiFramer, SiThreedotjs } from 'react-icons/si'
-import { FaJava, FaServer, FaDatabase, FaTools, FaLayerGroup, FaAws, FaBrain, FaRobot, FaSyncAlt, FaMicrochip, FaNetworkWired, FaSitemap } from 'react-icons/fa'
+import { FaJava, FaServer, FaDatabase, FaTools, FaLayerGroup, FaAws, FaBrain, FaRobot, FaSyncAlt, FaMicrochip, FaNetworkWired, FaSitemap, FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import { projects as staticProjects } from '../data/data'
 import TechPlanets3D from './TechPlanets3D'
 import ProjectCaseStudyModal, { CaseStudyData } from './ProjectCaseStudyModal'
 import { usePortfolioData } from '../context/PortfolioContext'
+import { DynamicTechBadge } from '../utils/techIconResolver'
 
 const categorizedTech = {
   Frontend: [
@@ -189,21 +190,19 @@ const Work = () => {
                 {/* Tech Tags */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech?.map((tech, techIdx) => (
-                    <span key={techIdx} className="px-4 py-1.5 bg-white/5 border border-white/10 text-sm font-medium text-gray-300 rounded-full">
-                      {tech}
-                    </span>
+                    <DynamicTechBadge key={techIdx} name={tech} size={15} />
                   ))}
                 </div>
                 
                 {/* Action Buttons */}
-                <div className="flex flex-wrap items-center gap-4 mt-auto">
+                <div className="flex flex-wrap items-center gap-3 mt-auto pt-4 border-t border-white/10">
                   {project.caseStudy && (
                     <button
                       onClick={() => setSelectedCaseStudy(project.caseStudy as CaseStudyData)}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-cyan-500/10 border border-cyan-500/40 text-cyan-300 hover:text-white hover:bg-cyan-500 hover:border-cyan-400 font-bold uppercase tracking-wider text-xs rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.2)] hover:shadow-[0_0_25px_rgba(34,211,238,0.5)]"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/40 text-cyan-300 hover:text-white hover:bg-cyan-500 font-bold uppercase tracking-wider text-[11px] rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.2)]"
                     >
                       <span>Engineering Case Study</span>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                         <polyline points="15 3 21 3 21 9"></polyline>
                         <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -211,19 +210,27 @@ const Work = () => {
                     </button>
                   )}
 
-                  {project.link && project.link !== '#' && (
+                  {(project.githubUrl || (project.link && project.link.includes('github'))) && (
                     <a
-                      href={project.link}
+                      href={project.githubUrl || project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 text-cyan-400 font-bold uppercase tracking-widest hover:text-white transition-colors duration-300 w-max group/btn text-xs md:text-sm"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 text-gray-300 hover:text-cyan-300 hover:border-cyan-500/40 font-bold uppercase tracking-wider text-[11px] rounded-full transition-all duration-300"
                     >
-                      <span>See Details on my Github</span>
-                      <span className="w-9 h-9 rounded-full border border-cyan-400/30 flex items-center justify-center group-hover/btn:bg-cyan-500 group-hover/btn:border-cyan-500 group-hover/btn:shadow-[0_0_20px_rgba(34,211,238,0.5)] transition-all duration-300">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </span>
+                      <FaGithub size={13} />
+                      <span>GitHub Repo</span>
+                    </a>
+                  )}
+
+                  {(project.liveUrl || (project.link && !project.link.includes('github') && project.link !== '#')) && (
+                    <a
+                      href={project.liveUrl || project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/20 border border-cyan-500/50 text-cyan-300 hover:bg-cyan-500 hover:text-black font-bold uppercase tracking-wider text-[11px] rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(34,211,238,0.3)]"
+                    >
+                      <FaExternalLinkAlt size={11} />
+                      <span>Live Demo / Official Link</span>
                     </a>
                   )}
                 </div>

@@ -2,12 +2,7 @@ import React, { useRef, useMemo, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Html, Sphere, OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
-import {
-  SiReact, SiPython, SiNodedotjs, SiTailwindcss, SiMongodb, SiTypescript,
-  SiJavascript, SiHtml5, SiCss, SiNextdotjs, SiExpress, SiDjango, SiMysql,
-  SiPostgresql, SiCplusplus, SiGit, SiGithub, SiBootstrap, SiThreedotjs
-} from 'react-icons/si'
-import { FaJava, FaSitemap, FaLayerGroup } from 'react-icons/fa'
+import { resolveTechIcon } from '../utils/techIconResolver'
 
 /**
  * TechPlanets3D Component
@@ -23,19 +18,21 @@ import { FaJava, FaSitemap, FaLayerGroup } from 'react-icons/fa'
 const PlanetIcon = ({ Icon, color, name, position, index, isDark }) => {
   const planetRef = useRef<THREE.Group>(null)
 
-  // Planets slowly rotate on their own axis
   useFrame((state) => {
     if (planetRef.current) {
       planetRef.current.rotation.y = state.clock.elapsedTime * 0.5 + index
     }
   })
 
+  const meta = resolveTechIcon(name, 24)
+  const finalColor = color || meta.color
+
   return (
     <group position={position} ref={planetRef}>
       {/* The Glowing Planet Atmosphere for depth */}
       <Sphere args={[0.24, 24, 24]}>
         <meshBasicMaterial 
-          color={color} 
+          color={finalColor} 
           transparent 
           opacity={isDark ? 0.15 : 0.4} 
         />
@@ -46,9 +43,9 @@ const PlanetIcon = ({ Icon, color, name, position, index, isDark }) => {
         <div className="flex flex-col items-center justify-center group cursor-default">
           <div 
             className="flex items-center justify-center p-2.5 rounded-full bg-[#050a14]/90 dark:bg-[#020817]/95 border border-white/10 group-hover:scale-125 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] transition-all duration-300"
-            style={{ boxShadow: `inset 0 0 10px ${color}20` }}
+            style={{ boxShadow: `inset 0 0 10px ${finalColor}20` }}
           >
-            <Icon size={24} color={color} style={{ filter: `drop-shadow(0 0 8px ${color})` }} />
+            {meta.icon}
           </div>
           <span className="text-[11px] mt-1.5 text-gray-300 font-semibold tracking-wide whitespace-nowrap bg-black/80 px-2 py-0.5 rounded border border-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             {name}
@@ -234,11 +231,11 @@ const TechPlanets3D = () => {
   ]
 
   const mapItems = (items: any[]) => items.map(item => {
-    const entry = ICON_MAP[item.name] || ICON_MAP['React']
+    const meta = resolveTechIcon(item.name, 24)
     return {
       name: item.name,
-      icon: entry.icon,
-      color: item.color || entry.defaultColor
+      icon: () => meta.icon,
+      color: item.color || meta.color
     }
   })
 
