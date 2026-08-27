@@ -1,8 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { FaBars, FaTimes, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { FiArrowUpRight } from 'react-icons/fi'
+import kenoImg from '../assets/keno.jpg'
+import { usePortfolioData } from '../context/PortfolioContext'
+
+const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || 'http://localhost:5001'
+
+const formatImageUrl = (url?: string) => {
+  if (!url) return ''
+  if (url.startsWith('/uploads')) {
+    return `${API_BASE}${url}`
+  }
+  return url
+}
 
 const Navbar = ({ isDarkMode, toggleDarkMode }: { isDarkMode?: boolean, toggleDarkMode?: () => void }) => {
+  const { data } = usePortfolioData()
+  const settings = data?.siteSettings || {}
+  const profilePhoto = formatImageUrl(settings.heroPhotoUrl) || kenoImg
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('Home')
@@ -93,8 +108,12 @@ const Navbar = ({ isDarkMode, toggleDarkMode }: { isDarkMode?: boolean, toggleDa
         {/* Logo */}
         <div className="flex items-center group relative cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
           <div className="absolute inset-0 bg-gray-200 dark:bg-cyan-400 blur-md opacity-40 group-hover:opacity-80 transition-opacity duration-300 rounded-full dark:animate-pulse"></div>
-          <div className="relative w-[46px] h-[46px] rounded-full bg-white dark:bg-[#030610] border border-gray-200 dark:border-cyan-500/50 flex items-center justify-center text-gray-900 dark:text-cyan-50 text-lg md:text-xl font-bold tracking-wide shadow-sm dark:shadow-[0_0_15px_rgba(34,211,238,0.3)] group-hover:bg-gray-50 dark:group-hover:bg-gradient-to-br dark:from-cyan-500 dark:to-blue-600 group-hover:border-gray-300 dark:group-hover:border-transparent transition-all duration-500 overflow-hidden">
-            K
+          <div className="relative w-[46px] h-[46px] rounded-full bg-white dark:bg-[#030610] border-2 border-cyan-400/80 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.4)] group-hover:scale-105 transition-all duration-300 overflow-hidden">
+            <img
+              src={profilePhoto}
+              alt="Kenenisa Beyan"
+              className="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500"
+            />
           </div>
         </div>
 

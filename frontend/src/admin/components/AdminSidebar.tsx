@@ -1,4 +1,5 @@
 import React from 'react'
+import kenoImg from '../../assets/keno.jpg'
 import {
   FaChartPie,
   FaEye,
@@ -78,8 +79,19 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({
 
   const sidebarContent = (
     <div className="flex flex-col justify-between h-full p-4 space-y-4">
-      <div className="space-y-1 overflow-y-auto max-h-[calc(100vh-8rem)] pr-1 custom-scrollbar">
-        <div className="px-3 py-2 text-[10px] font-extrabold uppercase tracking-widest text-cyan-400/80 flex justify-between items-center">
+      <div className="space-y-2 overflow-y-auto max-h-[calc(100vh-8rem)] pr-1 custom-scrollbar">
+        {/* Profile Avatar Card Header */}
+        <div className="p-3 rounded-2xl bg-[#040a18]/90 border border-cyan-500/30 flex items-center gap-3 shadow-[0_0_20px_rgba(6,182,212,0.15)] mb-3">
+          <div className="relative w-10 h-10 rounded-full border-2 border-cyan-400 overflow-hidden shrink-0 shadow-[0_0_12px_rgba(34,211,238,0.5)]">
+            <img src={kenoImg} alt="Kenenisa Beyan" className="w-full h-full object-cover" />
+          </div>
+          <div className="overflow-hidden">
+            <h4 className="text-xs font-black text-white truncate">Kenenisa Beyan</h4>
+            <p className="text-[10px] text-cyan-400 font-bold truncate">Full-Stack Engineer</p>
+          </div>
+        </div>
+
+        <div className="px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-cyan-400/80 flex justify-between items-center">
           <span>CMS Modules</span>
           <span className="text-[9px] text-gray-500 font-mono">v1.0</span>
         </div>
