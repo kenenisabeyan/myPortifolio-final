@@ -94,8 +94,130 @@ const logAudit = (action, detail, adminEmail = 'admin') => {
 const activeVisitors = new Map();
 
 // ═══════════════════════════════════════════════════════════════
-// PUBLIC API ENDPOINTS
+// PUBLIC API & SEO ENDPOINTS (Sitemap, Robots.txt)
 // ═══════════════════════════════════════════════════════════════
+
+// Dynamic XML Sitemap for Google, Bing & Search Engines
+app.get('/sitemap.xml', (req, res) => {
+  try {
+    const baseUrl = process.env.SITE_URL || 'https://kenenisa-one.vercel.app';
+    const blogs = (db.get('blogs') || []).filter(b => b.visibility !== false && b.status === 'published');
+    const projects = (db.get('projects') || []).filter(p => p.visibility !== false && p.status !== 'draft');
+
+    const escapeXml = (str = '') =>
+      str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+
+    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n`;
+
+    // Homepage
+    xml += `  <url>\n`;
+    xml += `    <loc>${escapeXml(baseUrl)}/</loc>\n`;
+    xml += `    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n`;
+    xml += `    <changefreq>daily</changefreq>\n`;
+    xml += `    <priority>1.0</priority>\n`;
+    xml += `  </url>\n`;
+
+    // Portfolio Sections anchors for indexed search navigation
+    const sections = ['work', 'experience', 'education', 'skills', 'achievements', 'blog', 'contact'];
+    sections.forEach(sec => {
+      xml += `  <url>\n`;
+      xml += `    <loc>${escapeXml(baseUrl)}/#${sec}</loc>\n`;
+      xml += `    <changefreq>weekly</changefreq>\n`;
+      xml += `    <priority>0.8</priority>\n`;
+      xml += `  </url>\n`;
+    });
+
+    // Published Blog Articles
+    blogs.forEach(blog => {
+      const blogDate = blog.publishedAt || blog.createdAt || new Date().toISOString();
+      const lastMod = new Date(blogDate).toISOString().split('T')[0];
+      xml += `  <url>\n`;
+      xml += `    <loc>${escapeXml(baseUrl)}/blog/${escapeXml(blog.slug || blog.id)}</loc>\n`;
+      xml += `    <lastmod>${lastMod}</lastmod>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`;
+      xml += `    <priority>0.7</priority>\n`;
+      if (blog.coverImage) {
+        xml += `    <image:image>\n`;
+        xml += `      <image:loc>${escapeXml(blog.coverImage.startsWith('http') ? blog.coverImage : `${baseUrl}${blog.coverImage}`)}</image:loc>\n`;
+        xml += `      <image:title>${escapeXml(blog.title)}</image:title>\n`;
+        xml += `    </image:image>\n`;
+      }
+      xml += `  </url>\n`;
+    });
+
+    // Showcase Projects
+    projects.forEach(project => {
+      xml += `  <url>\n`;
+      xml += `    <loc>${escapeXml(baseUrl)}/#project-${escapeXml(project.id)}</loc>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`;
+      xml += `    <priority>0.7</priority>\n`;
+      if (project.image) {
+        xml += `    <image:image>\n`;
+        xml += `      <image:loc>${escapeXml(project.image.startsWith('http') ? project.image : `${baseUrl}${project.image}`)}</image:loc>\n`;
+        xml += `      <image:title>${escapeXml(project.title)}</image:title>\n`;
+        xml += `    </image:image>\n`;
+      }
+      xml += `  </url>\n`;
+    });
+
+    xml += `</urlset>`;
+
+    res.setHeader('Content-Type', 'text/xml');
+    res.send(xml);
+  } catch (err) {
+    res.status(500).send('Error generating sitemap');
+  }
+});
+
+// Dynamic Robots.txt Endpoint
+app.get('/robots.txt', (req, res) => {
+  const baseUrl = process.env.SITE_URL || 'https://kenenisa-one.vercel.app';
+  const robots = `User-agent: *
+Allow: /
+Allow: /#*
+Allow: /blog/*
+Allow: /uploads/*
+Disallow: /admin
+Disallow: /api/admin/*
+
+Sitemap: ${baseUrl}/sitemap.xml
+`;
+  res.setHeader('Content-Type', 'text/plain');
+  res.send(robots);
+});
+
+// Dynamic OpenGraph Image Card SVG Generator (for Social Media Previews)
+app.get('/api/public/og-image', (req, res) => {
+  const siteSettings = db.get('site_settings') || {};
+  const title = req.query.title || siteSettings.siteTitle || 'Kenenisa Beyan';
+  const role = req.query.role || 'Full-Stack Software Engineer';
+  const sub = req.query.sub || 'React • Node.js • TypeScript • Python • EdTech';
+
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+    <rect width="1200" height="630" fill="#030610"/>
+    <rect x="20" y="20" width="1160" height="590" rx="30" fill="#091326" stroke="#06b6d4" stroke-opacity="0.3" stroke-width="4"/>
+    <path d="M 0 0 L 1200 630" stroke="#06b6d4" stroke-opacity="0.05" stroke-width="2"/>
+    <circle cx="1000" cy="150" r="300" fill="#06b6d4" fill-opacity="0.08" filter="blur(80px)"/>
+    <circle cx="200" cy="450" r="250" fill="#3b82f6" fill-opacity="0.08" filter="blur(80px)"/>
+    
+    <rect x="80" y="80" width="300" height="36" rx="18" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-opacity="0.4"/>
+    <text x="100" y="103" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#22d3ee" letter-spacing="2">OFFICIAL PORTFOLIO ENTITY</text>
+    
+    <text x="80" y="220" font-family="system-ui, sans-serif" font-size="52" font-weight="900" fill="#ffffff" letter-spacing="-1">${title.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</text>
+    <text x="80" y="290" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#06b6d4">${role.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</text>
+    <text x="80" y="360" font-family="system-ui, sans-serif" font-size="20" font-weight="500" fill="#94a3b8">${sub.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</text>
+    
+    <line x1="80" y1="420" x2="1120" y2="420" stroke="#06b6d4" stroke-opacity="0.2" stroke-width="2"/>
+    
+    <text x="80" y="500" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#64748b">https://kenenisabeyan.com</text>
+    <text x="1120" y="500" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#06b6d4" text-anchor="end">Rank #1 Google Entity</text>
+  </svg>`;
+
+  res.setHeader('Content-Type', 'image/svg+xml');
+  res.setHeader('Cache-Control', 'public, max-age=86400');
+  res.send(svg);
+});
 
 // GET Public Portfolio Content (Visible & Published items only)
 app.get('/api/public/portfolio', (req, res) => {

@@ -133,13 +133,13 @@ const Hero = () => {
 
           {/* Social Media Links ("Screenshot" Layout) */}
           <div className="flex items-center gap-4 mt-8 md:mt-10 lg:justify-start justify-center w-full relative z-50 pointer-events-auto">
-            <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800 relative z-50">
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="Kenenisa Beyan GitHub Profile" className="w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800 relative z-50">
               <FaGithub size={24} className="text-[#181717] dark:text-white" />
             </a>
-            <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800 relative z-50">
+            <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="Kenenisa Beyan LinkedIn Profile" className="w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800 relative z-50">
               <FaLinkedin size={24} className="text-[#0A66C2]" />
             </a>
-            <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800 relative z-50">
+            <a href={twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="Kenenisa Beyan Twitter Profile" className="w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800 relative z-50">
               <FaTwitter size={24} className="text-[#1DA1F2]" />
             </a>
           </div>

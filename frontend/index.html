@@ -14,36 +14,44 @@
   <meta name="msvalidate.01"             content="%VITE_BING_SITE_VERIFICATION%" />
 
   <!-- ─────────────────────────────
-       FAVICON SYSTEM
+       FAVICON & PWA MANIFEST SYSTEM
   ───────────────────────────── -->
   <link rel="icon"             type="image/png"  href="/og-image.png" sizes="any" />
   <link rel="apple-touch-icon"                   href="/og-image.png" />
   <link rel="shortcut icon"                      href="/og-image.png" />
+  <link rel="manifest"                           href="/manifest.json" />
 
   <!-- ─────────────────────────────
        PRIMARY BRAND SEO METADATA
        Targeting: Kenenisa Beyan, Kenenisa, Kenenisa Beyan Developer,
        Kenenisa Beyan Software Engineer, Full-Stack Software Engineer.
   ───────────────────────────── -->
-  <title>Kenenisa Beyan — Full-Stack Software Engineer</title>
+  <title>Kenenisa Beyan (Kenenisa) — Portfolio &amp; Projects by Kenenisa</title>
 
   <meta name="title"
-    content="Kenenisa Beyan — Full-Stack Software Engineer" />
+    content="Kenenisa Beyan (Kenenisa) — Portfolio &amp; Projects by Kenenisa" />
 
   <meta name="description"
-    content="Kenenisa Beyan is a Full-Stack Software Engineer building scalable, production-grade digital products and modern web platforms." />
+    content="Official Portfolio &amp; Software Projects by Kenenisa Beyan (Kenenisa) — Full-Stack Software Engineer &amp; Developer building scalable web applications and platforms." />
 
   <meta name="keywords"
-    content="Kenenisa Beyan, Kenenisa, Kenenisa Beyan developer, Kenenisa Beyan software engineer, Kenenisa software engineer, Kenenisa full stack developer, Kenenisa Beyan portfolio, Kenenisa Beyan GitHub, Kenenisa Beyan Ethiopia, EDOT Platform" />
+    content="by kenenisa, by kenenisa beyan, portfolio by kenenisa, projects by kenenisa, software by kenenisa, developed by kenenisa, engineered by kenenisa, k, ke, ken, kene, kenen, keneni, kenenis, kenenisa, kenenisabeyan, kenenisa software, kenenisa software developers, kenenisa software engineer, kenenisa developers, Kenenisa Beyan, Kenenisa developer, Kenenisa full stack, Kenenisa Ethiopia, EDOT Platform, ASTU" />
 
   <meta name="author"   content="Kenenisa Beyan" />
   <meta name="robots"   content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="language" content="English" />
+  <meta name="coverage" content="Worldwide" />
+  <meta name="distribution" content="Global" />
+  <meta name="target" content="all" />
+  <meta name="rating" content="General" />
+  <meta name="revisit-after" content="1 days" />
 
   <!-- ─────────────────────────────
-       CANONICAL URL & SITE NAME
+       CANONICAL URL & HREFLANG MULTI-REGION
   ───────────────────────────── -->
   <link rel="canonical" href="%VITE_SITE_URL%/" />
+  <link rel="alternate" hreflang="x-default" href="%VITE_SITE_URL%/" />
+  <link rel="alternate" hreflang="en" href="%VITE_SITE_URL%/" />
 
   <!-- ─────────────────────────────
        OPEN GRAPH PROTOCOL
@@ -54,10 +62,10 @@
   <meta property="og:locale"       content="en_US" />
 
   <meta property="og:title"
-    content="Kenenisa Beyan — Full-Stack Software Engineer" />
+    content="Kenenisa Beyan (Kenenisa) — Full-Stack Software Engineer &amp; Developer" />
 
   <meta property="og:description"
-    content="Kenenisa Beyan is a Full-Stack Software Engineer building scalable, production-grade digital products and modern web platforms." />
+    content="Kenenisa Beyan (Kenenisa) is a Full-Stack Software Engineer &amp; Developer building scalable, production-grade web products, RESTful APIs, and modern platforms." />
 
   <meta property="og:image"
     content="%VITE_SITE_URL%/og/kenenisa-beyan-og.png" />
@@ -77,7 +85,7 @@
   <meta name="twitter:creator" content="@kenenisa94931" />
 
   <meta name="twitter:title"
-    content="Kenenisa Beyan — Full-Stack Software Engineer" />
+    content="Kenenisa Beyan (Kenenisa) — Full-Stack Software Engineer &amp; Developer" />
 
   <meta name="twitter:description"
     content="Kenenisa Beyan is a Full-Stack Software Engineer building scalable, production-grade digital products and modern web platforms." />
@@ -96,20 +104,56 @@
 
   <!-- ─────────────────────────────
        SCHEMA.ORG STRUCTURED DATA GRAPH
-       Person + WebSite + WebPage + CreativeWorks (Software Applications)
+       Person + ProfilePage + WebSite + WebPage + Software Applications
   ───────────────────────────── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "ProfilePage",
+        "@id": "%VITE_SITE_URL%/#profilepage",
+        "url": "%VITE_SITE_URL%/",
+        "name": "Kenenisa Beyan — Official Portfolio & Engineering Profile",
+        "isPartOf": {
+          "@id": "%VITE_SITE_URL%/#website"
+        },
+        "mainEntity": {
+          "@id": "%VITE_SITE_URL%/#person"
+        }
+      },
+      {
         "@type": "Person",
         "@id": "%VITE_SITE_URL%/#person",
         "name": "Kenenisa Beyan",
+        "givenName": "Kenenisa",
+        "familyName": "Beyan",
         "alternateName": [
-          "Kenenisa",
-          "Kenenisa Beyan Developer",
-          "Kenenisa Beyan Software Engineer"
+          "by kenenisa",
+          "by kenenisa beyan",
+          "portfolio by kenenisa",
+          "projects by kenenisa",
+          "software by kenenisa",
+          "developed by kenenisa",
+          "engineered by kenenisa",
+          "k",
+          "ke",
+          "ken",
+          "kene",
+          "kenen",
+          "keneni",
+          "kenenis",
+          "kenenisa",
+          "kenenisabeyan",
+          "kenenisa software",
+          "kenenisa software developers",
+          "kenenisa software engineer",
+          "kenenisa developers",
+          "Kenenisa Beyan",
+          "Kenenisa Developer",
+          "Kenenisa Software Engineer",
+          "Keno Beyan",
+          "Kenenisa Full Stack Engineer"
         ],
         "url": "%VITE_SITE_URL%/",
         "jobTitle": "Full-Stack Software Engineer",
@@ -161,7 +205,11 @@
         "@id": "%VITE_SITE_URL%/#website",
         "url": "%VITE_SITE_URL%/",
         "name": "Kenenisa Beyan",
-        "alternateName": "Kenenisa Beyan Portfolio",
+        "alternateName": [
+          "Kenenisa",
+          "Kenenisa Beyan Portfolio",
+          "Kenenisa Beyan Developer Site"
+        ],
         "description": "Official personal portfolio of Kenenisa Beyan, Full-Stack Software Engineer.",
         "about": {
           "@id": "%VITE_SITE_URL%/#person"
@@ -196,7 +244,7 @@
         "@type": "SoftwareApplication",
         "@id": "%VITE_SITE_URL%/#project-edot",
         "name": "EDOT Platform",
-        "description": "A modular, full-stack education ecosystem engineered to deliver scalable, structured learning experiences.",
+        "description": "A modular, full-stack education ecosystem engineered by Kenenisa Beyan to deliver scalable learning experiences.",
         "applicationCategory": "EducationalApplication",
         "operatingSystem": "Web",
         "author": {
@@ -208,7 +256,7 @@
         "@type": "SoftwareApplication",
         "@id": "%VITE_SITE_URL%/#project-followflow",
         "name": "FollowFlow",
-        "description": "A premium CRM and Task Tracking Dashboard designed for client workflow orchestration.",
+        "description": "A premium CRM and Task Tracking Dashboard engineered by Kenenisa Beyan for client workflow orchestration.",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "author": {
@@ -217,28 +265,42 @@
         "url": "https://github.com/kenenisabeyan/followflow"
       },
       {
-        "@type": "SoftwareApplication",
-        "@id": "%VITE_SITE_URL%/#project-performance-evaluator",
-        "name": "Performance Evaluator",
-        "description": "A full-stack employee evaluation dashboard streamlining organizational performance assessments.",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "author": {
-          "@id": "%VITE_SITE_URL%/#person"
-        },
-        "url": "https://github.com/kenenisabeyan/Performance-Evaluator"
-      },
-      {
-        "@type": "SoftwareApplication",
-        "@id": "%VITE_SITE_URL%/#project-clientflow",
-        "name": "ClientFlow",
-        "description": "A comprehensive CRM platform for managing interactions with current and potential clients.",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "author": {
-          "@id": "%VITE_SITE_URL%/#person"
-        },
-        "url": "https://github.com/kenenisabeyan/clientflow"
+        "@type": "FAQPage",
+        "@id": "%VITE_SITE_URL%/#faqpage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who is Kenenisa Beyan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kenenisa Beyan (Kenenisa) is a Full-Stack Software Engineer, Founder of EDOT Platform, and Adama Science and Technology University (ASTU) engineering graduate specializing in building production-grade web applications, RESTful APIs, and scalable software systems."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What software engineering services does Kenenisa Beyan provide?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kenenisa Beyan provides full-stack web application development, custom software engineering, REST API architecture, database design, cloud deployment, and system performance optimization."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What tech stack does Kenenisa Beyan specialize in?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kenenisa Beyan specializes in React, Next.js, Node.js, TypeScript, Python, Django, PostgreSQL, MongoDB, Docker, Tailwind CSS, and RESTful microservice architectures."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I contact Kenenisa Beyan for projects or employment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can contact Kenenisa Beyan directly through the contact section on this portfolio (kenenisabeyan.com), via GitHub (github.com/kenenisabeyan), LinkedIn (linkedin.com/in/kenenisa), or Twitter (@kenenisa94931)."
+            }
+          }
+        ]
       }
     ]
   }
@@ -257,7 +319,29 @@
 </head>
 
 <body class="text-base leading-relaxed text-white font-sans bg-[#030610]">
-  <div id="root"></div>
+  <!-- Search Engine Static Indexing Content Container -->
+  <div id="root">
+    <article style="display:none" aria-hidden="true">
+      <h1>Kenenisa Beyan — Full-Stack Software Engineer</h1>
+      <p>Official portfolio of Kenenisa Beyan (Kenenisa), a Full-Stack Software Engineer building production-grade digital products, RESTful APIs, React systems, and web architectures.</p>
+      <section>
+        <h2>About Kenenisa Beyan</h2>
+        <p>Kenenisa Beyan is an engineering graduate from Adama Science and Technology University (ASTU), founder of EDOT Platform, and full-stack software engineer based in Ethiopia.</p>
+        <ul>
+          <li>Software Engineering & System Architecture</li>
+          <li>React, Next.js, Node.js, TypeScript, Python, PostgreSQL, MongoDB</li>
+          <li>Featured Applications: EDOT Platform, FollowFlow, ClientFlow, Performance Evaluator</li>
+        </ul>
+      </section>
+      <nav>
+        <a href="#work">Kenenisa Beyan Software Projects</a>
+        <a href="#experience">Kenenisa Beyan Engineering Experience</a>
+        <a href="#education">Kenenisa Beyan Education ASTU</a>
+        <a href="#skills">Kenenisa Beyan Technical Skills</a>
+        <a href="#contact">Contact Kenenisa Beyan</a>
+      </nav>
+    </article>
+  </div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
