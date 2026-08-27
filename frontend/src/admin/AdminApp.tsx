@@ -26,6 +26,7 @@ const AdminApp: React.FC = () => {
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<TabKey>('overview')
   const [dashboardData, setDashboardData] = useState<any>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   // Verify auth on mount
   const checkAuth = async () => {
@@ -127,6 +128,8 @@ const AdminApp: React.FC = () => {
       <AdminHeader
         userEmail={user.email}
         onlineCount={dashboardData?.metrics?.onlineVisitors || 1}
+        mobileOpen={mobileMenuOpen}
+        onToggleMobileMenu={() => setMobileMenuOpen(prev => !prev)}
         onLogout={handleLogout}
       />
 
@@ -135,9 +138,11 @@ const AdminApp: React.FC = () => {
           activeTab={activeTab}
           onSelectTab={setActiveTab}
           unreadMessagesCount={dashboardData?.metrics?.unreadMessages || 0}
+          mobileOpen={mobileMenuOpen}
+          onCloseMobile={() => setMobileMenuOpen(false)}
         />
 
-        <main className="flex-1 p-6 md:p-8 overflow-x-hidden min-h-[calc(100vh-4rem)]">
+        <main className="flex-1 p-4 sm:p-6 md:p-8 overflow-x-hidden min-h-[calc(100vh-4rem)]">
           {renderActiveTab()}
         </main>
       </div>

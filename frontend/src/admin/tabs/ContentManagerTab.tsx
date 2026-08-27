@@ -202,7 +202,7 @@ const ContentManagerTab: React.FC = () => {
           {/* Section Selector Sidebar */}
           <div className="bg-[#07101f]/80 border border-white/[0.08] rounded-3xl p-4 backdrop-blur-xl space-y-2">
             <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 px-3 py-2">Select Section</h3>
-            <div className="space-y-1 max-h-[600px] overflow-y-auto pr-1">
+            <div className="space-y-1 max-h-[220px] lg:max-h-[600px] overflow-y-auto pr-1 custom-scrollbar">
               {allSections.map((sec) => (
                 <button
                   key={sec.key}
