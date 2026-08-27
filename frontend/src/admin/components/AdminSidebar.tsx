@@ -1,5 +1,5 @@
 import React from 'react'
-import kenoImg from '../../assets/keno.jpg'
+import kenooImg from '../../assets/kenoo.png'
 import {
   FaChartPie,
   FaEye,
@@ -83,7 +83,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({
         {/* Profile Avatar Card Header */}
         <div className="p-3 rounded-2xl bg-[#040a18]/90 border border-cyan-500/30 flex items-center gap-3 shadow-[0_0_20px_rgba(6,182,212,0.15)] mb-3">
           <div className="relative w-10 h-10 rounded-full border-2 border-cyan-400 overflow-hidden shrink-0 shadow-[0_0_12px_rgba(34,211,238,0.5)]">
-            <img src={kenoImg} alt="Kenenisa Beyan" className="w-full h-full object-cover" />
+            <img src={kenooImg} alt="Kenenisa Beyan" className="w-full h-full object-cover" />
           </div>
           <div className="overflow-hidden">
             <h4 className="text-xs font-black text-white truncate">Kenenisa Beyan</h4>

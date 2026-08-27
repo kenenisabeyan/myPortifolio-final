@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FaBars, FaTimes, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { FiArrowUpRight } from 'react-icons/fi'
-import kenoImg from '../assets/keno.jpg'
+import kenooImg from '../assets/kenoo.png'
 import { usePortfolioData } from '../context/PortfolioContext'
 
 const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || 'http://localhost:5001'
@@ -17,7 +17,7 @@ const formatImageUrl = (url?: string) => {
 const Navbar = ({ isDarkMode, toggleDarkMode }: { isDarkMode?: boolean, toggleDarkMode?: () => void }) => {
   const { data } = usePortfolioData()
   const settings = data?.siteSettings || {}
-  const profilePhoto = formatImageUrl(settings.heroPhotoUrl) || kenoImg
+  const profilePhoto = kenooImg
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('Home')
@@ -151,21 +151,42 @@ const Navbar = ({ isDarkMode, toggleDarkMode }: { isDarkMode?: boolean, toggleDa
       )}
 
       {/* Mobile Menu Content */}
-      <div className={`md:hidden fixed top-0 right-0 h-screen w-64 bg-[#0B1121] border-l border-gray-800 shadow-2xl transition-transform duration-300 z-40 flex flex-col pt-24 ${
-        isOpen ? 'translate-x-0' : 'translate-x-full'
+      <div className={`md:hidden fixed top-0 left-0 h-screen w-72 bg-[#060D1F]/95 backdrop-blur-2xl border-r border-cyan-500/30 shadow-[10px_0_40px_rgba(0,0,0,0.8)] transition-transform duration-300 z-40 flex flex-col pt-6 px-6 ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
-        <ul className="flex flex-col px-8 space-y-6">
+        {/* Mobile Drawer Profile Header Background */}
+        <div className="relative flex flex-col items-center text-center pb-5 border-b border-cyan-500/20 mb-6 pt-2">
+          <button 
+            onClick={() => setIsOpen(false)}
+            aria-label="Close menu"
+            className="absolute top-0 right-0 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-cyan-500/20 transition-all"
+          >
+            <FaTimes size={15} />
+          </button>
+
+          <div className="relative w-14 h-14 rounded-full bg-[#030610] border-2 border-cyan-400 flex items-center justify-center overflow-hidden shadow-[0_0_20px_rgba(34,211,238,0.4)] mb-3">
+            <img src={profilePhoto} alt="Kenenisa Beyan" className="w-full h-full object-cover" />
+          </div>
+          <h4 className="text-base font-bold text-white tracking-wide">Kenenisa Beyan</h4>
+          <p className="text-[11px] text-cyan-400 font-mono font-bold mt-0.5">Software Engineer</p>
+        </div>
+
+        {/* Navigation items */}
+        <ul className="flex flex-col space-y-2.5 overflow-y-auto max-h-[calc(100vh-10rem)] custom-scrollbar pr-1">
           {navItems.map((item) => (
             <li key={item} className="w-full">
               <button 
                 onClick={() => scrollToSection(item)}
-                className={`w-full text-left text-lg font-medium transition-colors ${
+                className={`w-full text-left text-base font-medium transition-all py-2.5 px-4 rounded-xl flex items-center justify-between ${
                   activeSection === item 
-                    ? 'text-cyan-400 font-bold border-l-[3px] border-cyan-400 pl-3' 
-                    : 'text-gray-400 hover:text-white pl-3 border-l-[3px] border-transparent'
+                    ? 'text-cyan-400 font-bold bg-cyan-500/10 border border-cyan-500/30 shadow-[0_0_15px_rgba(34,211,238,0.15)]' 
+                    : 'text-gray-300 hover:text-white hover:bg-white/5 border border-transparent'
                 }`}
               >
-                {item}
+                <span>{item}</span>
+                {activeSection === item && (
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,1)]"></span>
+                )}
               </button>
             </li>
           ))}

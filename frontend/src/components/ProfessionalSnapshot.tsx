@@ -64,7 +64,7 @@ const ProfessionalSnapshot: React.FC = () => {
         <div className="flex flex-col items-center text-center mb-10">
           <div className="flex items-center gap-3 bg-gray-100 dark:bg-cyan-950/40 border border-gray-200 dark:border-cyan-500/20 py-2.5 px-6 rounded-full mb-4 shadow-sm dark:shadow-[0_0_25px_rgba(34,211,238,0.15)] dark:backdrop-blur-md">
             <span className="text-gray-500 dark:text-cyan-400 animate-pulse">❖</span>
-            <span className="text-xs text-gray-500 font-semibold tracking-widest uppercase dark:text-cyan-100">Recruiter Quick Summary</span>
+            <span className="text-xs font-mono text-gray-500 font-bold tracking-widest uppercase dark:text-cyan-100">Recruiter Quick Summary</span>
           </div>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight border-b-4 border-cyan-500/30 pb-3 inline-block">
             Professional <span className="text-cyan-400">Snapshot</span>
