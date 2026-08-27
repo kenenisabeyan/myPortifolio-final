@@ -71,7 +71,7 @@ const ContactMessagesTab: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             
             {/* List */}
-            <div className="lg:col-span-1 space-y-3 max-h-[600px] overflow-y-auto pr-1">
+            <div className="lg:col-span-1 space-y-3 max-h-[250px] lg:max-h-[600px] overflow-y-auto pr-1 custom-scrollbar">
               {messages.map((m) => (
                 <div
                   key={m.id}
