@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import AdminLogin from './components/AdminLogin'
 import AdminHeader from './components/AdminHeader'
 import AdminSidebar, { TabKey } from './components/AdminSidebar'
+import AdminBottomNav from './components/AdminBottomNav'
 import DashboardOverviewTab from './tabs/DashboardOverviewTab'
 import ContentManagerTab from './tabs/ContentManagerTab'
 import ProjectsTab from './tabs/ProjectsTab'
@@ -142,10 +143,16 @@ const AdminApp: React.FC = () => {
           onCloseMobile={() => setMobileMenuOpen(false)}
         />
 
-        <main className="flex-1 p-4 sm:p-6 md:p-8 overflow-x-hidden min-h-[calc(100vh-4rem)]">
+        <main className="flex-1 p-4 sm:p-6 md:p-8 pb-24 lg:pb-8 overflow-x-hidden min-h-[calc(100vh-4rem)]">
           {renderActiveTab()}
         </main>
       </div>
+
+      <AdminBottomNav
+        activeTab={activeTab}
+        onSelectTab={setActiveTab}
+        unreadMessagesCount={dashboardData?.metrics?.unreadMessages || 0}
+      />
     </div>
   )
 }
