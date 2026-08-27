@@ -201,6 +201,38 @@ const defaultSeedData = {
       emailText: 'kenenisab05@gmail.com',
       availabilityText: 'Available for Remote & On-site Engineering Roles'
     },
+    work: {
+      heading: 'Featured Deployments',
+      subtitle: 'The following projects showcase my ability to solve complex problems, build dynamic user interfaces, and deliver production-ready software efficiently using modern high-tech stacks.'
+    },
+    experience: {
+      heading: 'My Journey as a Full-Stack Software Engineer',
+      subtitle: 'Career path, engineering execution, and system development'
+    },
+    education: {
+      heading: 'Education & Academic Qualifications',
+      subtitle: 'Degree programs and fellowship training'
+    },
+    achievements: {
+      heading: 'Achievements & Recognition',
+      subtitle: 'Fellowships, hackathons, and honors'
+    },
+    'events-gallery': {
+      heading: 'Events & Recognition Gallery',
+      subheading: 'Special events, campaign invitations, official recognitions, and awards from government initiatives, tech summits, and innovation programs.'
+    },
+    'gallery-section': {
+      heading: 'Photo & Media Gallery',
+      subheading: 'A visual collection of recognized events, project showcases, tech summits, and engineering milestones.'
+    },
+    testimonials: {
+      heading: 'What People Say About Me',
+      subheading: 'Client and peer recommendations and feedback highlights.'
+    },
+    blogs: {
+      heading: 'Technical Articles & Writings',
+      subheading: 'Deep dives into full-stack software development, database design, system performance, and clean code standards.'
+    },
     '3d-planets': {
       ring1: [
         { name: 'Next.js', color: '#ffffff' },
@@ -623,7 +655,7 @@ export class Database {
       const current = this.read();
       let updated = false;
       for (const key of Object.keys(defaultSeedData)) {
-        if (!(key in current)) {
+        if (!(key in current) || current[key] === undefined || current[key] === null) {
           current[key] = defaultSeedData[key];
           updated = true;
         }
@@ -652,7 +684,13 @@ export class Database {
 
   get(collectionName) {
     const data = this.read();
-    return data[collectionName] || [];
+    if (data[collectionName] !== undefined && data[collectionName] !== null) {
+      return data[collectionName];
+    }
+    if (defaultSeedData[collectionName] !== undefined) {
+      return defaultSeedData[collectionName];
+    }
+    return [];
   }
 
   set(collectionName, value) {

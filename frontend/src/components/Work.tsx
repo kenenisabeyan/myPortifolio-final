@@ -8,6 +8,16 @@ import ProjectCaseStudyModal, { CaseStudyData } from './ProjectCaseStudyModal'
 import { usePortfolioData } from '../context/PortfolioContext'
 import { DynamicTechBadge } from '../utils/techIconResolver'
 
+const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || 'http://localhost:5001'
+
+const formatImageUrl = (url?: string) => {
+  if (!url) return ''
+  if (url.startsWith('/uploads')) {
+    return `${API_BASE}${url}`
+  }
+  return url
+}
+
 const categorizedTech = {
   Frontend: [
     { name: "Next.js", icon: <SiNextdotjs size={20} className="text-black dark:text-white" /> },
@@ -56,6 +66,8 @@ const Work = () => {
   const { data } = usePortfolioData()
   const visibility = data?.visibility || {}
   const displayProjects = data?.projects?.length ? data.projects : staticProjects
+  const workContent = data?.sectionContent?.work || {}
+  const servicesContent = data?.sectionContent?.services || {}
 
   if (visibility.work === false && visibility.services === false) return null
 
@@ -76,7 +88,7 @@ const Work = () => {
             MY EXPERTISE
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight border-b-4 border-cyan-500/30 pb-3 inline-block mb-4">
-             <span className="text-cyan-400">Technical</span> Skills
+             {servicesContent.heading || 'Technical Skills & Services'}
           </h2>
         </div>
 
@@ -151,10 +163,10 @@ const Work = () => {
               <span className="text-sm text-gray-500 font-semibold tracking-widest uppercase dark:text-cyan-100">My Work</span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight border-b-4 border-cyan-500/30 pb-3 inline-block mb-6">
-              Featured <span className="text-cyan-400">Deployments.</span>
+              {workContent.heading || 'Featured Deployments'}
             </h2>
             <p className="text-base md:text-lg font-medium leading-relaxed text-gray-750 dark:text-gray-200 max-w-2xl text-center md:text-left p-6 sm:p-8 bg-gradient-to-r from-[#030610]/95 via-[#030610]/80 to-transparent border border-white/[0.05] rounded-3xl backdrop-blur-xl shadow-2xl">
-              The following projects showcase my ability to solve complex problems, build dynamic user interfaces, and deliver production-ready software efficiently using modern high-tech stacks.
+              {workContent.subtitle || 'The following projects showcase my ability to solve complex problems, build dynamic user interfaces, and deliver production-ready software efficiently using modern high-tech stacks.'}
             </p>
           </div>
 
@@ -170,7 +182,7 @@ const Work = () => {
               {/* Image Container */}
               <div className="relative z-10 w-full h-[200px] sm:h-[240px] overflow-hidden border-b border-gray-100 dark:border-white/5 bg-gray-50 dark:bg-black/50">
                 <img
-                  src={project.image}
+                  src={formatImageUrl(project.image)}
                   alt={`${project.title} — Engineered by Kenenisa Beyan`}
                   className="w-full h-full object-cover dark:opacity-90 dark:group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-105"
                 />

@@ -72,6 +72,7 @@ const Education = () => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const { data } = usePortfolioData()
   const visibility = data?.visibility || {}
+  const eduContent = data?.sectionContent?.education || {}
 
   if (visibility.education === false) return null
 
@@ -114,7 +115,7 @@ const Education = () => {
         
         <div className="flex flex-col items-center text-center mb-20">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight border-b-4 border-cyan-500/30 pb-3 inline-block mb-6">
-            <span className="text-cyan-400">Education</span>
+            {eduContent.heading || 'Education & Academic Qualifications'}
           </h2>
         </div>
 

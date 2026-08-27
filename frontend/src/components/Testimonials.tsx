@@ -37,13 +37,31 @@ const testimonials = [
 import { usePortfolioData } from '../context/PortfolioContext'
 
 const staticTestimonials = testimonials
+const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || 'http://localhost:5001'
+
+const formatImageUrl = (url?: string) => {
+  if (!url) return ''
+  if (url.startsWith('/uploads')) {
+    return `${API_BASE}${url}`
+  }
+  return url
+}
 
 const Testimonials = () => {
   const { data } = usePortfolioData()
   const visibility = data?.visibility || {}
-  const displayTestimonials = data?.testimonials?.length ? data.testimonials : staticTestimonials
+  const rawTestimonials = data?.testimonials?.length ? data.testimonials : staticTestimonials
+
+  const displayTestimonials = rawTestimonials
+    .filter((item: any) => item.visibility !== false)
+    .sort((a: any, b: any) => (a.order || 0) - (b.order || 0))
 
   if (visibility.testimonials === false) return null
+
+  const col1 = displayTestimonials.filter((_: any, idx: number) => idx % 3 === 0)
+  const col2 = displayTestimonials.filter((_: any, idx: number) => idx % 3 === 1)
+  const col3 = displayTestimonials.filter((_: any, idx: number) => idx % 3 === 2)
+
   return (
     <section id="testimonials" className="py-16 md:py-24 px-4 md:px-10 lg:px-16 relative z-10 bg-transparent dark:border-t dark:border-white/[0.05]">
       
@@ -65,20 +83,23 @@ const Testimonials = () => {
           
           {/* Column 1 */}
           <div className="w-full flex flex-col gap-6">
-             <TestimonialCard t={testimonials[0]} />
-             <TestimonialCard t={testimonials[3]} />
+            {col1.map((t: any, idx: number) => (
+              <TestimonialCard key={t.id || `col1-${idx}`} t={t} />
+            ))}
           </div>
 
           {/* Column 2 */}
           <div className="w-full flex flex-col gap-6">
-             <TestimonialCard t={testimonials[1]} />
-             <TestimonialCard t={testimonials[4]} />
+            {col2.map((t: any, idx: number) => (
+              <TestimonialCard key={t.id || `col2-${idx}`} t={t} />
+            ))}
           </div>
 
           {/* Column 3 */}
           <div className="w-full flex flex-col gap-6">
-             <TestimonialCard t={testimonials[2]} />
-             <TestimonialCard t={testimonials[5]} />
+            {col3.map((t: any, idx: number) => (
+              <TestimonialCard key={t.id || `col3-${idx}`} t={t} />
+            ))}
           </div>
 
         </div>
@@ -88,20 +109,24 @@ const Testimonials = () => {
   )
 }
 
-function TestimonialCard({ t }) {
-  if (!t) return null;
+function TestimonialCard({ t }: { t: any }) {
+  if (!t) return null
+  const rating = typeof t.rating === 'number' ? t.rating : 5
+  const avatarUrl = formatImageUrl(t.avatar || t.photoUrl || t.photo)
+  const textContent = t.text || t.quote || t.content || ''
+
   return (
     <div className="group relative bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] p-8 rounded-[2rem] transition-all duration-300 flex flex-col h-full overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.24)] hover:shadow-[0_25px_90px_rgba(8,145,255,0.18)] cursor-default backdrop-blur-xl transform hover:-translate-y-2">
       <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl opacity-20 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none hidden dark:block" />
       <div className="relative z-10 flex text-gray-400 dark:text-cyan-400 mb-6 space-x-1">
-        {[...Array(5)].map((_, i) => (
+        {[...Array(rating)].map((_, i) => (
           <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
         ))}
       </div>
       <ExpandableText
-        text={`"${t.text}"`}
+        text={`"${textContent}"`}
         maxLength={140}
         className="relative z-10 text-gray-300 text-sm md:text-base leading-relaxed mb-6 flex-1 font-normal italic"
         moreLabel="Read more"
@@ -109,17 +134,20 @@ function TestimonialCard({ t }) {
       />
       
       <div className="relative z-10 flex items-center gap-4 mt-auto">
-        {/* Avatar Placeholder */}
         <div className="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-gradient-to-br dark:from-cyan-500 dark:to-blue-600 flex items-center justify-center text-gray-600 dark:text-white font-bold dark:font-black text-lg overflow-hidden shrink-0 dark:shadow-[0_0_15px_rgba(34,211,238,0.4)]">
-          {t.name.charAt(0)}
+          {avatarUrl ? (
+            <img src={avatarUrl} alt={t.name} className="w-full h-full object-cover" />
+          ) : (
+            t.name ? t.name.charAt(0) : '?'
+          )}
         </div>
         <div className="flex flex-col">
           <span className="font-semibold text-gray-900 dark:text-white dark:font-bold text-base dark:text-[15px] dark:tracking-wide">{t.name}</span>
-          <span className="text-gray-500 text-sm font-medium">{t.handle}</span>
+          {t.handle && <span className="text-gray-500 text-sm font-medium">{t.handle}</span>}
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default Testimonials

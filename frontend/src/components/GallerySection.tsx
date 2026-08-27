@@ -2,6 +2,16 @@ import React, { useState } from 'react'
 import { FaCamera, FaExpand, FaTimes, FaCalendarAlt, FaTag, FaLayerGroup } from 'react-icons/fa'
 import { usePortfolioData } from '../context/PortfolioContext'
 
+const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || 'http://localhost:5001'
+
+const formatImageUrl = (url?: string) => {
+  if (!url) return ''
+  if (url.startsWith('/uploads')) {
+    return `${API_BASE}${url}`
+  }
+  return url
+}
+
 const defaultPhotos = [
   {
     id: 'photo-1',
@@ -103,7 +113,7 @@ const GallerySection: React.FC = () => {
             >
               {/* Photo Background */}
               <img 
-                src={item.photoUrl || '/src/assets/home-page.png'} 
+                src={formatImageUrl(item.photoUrl) || '/src/assets/home-page.png'} 
                 alt={item.title} 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -166,7 +176,7 @@ const GallerySection: React.FC = () => {
             {/* High-res Photo Preview */}
             <div className="rounded-2xl overflow-hidden border border-white/10 max-h-[450px]">
               <img 
-                src={activeLightbox.photoUrl} 
+                src={formatImageUrl(activeLightbox.photoUrl)} 
                 alt={activeLightbox.title} 
                 className="w-full h-full object-contain bg-black/60"
               />

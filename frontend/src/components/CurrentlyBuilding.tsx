@@ -9,6 +9,23 @@ const CurrentlyBuilding: React.FC = () => {
 
   if (visibility['currently-building'] === false) return null
 
+  const buildingContent = data?.sectionContent?.['currently-building'] || {}
+
+  const activeBuilding = buildingContent.building?.length ? buildingContent.building : [
+    { title: 'EDOT', desc: 'Modular education technology platform for digital learning workflows.' },
+    { title: 'Production Applications', desc: 'Full-stack web applications with authentication, RBAC, and analytics.' },
+    { title: 'Business Platforms', desc: 'Real-world evaluation dashboards & CRM task tracking systems.' }
+  ]
+
+  const learningAreas = buildingContent.learning?.length ? buildingContent.learning : [
+    'System Design',
+    'Software Architecture',
+    'Backend Engineering',
+    'DevOps',
+    'Technical Communication',
+    'Professional English'
+  ]
+
   return (
     <section id="currently-building" className="py-16 md:py-24 px-4 md:px-10 lg:px-16 relative z-10 bg-transparent dark:border-t dark:border-white/[0.05]">
       <div className="max-w-[1700px] mx-auto flex flex-col relative z-10">
@@ -19,7 +36,7 @@ const CurrentlyBuilding: React.FC = () => {
             <span className="text-xs text-gray-500 font-semibold tracking-widest uppercase dark:text-cyan-100">Continuous Growth</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight border-b-4 border-cyan-500/30 pb-3 inline-block mb-4">
-            Currently Building <span className="text-cyan-400">& Learning</span>
+            {buildingContent.heading || 'Currently Building & Learning'}
           </h2>
         </div>
 
@@ -34,18 +51,12 @@ const CurrentlyBuilding: React.FC = () => {
               <h3 className="text-xl font-bold text-white">Active Product Building</h3>
             </div>
             <ul className="space-y-4">
-              <li className="p-4 rounded-xl bg-white/5 border border-white/10">
-                <span className="font-bold text-cyan-300 block mb-1">EDOT</span>
-                <p className="text-xs text-gray-300 leading-relaxed">Modular education technology platform for digital learning workflows.</p>
-              </li>
-              <li className="p-4 rounded-xl bg-white/5 border border-white/10">
-                <span className="font-bold text-cyan-300 block mb-1">Production Applications</span>
-                <p className="text-xs text-gray-300 leading-relaxed">Full-stack web applications with authentication, RBAC, and analytics.</p>
-              </li>
-              <li className="p-4 rounded-xl bg-white/5 border border-white/10">
-                <span className="font-bold text-cyan-300 block mb-1">Business Platforms</span>
-                <p className="text-xs text-gray-300 leading-relaxed">Real-world evaluation dashboards & CRM task tracking systems.</p>
-              </li>
+              {activeBuilding.map((item: any, idx: number) => (
+                <li key={idx} className="p-4 rounded-xl bg-white/5 border border-white/10">
+                  <span className="font-bold text-cyan-300 block mb-1">{item.title}</span>
+                  <p className="text-xs text-gray-300 leading-relaxed">{item.desc}</p>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -75,10 +86,10 @@ const CurrentlyBuilding: React.FC = () => {
               <h3 className="text-xl font-bold text-white">Focus Areas for Mastery</h3>
             </div>
             <ul className="space-y-3">
-              {['System Design', 'Software Architecture', 'Backend Engineering', 'DevOps', 'Technical Communication', 'Professional English'].map((area, idx) => (
+              {learningAreas.map((area: string, idx: number) => (
                 <li key={idx} className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 text-sm font-medium text-gray-200">
                   <span className="w-2 h-2 rounded-full bg-indigo-400 shrink-0" />
-                  <span>{area}</span>
+                  <span>{typeof area === 'string' ? area : (area as any).title || String(area)}</span>
                 </li>
               ))}
             </ul>

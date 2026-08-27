@@ -115,55 +115,115 @@ const TestimonialsTab: React.FC = () => {
       )}
 
       {modalOpen && editing && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
-          <div className="bg-[#07101f] border border-white/10 border-t-[6px] border-t-cyan-500 rounded-3xl max-w-lg w-full p-6 space-y-4">
-            <div className="flex justify-between items-center border-b border-white/10 pb-3">
-              <h2 className="text-base font-bold text-white">{editing.id ? 'Edit Testimonial' : 'Add Testimonial'}</h2>
-              <button onClick={() => setModalOpen(false)} className="text-gray-400"><FaTimes /></button>
-            </div>
-            <form onSubmit={handleSave} className="space-y-3">
-              <div>
-                <label className="block text-xs uppercase font-semibold text-gray-300 mb-1">Client Name</label>
-                <input type="text" required value={editing.name || ''} onChange={e => setEditing({ ...editing, name: e.target.value })} className="w-full bg-black/50 border border-white/10 rounded-xl p-2.5 text-xs text-white" />
-              </div>
-              <div>
-                <label className="block text-xs uppercase font-semibold text-gray-300 mb-1">Handle / Role</label>
-                <input type="text" value={editing.handle || ''} onChange={e => setEditing({ ...editing, handle: e.target.value })} className="w-full bg-black/50 border border-white/10 rounded-xl p-2.5 text-xs text-white" />
-              </div>
-              <div>
-                <label className="block text-xs uppercase font-semibold text-gray-300 mb-1">Avatar / Photo URL</label>
-                <div className="flex gap-2">
-                  <input type="text" value={editing.avatar || ''} onChange={e => setEditing({ ...editing, avatar: e.target.value })} placeholder="https://... or /uploads/..." className="flex-1 bg-black/50 border border-white/10 rounded-xl p-2.5 text-xs text-white" />
-                  <label className="px-3 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold hover:bg-cyan-500/20 cursor-pointer flex items-center shrink-0">
-                    Upload
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={async (e) => {
-                        const file = e.target.files?.[0]
-                        if (file) {
-                          const formData = new FormData()
-                          formData.append('file', file)
-                          try {
-                            const res = await adminApi.uploadMedia(formData)
-                            if (res.data?.url) setEditing({ ...editing, avatar: res.data.url })
-                          } catch (err) { alert('Upload failed') }
-                        }
-                      }}
-                    />
-                  </label>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-xl p-4 sm:p-6 overflow-y-auto animate-fade-in">
+          <div className="relative w-full max-w-2xl bg-[#091326]/95 border border-cyan-500/30 rounded-[2.5rem] shadow-[0_0_80px_rgba(6,182,212,0.2),0_30px_90px_rgba(0,0,0,0.9)] backdrop-blur-2xl overflow-hidden my-auto border-t-0">
+            
+            {/* Top Accent Glowing Bar */}
+            <div className="h-1.5 w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 shadow-[0_0_20px_rgba(34,211,238,0.8)]" />
+
+            <div className="p-6 sm:p-8 space-y-5 max-h-[85vh] overflow-y-auto">
+              <div className="flex justify-between items-start border-b border-cyan-500/15 pb-4">
+                <div>
+                  <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[11px] font-extrabold uppercase tracking-wider mb-2">
+                    💬 {editing.id ? 'UPDATE TESTIMONIAL' : 'ADD TESTIMONIAL'}
+                  </span>
+                  <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+                    {editing.id ? 'Edit Testimonial' : 'Add Client Testimonial'}
+                  </h2>
                 </div>
+                <button
+                  onClick={() => setModalOpen(false)}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/20 text-gray-400 hover:text-white transition-all flex items-center justify-center shrink-0"
+                >
+                  <FaTimes size={16} />
+                </button>
               </div>
-              <div>
-                <label className="block text-xs uppercase font-semibold text-gray-300 mb-1">Feedback Quote</label>
-                <textarea rows={4} required value={editing.text || ''} onChange={e => setEditing({ ...editing, text: e.target.value })} className="w-full bg-black/50 border border-white/10 rounded-xl p-2.5 text-xs text-white" />
-              </div>
-              <div className="flex justify-end gap-3 pt-3">
-                <button type="button" onClick={() => setModalOpen(false)} className="px-4 py-2 text-xs text-gray-300">Cancel</button>
-                <button type="submit" className="px-5 py-2 rounded-xl bg-cyan-500 text-black font-bold text-xs">Save</button>
-              </div>
-            </form>
+
+              <form onSubmit={handleSave} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-cyan-200/90 mb-2">Client Name</label>
+                  <input
+                    type="text"
+                    required
+                    value={editing.name || ''}
+                    onChange={e => setEditing({ ...editing, name: e.target.value })}
+                    placeholder="e.g. Sarah Jenkins"
+                    className="w-full bg-[#040914]/90 border border-cyan-500/25 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 text-sm text-gray-100 placeholder-gray-500 rounded-2xl px-4 py-3 shadow-inner transition-all outline-none font-medium"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-cyan-200/90 mb-2">Handle / Role / Title</label>
+                  <input
+                    type="text"
+                    value={editing.handle || ''}
+                    onChange={e => setEditing({ ...editing, handle: e.target.value })}
+                    placeholder="e.g. CTO @ TechCorp"
+                    className="w-full bg-[#040914]/90 border border-cyan-500/25 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 text-sm text-gray-100 placeholder-gray-500 rounded-2xl px-4 py-3 shadow-inner transition-all outline-none font-medium"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-cyan-200/90 mb-2">Avatar / Photo URL</label>
+                  <div className="flex gap-3">
+                    <input
+                      type="text"
+                      value={editing.avatar || ''}
+                      onChange={e => setEditing({ ...editing, avatar: e.target.value })}
+                      placeholder="https://... or /uploads/..."
+                      className="flex-1 bg-[#040914]/90 border border-cyan-500/25 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 text-sm text-gray-100 placeholder-gray-500 rounded-2xl px-4 py-3 shadow-inner transition-all outline-none font-medium"
+                    />
+                    <label className="px-5 py-3 rounded-2xl bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/25 hover:border-cyan-400 text-xs font-bold transition-all shadow-[0_0_20px_rgba(34,211,238,0.2)] flex items-center gap-2 cursor-pointer shrink-0">
+                      Upload
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0]
+                          if (file) {
+                            const formData = new FormData()
+                            formData.append('file', file)
+                            try {
+                              const res = await adminApi.uploadMedia(formData)
+                              if (res.data?.url) setEditing({ ...editing, avatar: res.data.url })
+                            } catch (err) { alert('Upload failed') }
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-cyan-200/90 mb-2">Feedback Quote</label>
+                  <textarea
+                    rows={4}
+                    required
+                    value={editing.text || ''}
+                    onChange={e => setEditing({ ...editing, text: e.target.value })}
+                    placeholder="Enter testimonial text..."
+                    className="w-full bg-[#040914]/90 border border-cyan-500/25 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 text-sm text-gray-100 placeholder-gray-500 rounded-2xl p-4 shadow-inner transition-all outline-none font-medium leading-relaxed"
+                  />
+                </div>
+
+                <div className="flex justify-end gap-4 border-t border-cyan-500/15 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setModalOpen(false)}
+                    className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 text-xs font-bold text-gray-300 hover:text-white transition-all"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black font-extrabold text-xs uppercase tracking-widest shadow-[0_0_30px_rgba(34,211,238,0.4)] hover:shadow-[0_0_40px_rgba(34,211,238,0.6)] transform hover:-translate-y-0.5 transition-all duration-200"
+                  >
+                    Save Testimonial
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       )}

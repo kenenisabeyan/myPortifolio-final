@@ -111,6 +111,7 @@ const Experience = () => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const { data } = usePortfolioData()
   const visibility = data?.visibility || {}
+  const expContent = data?.sectionContent?.experience || {}
   const displayExperiences = data?.experiences?.length ? data.experiences : experiencesData
 
   if (visibility.experience === false) return null
@@ -144,12 +145,8 @@ const Experience = () => {
       <div className="max-w-[1700px] mx-auto flex flex-col items-center relative z-10">
         
         <div className="flex flex-col items-center text-center mb-16">
-          {/* <div className="flex items-center gap-3 bg-white dark:bg-blue-900/20 border border-gray-200 dark:border-blue-500/30 py-2.5 px-6 rounded-full mb-6 max-w-max shadow-sm dark:shadow-[0_0_20px_rgba(59,130,246,0.15)] dark:backdrop-blur-md">
-            <span className="text-gray-500 dark:text-cyan-400 animate-pulse"></span>
-            <span className="text-sm text-gray-500 font-semibold tracking-widest uppercase dark:text-cyan-50"></span>
-          </div> */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight border-b-4 border-cyan-500/30 pb-3 inline-block mb-6">
-            My Journey as a <span className="text-cyan-400">Full-Stack Software Engineer</span>
+            {expContent.heading || 'My Journey as a Full-Stack Software Engineer'}
           </h2>
         </div>
 

@@ -261,23 +261,23 @@ const ContentManagerTab: React.FC = () => {
 
               {Object.entries(editingContent || {}).map(([key, val]) => {
                 if (typeof val === 'string') {
-                  const isLongText = val.length > 60 || key.toLowerCase().includes('desc') || key.toLowerCase().includes('paragraph') || key.toLowerCase().includes('quote')
+                  const isLongText = val.length > 60 || key.toLowerCase().includes('desc') || key.toLowerCase().includes('paragraph') || key.toLowerCase().includes('quote') || key.toLowerCase().includes('subtitle') || key.toLowerCase().includes('subheading')
                   return (
-                    <div key={key} className="space-y-1.5">
-                      <label className="text-xs font-bold text-cyan-300 capitalize">{key.replace(/([A-Z])/g, ' $1')}</label>
+                    <div key={key} className="space-y-2 bg-[#040a18]/60 border border-cyan-500/20 rounded-2xl p-4">
+                      <label className="text-xs font-bold text-cyan-200 uppercase tracking-wider block">{key.replace(/([A-Z])/g, ' $1')}</label>
                       {isLongText ? (
                         <textarea
                           rows={3}
                           value={val}
                           onChange={(e) => updateNestedField(key, e.target.value)}
-                          className="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-cyan-400 focus:outline-none"
+                          className="w-full bg-[#040914]/90 border border-cyan-500/25 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 text-sm text-gray-100 placeholder-gray-500 rounded-xl p-3.5 shadow-inner transition-all outline-none font-medium leading-relaxed"
                         />
                       ) : (
                         <input
                           type="text"
                           value={val}
                           onChange={(e) => updateNestedField(key, e.target.value)}
-                          className="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-cyan-400 focus:outline-none"
+                          className="w-full bg-[#040914]/90 border border-cyan-500/25 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 text-sm text-gray-100 placeholder-gray-500 rounded-xl px-4 py-3 shadow-inner transition-all outline-none font-medium"
                         />
                       )}
                     </div>
@@ -286,53 +286,43 @@ const ContentManagerTab: React.FC = () => {
 
                 if (Array.isArray(val)) {
                   return (
-                    <div key={key} className="space-y-3 pt-2">
-                      <label className="text-xs font-bold text-cyan-300 capitalize block border-b border-white/10 pb-1">
-                        {key.replace(/([A-Z])/g, ' $1')} (List Items: {val.length})
+                    <div key={key} className="p-4 rounded-2xl bg-[#040a18]/60 border border-cyan-500/20 space-y-3">
+                      <label className="text-xs font-bold text-cyan-200 uppercase tracking-wider block">
+                        {key.replace(/([A-Z])/g, ' $1')} ({val.length} items)
                       </label>
-                      <div className="space-y-3">
-                        {val.map((item, itemIdx) => (
-                          <div key={itemIdx} className="p-4 rounded-xl bg-black/30 border border-white/10 space-y-2">
+                      <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1">
+                        {val.map((item: any, idx: number) => (
+                          <div key={idx} className="p-3 bg-[#040914]/90 border border-white/10 rounded-xl text-xs space-y-2">
+                            <span className="text-[10px] font-bold text-cyan-400 uppercase">Item #{idx + 1}</span>
                             {typeof item === 'string' ? (
                               <input
                                 type="text"
                                 value={item}
                                 onChange={(e) => {
-                                  const updatedArr = [...val]
-                                  updatedArr[itemIdx] = e.target.value
-                                  updateNestedField(key, updatedArr)
+                                  const newArr = [...val]
+                                  newArr[idx] = e.target.value
+                                  updateNestedField(key, newArr)
                                 }}
-                                className="w-full bg-black/40 border border-white/10 rounded-lg p-2.5 text-xs text-white focus:border-cyan-400 focus:outline-none"
+                                className="w-full bg-[#030610] border border-cyan-500/30 rounded-lg p-2 text-xs text-white"
                               />
                             ) : typeof item === 'object' && item !== null ? (
-                              Object.entries(item).map(([subKey, subVal]) => (
-                                <div key={subKey} className="space-y-1">
-                                  <span className="text-[10px] font-semibold text-gray-400 uppercase">{subKey}</span>
-                                  {typeof subVal === 'string' && subVal.length > 50 ? (
-                                    <textarea
-                                      rows={2}
-                                      value={subVal as string}
-                                      onChange={(e) => {
-                                        const updatedArr = [...val]
-                                        updatedArr[itemIdx] = { ...updatedArr[itemIdx], [subKey]: e.target.value }
-                                        updateNestedField(key, updatedArr)
-                                      }}
-                                      className="w-full bg-black/40 border border-white/10 rounded-lg p-2 text-xs text-white focus:border-cyan-400 focus:outline-none"
-                                    />
-                                  ) : (
+                              <div className="space-y-2">
+                                {Object.entries(item).map(([subKey, subVal]) => (
+                                  <div key={subKey} className="space-y-1">
+                                    <label className="text-[10px] text-gray-400 uppercase font-semibold">{subKey}</label>
                                     <input
                                       type="text"
-                                      value={subVal as string}
+                                      value={String(subVal || '')}
                                       onChange={(e) => {
-                                        const updatedArr = [...val]
-                                        updatedArr[itemIdx] = { ...updatedArr[itemIdx], [subKey]: e.target.value }
-                                        updateNestedField(key, updatedArr)
+                                        const newArr = [...val]
+                                        newArr[idx] = { ...newArr[idx], [subKey]: e.target.value }
+                                        updateNestedField(key, newArr)
                                       }}
-                                      className="w-full bg-black/40 border border-white/10 rounded-lg p-2 text-xs text-white focus:border-cyan-400 focus:outline-none"
+                                      className="w-full bg-[#030610] border border-cyan-500/30 rounded-lg p-2 text-xs text-white"
                                     />
-                                  )}
-                                </div>
-                              ))
+                                  </div>
+                                ))}
+                              </div>
                             ) : null}
                           </div>
                         ))}

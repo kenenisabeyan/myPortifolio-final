@@ -4,6 +4,16 @@ import Background3D from './Background3D'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { usePortfolioData } from '../context/PortfolioContext'
 
+const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || 'http://localhost:5001'
+
+const formatImageUrl = (url?: string) => {
+  if (!url) return ''
+  if (url.startsWith('/uploads')) {
+    return `${API_BASE}${url}`
+  }
+  return url
+}
+
 const Hero = () => {
   const { data } = usePortfolioData()
   const settings = data?.siteSettings || {}
@@ -12,7 +22,7 @@ const Hero = () => {
 
   if (visibility.hero === false) return null
 
-  const heroPhoto = settings.heroPhotoUrl || kenoImg
+  const heroPhoto = formatImageUrl(settings.heroPhotoUrl) || kenoImg
   const githubUrl = settings.githubUrl || 'https://github.com/kenenisabeyan'
   const linkedinUrl = settings.linkedinUrl || 'https://www.linkedin.com/in/kenenisa/'
   const twitterUrl = settings.twitterUrl || 'https://twitter.com/kenenisa94931'
@@ -21,6 +31,8 @@ const Hero = () => {
   const heroTitleLine1 = heroContent.titleLine1 || 'Engineering Scalable'
   const heroTitleLine2 = heroContent.titleLine2 || 'Digital Products'
   const heroSubtitle = heroContent.subtitle || 'Full-Stack Software Engineer focused on architecting scalable, production-grade web platforms with performance, reliability, and user experience at the core.'
+  const ctaPrimary = heroContent.ctaPrimaryText || 'See My Work'
+  const ctaSecondary = heroContent.ctaSecondaryText || 'Download Resume'
 
   const scrollToWork = () => {
     document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })
@@ -73,7 +85,7 @@ const Hero = () => {
                 {/* Shine Sweep Effect */}
                 <div className="absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shimmer_1.5s_infinite]"></div>
                 
-                <span className="relative z-10 transition-colors">See My Work</span>
+                <span className="relative z-10 transition-colors">{ctaPrimary}</span>
                 <div className="w-8 h-8 rounded-full border border-current flex items-center justify-center bg-cyan-500/10 group-hover:bg-black/10 transition-colors relative z-10">
                   <svg 
                     className="w-4 h-4 transform group-hover:rotate-45 transition-transform duration-300" 
@@ -102,7 +114,7 @@ const Hero = () => {
                 {/* Shine Sweep Effect */}
                 <div className="absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shimmer_1.5s_infinite]"></div>
                 
-                <span className="relative z-10 transition-colors">Download Resume</span>
+                <span className="relative z-10 transition-colors">{ctaSecondary}</span>
                 <div className="w-8 h-8 flex items-center justify-center transition-colors relative z-10 group-hover:translate-y-1">
                   <svg 
                     className="w-5 h-5 transition-transform duration-300" 
@@ -121,13 +133,13 @@ const Hero = () => {
 
           {/* Social Media Links ("Screenshot" Layout) */}
           <div className="flex items-center gap-4 mt-8 md:mt-10 lg:justify-start justify-center w-full relative z-50 pointer-events-auto">
-            <a href="https://github.com/kenenisabeyan" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800 relative z-50">
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800 relative z-50">
               <FaGithub size={24} className="text-[#181717] dark:text-white" />
             </a>
-            <a href="https://www.linkedin.com/in/kenenisa/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BIRSH8H%2FpRiWfMypD2meSJA%3D%3D" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800 relative z-50">
+            <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800 relative z-50">
               <FaLinkedin size={24} className="text-[#0A66C2]" />
             </a>
-            <a href="https://twitter.com/kenenisa94931" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800 relative z-50">
+            <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white dark:bg-[#1a1f2e] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-sm dark:shadow-md border border-gray-100 dark:border-gray-800 relative z-50">
               <FaTwitter size={24} className="text-[#1DA1F2]" />
             </a>
           </div>

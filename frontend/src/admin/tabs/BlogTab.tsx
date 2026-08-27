@@ -122,43 +122,106 @@ const BlogTab: React.FC = () => {
       )}
 
       {modalOpen && editing && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
-          <div className="bg-[#07101f] border border-white/10 border-t-[6px] border-t-cyan-500 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 space-y-4">
-            <div className="flex justify-between items-center border-b border-white/10 pb-3">
-              <h2 className="text-base font-bold text-white">{editing.id ? 'Edit Article' : 'Create Article'}</h2>
-              <button onClick={() => setModalOpen(false)} className="text-gray-400"><FaTimes /></button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-xl p-4 sm:p-6 overflow-y-auto animate-fade-in">
+          <div className="relative w-full max-w-3xl bg-[#091326]/95 border border-cyan-500/30 rounded-[2.5rem] shadow-[0_0_80px_rgba(6,182,212,0.2),0_30px_90px_rgba(0,0,0,0.9)] backdrop-blur-2xl overflow-hidden my-auto border-t-0">
+            
+            {/* Top Accent Glowing Bar */}
+            <div className="h-1.5 w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 shadow-[0_0_20px_rgba(34,211,238,0.8)]" />
+
+            <div className="p-6 sm:p-10 space-y-6 max-h-[85vh] overflow-y-auto">
+              <div className="flex justify-between items-start border-b border-cyan-500/15 pb-5">
+                <div>
+                  <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[11px] font-extrabold uppercase tracking-wider mb-2">
+                    ✍️ {editing.id ? 'UPDATE ARTICLE' : 'CREATE ARTICLE'}
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                    {editing.id ? 'Edit Article Details' : 'Write New Article'}
+                  </h2>
+                </div>
+                <button
+                  onClick={() => setModalOpen(false)}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/20 text-gray-400 hover:text-white transition-all flex items-center justify-center shrink-0"
+                >
+                  <FaTimes size={16} />
+                </button>
+              </div>
+
+              <form onSubmit={handleSave} className="space-y-5">
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-cyan-200/90 mb-2">Article Title</label>
+                  <input
+                    type="text"
+                    required
+                    value={editing.title || ''}
+                    onChange={e => setEditing({ ...editing, title: e.target.value })}
+                    placeholder="e.g. Architecting Scalable Software Systems"
+                    className="w-full bg-[#040914]/90 border border-cyan-500/25 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 text-sm text-gray-100 placeholder-gray-500 rounded-2xl px-4 py-3 shadow-inner transition-all outline-none font-medium"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-cyan-200/90 mb-2">Slug</label>
+                    <input
+                      type="text"
+                      value={editing.slug || ''}
+                      onChange={e => setEditing({ ...editing, slug: e.target.value })}
+                      placeholder="architecting-scalable-systems"
+                      className="w-full bg-[#040914]/90 border border-cyan-500/25 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 text-sm text-gray-100 placeholder-gray-500 rounded-2xl px-4 py-3 shadow-inner transition-all outline-none font-medium"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-cyan-200/90 mb-2">Status</label>
+                    <select
+                      value={editing.status || 'draft'}
+                      onChange={e => setEditing({ ...editing, status: e.target.value as any })}
+                      className="w-full bg-[#040914]/90 border border-cyan-500/25 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 text-sm text-gray-100 rounded-2xl px-4 py-3 shadow-inner transition-all outline-none font-medium"
+                    >
+                      <option value="draft" className="bg-[#091326] text-white">Draft</option>
+                      <option value="published" className="bg-[#091326] text-white">Published</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-cyan-200/90 mb-2">Short Excerpt</label>
+                  <textarea
+                    rows={2}
+                    value={editing.excerpt || ''}
+                    onChange={e => setEditing({ ...editing, excerpt: e.target.value })}
+                    placeholder="Enter short article summary..."
+                    className="w-full bg-[#040914]/90 border border-cyan-500/25 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 text-sm text-gray-100 placeholder-gray-500 rounded-2xl p-4 shadow-inner transition-all outline-none font-medium leading-relaxed"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-cyan-200/90 mb-2">Markdown / Article Content</label>
+                  <textarea
+                    rows={8}
+                    value={editing.content || ''}
+                    onChange={e => setEditing({ ...editing, content: e.target.value })}
+                    placeholder="Write article content here..."
+                    className="w-full bg-[#040914]/90 border border-cyan-500/25 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 text-sm text-gray-100 placeholder-gray-500 rounded-2xl p-4 shadow-inner transition-all outline-none font-mono leading-relaxed"
+                  />
+                </div>
+
+                <div className="flex justify-end gap-4 border-t border-cyan-500/15 pt-5">
+                  <button
+                    type="button"
+                    onClick={() => setModalOpen(false)}
+                    className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 text-xs font-bold text-gray-300 hover:text-white transition-all"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black font-extrabold text-xs uppercase tracking-widest shadow-[0_0_30px_rgba(34,211,238,0.4)] hover:shadow-[0_0_40px_rgba(34,211,238,0.6)] transform hover:-translate-y-0.5 transition-all duration-200"
+                  >
+                    Save Article
+                  </button>
+                </div>
+              </form>
             </div>
-            <form onSubmit={handleSave} className="space-y-4">
-              <div>
-                <label className="block text-xs uppercase font-semibold text-gray-300 mb-1">Article Title</label>
-                <input type="text" required value={editing.title || ''} onChange={e => setEditing({ ...editing, title: e.target.value })} className="w-full bg-black/50 border border-white/10 rounded-xl p-2.5 text-xs text-white" />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs uppercase font-semibold text-gray-300 mb-1">Slug</label>
-                  <input type="text" value={editing.slug || ''} onChange={e => setEditing({ ...editing, slug: e.target.value })} placeholder="architecting-scalable-systems" className="w-full bg-black/50 border border-white/10 rounded-xl p-2.5 text-xs text-white" />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase font-semibold text-gray-300 mb-1">Status</label>
-                  <select value={editing.status || 'draft'} onChange={e => setEditing({ ...editing, status: e.target.value as any })} className="w-full bg-black/50 border border-white/10 rounded-xl p-2.5 text-xs text-white">
-                    <option value="draft">Draft</option>
-                    <option value="published">Published</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <label className="block text-xs uppercase font-semibold text-gray-300 mb-1">Short Excerpt</label>
-                <textarea rows={2} value={editing.excerpt || ''} onChange={e => setEditing({ ...editing, excerpt: e.target.value })} className="w-full bg-black/50 border border-white/10 rounded-xl p-2.5 text-xs text-white" />
-              </div>
-              <div>
-                <label className="block text-xs uppercase font-semibold text-gray-300 mb-1">Markdown Content</label>
-                <textarea rows={8} value={editing.content || ''} onChange={e => setEditing({ ...editing, content: e.target.value })} className="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-xs text-white font-mono" />
-              </div>
-              <div className="flex justify-end gap-3 pt-3 border-t border-white/10">
-                <button type="button" onClick={() => setModalOpen(false)} className="px-4 py-2 text-xs text-gray-300">Cancel</button>
-                <button type="submit" className="px-6 py-2.5 rounded-xl bg-cyan-500 text-black font-bold text-xs">Save Article</button>
-              </div>
-            </form>
           </div>
         </div>
       )}

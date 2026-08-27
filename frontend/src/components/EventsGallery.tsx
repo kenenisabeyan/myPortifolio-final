@@ -2,6 +2,16 @@ import React, { useState } from 'react'
 import { FaAward, FaCalendarAlt, FaBullhorn, FaTimes, FaExpand, FaBuilding } from 'react-icons/fa'
 import { usePortfolioData } from '../context/PortfolioContext'
 
+const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || 'http://localhost:5001'
+
+const formatImageUrl = (url?: string) => {
+  if (!url) return ''
+  if (url.startsWith('/uploads')) {
+    return `${API_BASE}${url}`
+  }
+  return url
+}
+
 const defaultEvents = [
   {
     id: 'event-1',
@@ -66,7 +76,7 @@ const EventsGallery: React.FC = () => {
                 onClick={() => setActiveModalEvent(item)}
               >
                 <img 
-                  src={item.photoUrl || '/src/assets/home-page.png'} 
+                  src={formatImageUrl(item.photoUrl) || '/src/assets/home-page.png'} 
                   alt={item.title} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -154,7 +164,7 @@ const EventsGallery: React.FC = () => {
             {activeModalEvent.photoUrl && (
               <div className="rounded-2xl overflow-hidden border border-white/10 max-h-[350px]">
                 <img 
-                  src={activeModalEvent.photoUrl} 
+                  src={formatImageUrl(activeModalEvent.photoUrl)} 
                   alt={activeModalEvent.title} 
                   className="w-full h-full object-cover"
                 />
