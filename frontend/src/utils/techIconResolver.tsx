@@ -42,7 +42,7 @@ import {
   SiMysql,
   SiSqlite
 } from 'react-icons/si'
-import { FaJava, FaServer, FaDatabase, FaCode, FaTerminal, FaCpu, FaLayerGroup } from 'react-icons/fa'
+import { FaJava, FaServer, FaDatabase, FaCode, FaTerminal, FaLayerGroup } from 'react-icons/fa'
 
 export interface TechMetaData {
   name: string

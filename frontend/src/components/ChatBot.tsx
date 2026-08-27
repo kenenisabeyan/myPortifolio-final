@@ -36,6 +36,16 @@ const ChatBot = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
   const chatbotRef = useRef<HTMLDivElement | null>(null)
 
+  const generateId = () => Math.random().toString(36).substring(2, 9)
+
+  const getConversationHistory = () => messages.map((m) => ({ role: m.role, content: m.text }))
+
+  const copyToClipboard = (text: string, id: string) => {
+    navigator.clipboard.writeText(text)
+    setCopiedId(id)
+    setTimeout(() => setCopiedId(null), 2000)
+  }
+
   const generateSmartAnswer = (query: string): string => {
     const q = query.toLowerCase()
     
@@ -72,7 +82,8 @@ const ChatBot = () => {
     if (!trimmed || loading) return
 
     const userMsgId = generateId()
-    const nextMessages = [...messages, { role: 'user', text: trimmed, id: userMsgId }]
+    const userMsg: ChatMessage = { role: 'user', text: trimmed, id: userMsgId }
+    const nextMessages: ChatMessage[] = [...messages, userMsg]
     setMessages(nextMessages)
     setInput('')
     setLoading(true)

@@ -127,4 +127,10 @@ export const adminApi = {
   updateSingleSectionContent: (sectionKey: string, data: any) => apiFetch(`/api/admin/section-content/${sectionKey}`, { method: 'PUT', body: JSON.stringify(data) }),
 
   getAuditLogs: () => apiFetch('/api/admin/audit-logs'),
+
+  // Custom Endpoint Helpers
+  getCustomEndpoint: (endpoint: string) => apiFetch(`/api/admin/${endpoint}`),
+  createCustomEndpointItem: (endpoint: string, data: any) => apiFetch(`/api/admin/${endpoint}`, { method: 'POST', body: JSON.stringify(data) }),
+  updateCustomEndpointItem: (endpoint: string, id: string, data: any) => apiFetch(`/api/admin/${endpoint}/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+  deleteCustomEndpointItem: (endpoint: string, id: string) => apiFetch(`/api/admin/${endpoint}/${id}`, { method: 'DELETE' }),
 };

@@ -29,8 +29,8 @@ const Particles = () => {
   return (
     <points ref={mesh}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" count={positions.length / 3} array={positions} itemSize={3} />
-        <bufferAttribute attach="attributes-scale" count={scale.length} array={scale} itemSize={1} />
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        <bufferAttribute attach="attributes-scale" args={[scale, 1]} />
       </bufferGeometry>
       <pointsMaterial size={0.03} color="#22d3ee" transparent opacity={0.6} sizeAttenuation depthWrite={false} blending={THREE.AdditiveBlending} />
     </points>

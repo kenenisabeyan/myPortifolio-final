@@ -10,6 +10,7 @@ interface TestimonialItem {
   rating: number
   visibility: boolean
   order: number
+  avatar?: string
 }
 
 const TestimonialsTab: React.FC = () => {

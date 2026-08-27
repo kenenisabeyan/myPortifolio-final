@@ -89,6 +89,8 @@ export async function fetchPublicPortfolioData(): Promise<PortfolioDataResponse>
     testimonials: staticData.testimonials,
     blogs: [],
     news: [],
+    eventsGallery: [],
+    galleryPhotos: [],
     siteSettings: {},
   };
 }
