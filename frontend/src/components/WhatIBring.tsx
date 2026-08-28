@@ -70,22 +70,43 @@ const WhatIBring: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayBringItems.map((item: any, idx: number) => (
-            <div 
-              key={idx}
-              className={`group relative bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] ${item.borderColor} border-l-[6px] border-t-[6px] rounded-[2rem] p-8 overflow-hidden transform hover:-translate-y-2 hover:shadow-[0_25px_90px_rgba(8,145,255,0.2)] transition-all duration-300 backdrop-blur-xl`}
-            >
-              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
-                {item.icon}
+          {displayBringItems.map((item: any, idx: number) => {
+            const topBars = [
+              'from-cyan-400 via-teal-300 to-transparent',
+              'from-blue-400 via-indigo-300 to-transparent',
+              'from-indigo-400 via-purple-300 to-transparent',
+              'from-purple-400 via-pink-300 to-transparent',
+              'from-teal-400 via-emerald-300 to-transparent',
+              'from-cyan-400 via-blue-300 to-transparent'
+            ]
+            return (
+              <div 
+                key={idx}
+                className="group relative bg-gradient-to-b from-[#0c162d]/90 via-[#070e1c]/95 to-[#040814]/98 border border-white/[0.1] hover:border-cyan-500/40 rounded-3xl p-8 overflow-hidden transform hover:-translate-y-2 hover:scale-[1.01] transition-all duration-500 shadow-xl hover:shadow-[0_20px_50px_rgba(34,211,238,0.15)] backdrop-blur-xl flex flex-col justify-between"
+              >
+                {/* Cyberpunk HUD Corner Brackets */}
+                <div className="absolute top-2 left-2 w-3 h-3 border-l-2 border-t-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors pointer-events-none" />
+                <div className="absolute top-2 right-2 w-3 h-3 border-r-2 border-t-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors pointer-events-none" />
+                <div className="absolute bottom-2 left-2 w-3 h-3 border-l-2 border-b-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors pointer-events-none" />
+                <div className="absolute bottom-2 right-2 w-3 h-3 border-r-2 border-b-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors pointer-events-none" />
+
+                {/* Top hairline accent bar */}
+                <div className={`absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r ${topBars[idx % topBars.length]} opacity-60 group-hover:opacity-100 transition-opacity duration-500`} />
+
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500/10 group-hover:border-cyan-500/40 transition-all duration-300 shadow-inner">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm md:text-base font-normal text-slate-300 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">
-                {item.title}
-              </h3>
-              <p className="text-sm md:text-base font-normal text-gray-300 leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
       </div>

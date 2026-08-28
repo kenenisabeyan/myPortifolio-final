@@ -76,10 +76,35 @@ const defaultSeedData = {
       ctaSecondaryText: 'Get In Touch',
     },
     overview: {
-      heading: 'Engineering Systems with Purpose & Precision.',
-      subheading: 'I bridge user experience with resilient backend architecture, delivering software that scales cleanly.',
-      paragraph1: 'I am a Full-Stack Software Engineer and Computer Science & Engineering student at ASTU. My development philosophy revolves around clean architecture, end-to-end data integrity, and high-performance user interfaces.',
-      paragraph2: 'From designing relational database schemas in PostgreSQL and MongoDB to crafting responsive frontends in React and Next.js, I take full ownership of the digital product lifecycle.',
+      heading: 'Who I Am & How I Build',
+      subheading: 'ENGINEERING PHILOSOPHY // 01',
+      paragraph1: 'I’m Kenenisa Beyan, a Full-Stack Software Engineer focused on building scalable, production-grade digital platforms that solve real business problems. My work combines modern software engineering with strategic thinking to create systems that are not only functional, but reliable, maintainable, and built for growth.',
+      paragraph2: 'With academic foundations in Computer Science and Management, I approach development beyond code analyzing workflows, optimizing user experiences, and engineering architectures that support long-term scalability and operational efficiency.',
+      paragraph3: 'As the founder of EDOT, an evolving education technology platform, I’m actively designing solutions that modernize digital learning through intelligent system design, automation, and user-centered experiences.',
+      paragraph4: 'I don’t believe in template-based code. Every architecture I craft is engineered for performance, modularity, security, and measurable business impact.',
+      pillars: [
+        {
+          title: 'Architectural Design',
+          subtitle: 'SYSTEM DESIGN & CLEAN UX',
+          badge: '01 // ARCHITECTURE',
+          description: 'I design and build modern, scalable web applications with clean interfaces, intuitive user experiences, resilient data schemas, and clean architectural patterns.',
+          tags: ['ScalableArchitecture', 'CleanCode', 'UXPerformance']
+        },
+        {
+          title: 'Collaborative Growth',
+          subtitle: 'CROSS-FUNCTIONAL & PRODUCT IMPACT',
+          badge: '02 // COLLABORATION',
+          description: 'I work effectively in engineering teams, continuously improving through feedback, structured code reviews, active problem-solving, and delivering user-focused value.',
+          tags: ['CrossFunctional', 'CodeReview', 'AgileMindset']
+        },
+        {
+          title: 'Continuous Progress',
+          subtitle: 'HIGH VELOCITY & QUALITY ASSURANCE',
+          badge: '03 // VELOCITY',
+          description: 'I build consistently with high development velocity, maintaining rigorous quality standards, automated testing, performance optimizations, and zero compromise on reliability.',
+          tags: ['HighVelocity', 'AutomatedPipelines', 'ZeroDowntime']
+        }
+      ]
     },
     snapshot: {
       role: 'Full-Stack Software Engineer',

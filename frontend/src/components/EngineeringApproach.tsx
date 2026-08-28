@@ -67,25 +67,44 @@ const EngineeringApproach: React.FC = () => {
 
         {/* Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {displaySteps.map((item, idx) => (
-            <div 
-              key={idx}
-              className={`group relative bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] ${item.borderColor} border-l-[6px] border-t-[6px] rounded-[2rem] p-6 md:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_80px_rgba(8,145,255,0.2)] backdrop-blur-xl`}
-            >
-              <div>
-                <div className="text-3xl md:text-4xl font-extrabold text-cyan-400/40 group-hover:text-cyan-400 transition-colors mb-4">
-                  {item.step}
+          {displaySteps.map((item: any, idx: number) => {
+            const colors = [
+              { bar: 'from-cyan-400 via-teal-300 to-transparent', glow: 'from-cyan-500/20 to-transparent', num: 'text-cyan-400', line: 'bg-cyan-400' },
+              { bar: 'from-blue-400 via-indigo-300 to-transparent', glow: 'from-blue-500/20 to-transparent', num: 'text-blue-400', line: 'bg-blue-400' },
+              { bar: 'from-indigo-400 via-purple-300 to-transparent', glow: 'from-indigo-500/20 to-transparent', num: 'text-indigo-400', line: 'bg-indigo-400' },
+              { bar: 'from-purple-400 via-pink-300 to-transparent', glow: 'from-purple-500/20 to-transparent', num: 'text-purple-400', line: 'bg-purple-400' },
+              { bar: 'from-teal-400 via-emerald-300 to-transparent', glow: 'from-teal-500/20 to-transparent', num: 'text-teal-400', line: 'bg-teal-400' },
+            ][idx % 5]
+
+            return (
+              <div 
+                key={idx}
+                className="group relative bg-gradient-to-b from-[#0c162d]/90 via-[#070e1c]/95 to-[#040814]/98 border border-white/[0.1] hover:border-cyan-500/40 rounded-3xl p-6 md:p-7 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(34,211,238,0.15)] backdrop-blur-xl overflow-hidden"
+              >
+                {/* Top glowing hairline accent bar */}
+                <div className={`absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r ${colors.bar} opacity-60 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div className={`absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br ${colors.glow} rounded-full blur-2xl opacity-30 group-hover:opacity-90 transition-opacity duration-500 pointer-events-none`} />
+
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`text-2xl md:text-3xl font-mono font-black ${colors.num} opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300`}>
+                      {item.step}
+                    </span>
+                    <span className="text-[10px] font-mono tracking-widest text-slate-400 uppercase bg-white/[0.04] border border-white/10 px-2 py-0.5 rounded-full">
+                      PHASE 0{idx + 1}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2.5 leading-snug group-hover:text-cyan-200 transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs md:text-sm font-normal text-slate-300 leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-3 leading-snug">
-                  {item.title}
-                </h3>
-                <p className="text-sm font-normal text-gray-300 leading-relaxed">
-                  {item.desc}
-                </p>
+                <div className={`w-10 h-1 rounded-full bg-white/10 group-hover:${colors.line} transition-all duration-500 mt-6 group-hover:w-full`} />
               </div>
-              <div className="w-8 h-1 rounded-full bg-white/10 group-hover:bg-cyan-400 transition-colors mt-6" />
-            </div>
-          ))}
+            )
+          })}
         </div>
 
       </div>

@@ -76,16 +76,21 @@ const ProfessionalSnapshot: React.FC = () => {
           {itemsToRender.map((item, idx) => (
             <div 
               key={idx}
-              className="bg-[#07101f]/90 dark:bg-[#020817]/95 border border-white/[0.08] border-l-cyan-500 border-t-cyan-500 border-l-[4px] border-t-[4px] rounded-[1.5rem] p-6 flex items-start gap-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_60px_rgba(34,211,238,0.15)] backdrop-blur-xl"
+              className="group relative bg-gradient-to-b from-[#0c162d]/90 via-[#070e1c]/95 to-[#040814]/98 border border-white/[0.1] hover:border-cyan-500/40 rounded-2xl p-6 flex items-start gap-4 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgba(34,211,238,0.15)] backdrop-blur-xl overflow-hidden"
             >
-              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 mt-0.5">
+              {/* Top hairline glowing light bar */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -top-8 -right-8 w-28 h-28 bg-cyan-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-80 transition-opacity pointer-events-none" />
+
+              <div className="w-11 h-11 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 group-hover:bg-cyan-500/10 group-hover:border-cyan-500/30 transition-all duration-300 shadow-inner">
                 {item.icon}
               </div>
-              <div className="flex flex-col">
-                <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-1">
+              <div className="flex flex-col relative z-10">
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400 mb-1 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 group-hover:animate-ping" />
                   {item.title}
                 </span>
-                <span className="text-sm md:text-base font-semibold text-gray-200 leading-snug">
+                <span className="text-sm md:text-base font-semibold text-gray-200 group-hover:text-white leading-snug transition-colors">
                   {item.detail}
                 </span>
               </div>

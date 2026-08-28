@@ -48,7 +48,7 @@ const Hero = () => {
           
           {/* Role Badge / Subheading */}
           <div className="mb-6">
-            <span className="text-sm md:text-base font-mono font-bold tracking-widest text-cyan-400 dark:text-cyan-400 uppercase bg-cyan-500/10 border border-cyan-500/30 px-4 py-2 rounded-full shadow-[0_0_15px_rgba(34,211,238,0.2)] inline-block">{heroBadge}</span>
+            <span className="text-xs md:text-xs font-mono font-semibold tracking-wider text-cyan-400 dark:text-cyan-400 uppercase bg-cyan-500/10 border border-cyan-500/30 px-3.5 py-1 rounded-full shadow-[0_0_15px_rgba(34,211,238,0.2)] inline-block">{heroBadge}</span>
           </div>
 
           {/* Glass plate behind text for legibility over 3D backgrounds */}
