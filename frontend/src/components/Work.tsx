@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, Suspense } from 'react'
 import ExpandableText from './ExpandableText'
 import { SiReact, SiPython, SiNodedotjs, SiTailwindcss, SiMongodb, SiTypescript, SiJavascript, SiHtml5, SiCss, SiDocker, SiNextdotjs, SiExpress, SiDjango, SiMysql, SiPostgresql, SiCplusplus, SiGit, SiGithub, SiFastapi, SiTensorflow, SiPytorch, SiKeras, SiScikitlearn, SiSelenium, SiBootstrap, SiFramer, SiThreedotjs } from 'react-icons/si'
 import { FaJava, FaServer, FaDatabase, FaTools, FaLayerGroup, FaAws, FaBrain, FaRobot, FaSyncAlt, FaMicrochip, FaNetworkWired, FaSitemap, FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import { projects as staticProjects } from '../data/data'
-import TechPlanets3D from './TechPlanets3D'
+const TechPlanets3D = React.lazy(() => import('./TechPlanets3D'))
 import ProjectCaseStudyModal, { CaseStudyData } from './ProjectCaseStudyModal'
 import { usePortfolioData } from '../context/PortfolioContext'
 import { DynamicTechBadge } from '../utils/techIconResolver'
@@ -140,7 +140,9 @@ const Work = () => {
         
         {/* 3D Tech Planets Orbiting */}
         <div className="w-full h-[550px] relative z-10 mb-16 px-4">
-          <TechPlanets3D />
+          <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-cyan-400 font-mono text-xs">Loading 3D Visualizer...</div>}>
+            <TechPlanets3D />
+          </Suspense>
         </div>
 
         {/* Let's Discuss Your Project Button */}

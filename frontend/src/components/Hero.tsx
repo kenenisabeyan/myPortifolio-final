@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import kenoImg from '../assets/keno.jpg'
-import Background3D from './Background3D'
+const Background3D = React.lazy(() => import('./Background3D'))
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { usePortfolioData } from '../context/PortfolioContext'
 
@@ -40,7 +40,9 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-[100vh] flex items-center overflow-hidden pt-20 bg-transparent">
-      <Background3D />
+      <Suspense fallback={null}>
+        <Background3D />
+      </Suspense>
       <div className="relative z-10 max-w-[1700px] mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
         {/* Left side: Original Typography integrated carefully */}

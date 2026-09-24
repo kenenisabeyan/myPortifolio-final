@@ -28,7 +28,7 @@ import ChatBot from './components/ChatBot'
 import SEO from './components/SEO'
 import PWAInstallPrompt from './components/PWAInstallPrompt'
 
-import AdminApp from './admin/AdminApp'
+const AdminApp = React.lazy(() => import('./admin/AdminApp'))
 
 import { trackAnalyticsEvent } from './services/portfolioData'
 import { PortfolioProvider } from './context/PortfolioContext'
@@ -58,7 +58,15 @@ function App() {
   }, [isAdminRoute])
 
   if (isAdminRoute) {
-    return <AdminApp />
+    return (
+      <React.Suspense fallback={
+        <div className="min-h-screen bg-[#030610] flex items-center justify-center text-cyan-400 font-mono text-sm">
+          Loading Control Center...
+        </div>
+      }>
+        <AdminApp />
+      </React.Suspense>
+    )
   }
 
   return (

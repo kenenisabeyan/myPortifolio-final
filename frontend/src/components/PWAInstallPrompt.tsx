@@ -23,17 +23,14 @@ const PWAInstallPrompt: React.FC = () => {
     window.addEventListener('online', handleOnline)
     window.addEventListener('offline', handleOffline)
 
-    // 1. Check if running inside installed standalone PWA app
+    // 1. Check if currently running inside installed standalone PWA app
     const inStandalone =
       window.matchMedia('(display-mode: standalone)').matches ||
       window.matchMedia('(display-mode: minimal-ui)').matches ||
       (window.navigator as unknown as { standalone?: boolean }).standalone === true ||
       document.referrer.includes('android-app://')
 
-    // 2. Check if user already installed app previously
-    const alreadyInstalled = localStorage.getItem('pwa_installed') === 'true'
-
-    if (inStandalone || alreadyInstalled) {
+    if (inStandalone) {
       setIsStandalone(true)
       setShowPrompt(false)
       return () => {
@@ -42,7 +39,7 @@ const PWAInstallPrompt: React.FC = () => {
       }
     }
 
-    // 3. Listen for appinstalled event (fired by Chrome/Samsung/Tecno/Android when app finishes installing)
+    // 2. Listen for appinstalled event (when user completes installation)
     const handleAppInstalled = () => {
       localStorage.setItem('pwa_installed', 'true')
       setIsStandalone(true)
@@ -51,39 +48,14 @@ const PWAInstallPrompt: React.FC = () => {
 
     window.addEventListener('appinstalled', handleAppInstalled)
 
-    // 4. Query navigator.getInstalledRelatedApps if supported
-    if ('getInstalledRelatedApps' in navigator) {
-      (navigator as unknown as { getInstalledRelatedApps: () => Promise<unknown[]> })
-        .getInstalledRelatedApps()
-        .then((relatedApps) => {
-          if (relatedApps && relatedApps.length > 0) {
-            localStorage.setItem('pwa_installed', 'true')
-            setIsStandalone(true)
-            setShowPrompt(false)
-          }
-        })
-        .catch(() => {})
+    // Show install recommendation prompt for all web browser visits when app is not installed
+    if (!inStandalone) {
+      setShowPrompt(true)
     }
 
-    // 5. Check dismissal history
-    const dismissedTime = localStorage.getItem('pwa_prompt_dismissed_time')
-    if (dismissedTime && Date.now() - parseInt(dismissedTime, 10) < 12 * 60 * 60 * 1000) {
-      return () => {
-        window.removeEventListener('online', handleOnline)
-        window.removeEventListener('offline', handleOffline)
-        window.removeEventListener('appinstalled', handleAppInstalled)
-      }
-    }
-
-    // 6. Detect iOS
-    const userAgent = window.navigator.userAgent.toLowerCase()
-    const iosDevice = /iphone|ipad|ipod/.test(userAgent)
-    setIsIos(iosDevice)
-
-    // 7. Listen for beforeinstallprompt (Android / Samsung / Tecno / Infinix / Edge / Opera)
+    // 4. Capture beforeinstallprompt (Android / Samsung / Tecno / Infinix / Edge / Opera)
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault()
-      // If beforeinstallprompt fires, the app is definitely NOT installed! Reset stale local flag
       localStorage.removeItem('pwa_installed')
       setDeferredPrompt(e as BeforeInstallPromptEvent)
       setShowPrompt(true)
@@ -91,20 +63,11 @@ const PWAInstallPrompt: React.FC = () => {
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
 
-    // 8. Trigger prompt 1 second after page load ONLY if app is NOT installed
-    const timer = setTimeout(() => {
-      const isMobile = /android|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(userAgent) || window.innerWidth < 1024
-      if (isMobile && !inStandalone && localStorage.getItem('pwa_installed') !== 'true') {
-        setShowPrompt(true)
-      }
-    }, 1000)
-
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
       window.removeEventListener('appinstalled', handleAppInstalled)
       window.removeEventListener('online', handleOnline)
       window.removeEventListener('offline', handleOffline)
-      clearTimeout(timer)
     }
   }, [])
 
@@ -127,7 +90,6 @@ const PWAInstallPrompt: React.FC = () => {
 
   const handleDismiss = () => {
     setShowPrompt(false)
-    localStorage.setItem('pwa_prompt_dismissed_time', Date.now().toString())
   }
 
   if (isStandalone || !showPrompt) return null
@@ -142,45 +104,45 @@ const PWAInstallPrompt: React.FC = () => {
         </div>
       )}
 
-      {/* Floating Bottom-Left Install Card (Avoids overlapping right-side ChatBot & ScrollArrow) */}
+      {/* Floating Bottom Install Card (Does NOT overlap right-side ChatBot & ScrollArrow on any screen) */}
       {!isStandalone && showPrompt && (
-        <div className="fixed bottom-6 left-4 sm:left-6 right-auto max-w-[calc(100vw-2rem)] sm:max-w-md z-40 transition-all duration-500 animate-slide-up">
-          <div className="relative p-4 rounded-2xl bg-[#060d1f]/95 backdrop-blur-2xl border-2 border-cyan-400/50 shadow-[0_10px_40px_rgba(34,211,238,0.35)] flex items-center justify-between gap-3 text-white overflow-hidden">
+        <div className="fixed bottom-24 left-3 right-[5.5rem] sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-md z-40 transition-all duration-500 animate-slide-up">
+          <div className="relative p-3 sm:p-4 rounded-2xl bg-[#060d1f]/95 backdrop-blur-2xl border-2 border-cyan-400/50 shadow-[0_10px_40px_rgba(34,211,238,0.35)] flex items-center justify-between gap-2.5 sm:gap-3 text-white overflow-hidden">
             
             {/* Animated Ambient Glow */}
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-600 to-cyan-500 rounded-2xl blur-md opacity-40 -z-10 animate-pulse"></div>
 
             {/* App Icon */}
-            <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border-2 border-cyan-400 shadow-[0_0_18px_rgba(34,211,238,0.5)]">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl overflow-hidden shrink-0 border-2 border-cyan-400 shadow-[0_0_18px_rgba(34,211,238,0.5)]">
               <img src={appIcon} alt="Kenenisa Beyan Portfolio App" className="w-full h-full object-cover" />
             </div>
 
             {/* Text Details */}
-            <div className="flex-1 min-w-0 pr-1">
-              <h4 className="text-xs sm:text-sm font-black text-white tracking-wide truncate">
-                Install Kenenisa's Portfolio App
+            <div className="flex-1 min-w-0 pr-0.5">
+              <h4 className="text-[11px] sm:text-sm font-black text-white tracking-wide truncate">
+                Install App
               </h4>
-              <p className="text-[11px] text-gray-300 font-medium truncate mt-0.5">
-                1-tap home screen access &amp; instant loading
+              <p className="text-[10px] sm:text-[11px] text-gray-300 font-medium truncate mt-0.5">
+                Fast 1-tap mobile access
               </p>
             </div>
 
             {/* Install & Dismiss "X" Buttons */}
-            <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
               <button
                 onClick={handleInstallClick}
-                className="px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-black font-black text-xs tracking-wider shadow-[0_0_20px_rgba(34,211,238,0.6)] transition-all flex items-center gap-1.5 active:scale-95 uppercase"
+                className="px-2.5 sm:px-3.5 py-1.5 sm:py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-black font-black text-[10px] sm:text-xs tracking-wider shadow-[0_0_20px_rgba(34,211,238,0.6)] transition-all flex items-center gap-1.5 active:scale-95 uppercase"
               >
-                <FaDownload size={11} />
+                <FaDownload size={10} />
                 <span>Install</span>
               </button>
 
               <button
                 onClick={handleDismiss}
                 aria-label="Close Install Prompt"
-                className="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 text-gray-400 hover:text-white flex items-center justify-center transition-colors"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white/10 hover:bg-white/20 text-gray-400 hover:text-white flex items-center justify-center transition-colors"
               >
-                <FaTimes size={14} />
+                <FaTimes size={12} />
               </button>
             </div>
           </div>
