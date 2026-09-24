@@ -3,19 +3,21 @@
   "name": "Kenenisa Beyan — Full-Stack Software Engineer",
   "icons": [
     {
-      "src": "/og-image.png",
+      "src": "/icon-192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
-      "src": "/og-image.png",
+      "src": "/icon-512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": "/",
-  "background_color": "#030610",
-  "theme_color": "#07101f",
+  "background_color": "#A656F7",
+  "theme_color": "#9E5AF6",
   "display": "standalone",
   "orientation": "portrait",
   "description": "Official Portfolio & Engineering Profile of Kenenisa Beyan, Full-Stack Software Engineer."
