@@ -142,9 +142,9 @@ const PWAInstallPrompt: React.FC = () => {
         </div>
       )}
 
-      {/* Floating Bottom Install Card */}
+      {/* Floating Bottom-Left Install Card (Avoids overlapping right-side ChatBot & ScrollArrow) */}
       {!isStandalone && showPrompt && (
-        <div className="fixed bottom-4 left-3 right-3 sm:left-auto sm:right-6 sm:max-w-md z-50 transition-all duration-500 animate-slide-up">
+        <div className="fixed bottom-6 left-4 sm:left-6 right-auto max-w-[calc(100vw-2rem)] sm:max-w-md z-40 transition-all duration-500 animate-slide-up">
           <div className="relative p-4 rounded-2xl bg-[#060d1f]/95 backdrop-blur-2xl border-2 border-cyan-400/50 shadow-[0_10px_40px_rgba(34,211,238,0.35)] flex items-center justify-between gap-3 text-white overflow-hidden">
             
             {/* Animated Ambient Glow */}
