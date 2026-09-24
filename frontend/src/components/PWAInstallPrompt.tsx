@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { FaMobileAlt, FaDownload, FaTimes, FaShareAlt, FaPlusSquare, FaEllipsisV, FaBolt, FaWifi } from 'react-icons/fa'
+import { FaDownload, FaTimes, FaShareAlt, FaPlusSquare, FaEllipsisV, FaWifi } from 'react-icons/fa'
 import appIcon from '/apple-touch-icon.png'
 
 interface BeforeInstallPromptEvent extends Event {
@@ -15,7 +15,6 @@ const PWAInstallPrompt: React.FC = () => {
   const [isIos, setIsIos] = useState(false)
   const [isStandalone, setIsStandalone] = useState(false)
   const [isOffline, setIsOffline] = useState(!navigator.onLine)
-  const [topBarDismissed, setTopBarDismissed] = useState(false)
 
   useEffect(() => {
     // Online / Offline listener
@@ -24,50 +23,85 @@ const PWAInstallPrompt: React.FC = () => {
     window.addEventListener('online', handleOnline)
     window.addEventListener('offline', handleOffline)
 
-    // Check if running in standalone mode (PWA installed)
+    // 1. Check if running inside installed standalone PWA app
     const inStandalone =
       window.matchMedia('(display-mode: standalone)').matches ||
-      (window.navigator as unknown as { standalone?: boolean }).standalone === true
+      window.matchMedia('(display-mode: minimal-ui)').matches ||
+      (window.navigator as unknown as { standalone?: boolean }).standalone === true ||
+      document.referrer.includes('android-app://')
 
-    setIsStandalone(inStandalone)
-    if (inStandalone) return () => {
-      window.removeEventListener('online', handleOnline)
-      window.removeEventListener('offline', handleOffline)
-    }
+    // 2. Check if user already installed app previously
+    const alreadyInstalled = localStorage.getItem('pwa_installed') === 'true'
 
-    // Check dismissal history
-    const dismissedTime = localStorage.getItem('pwa_prompt_dismissed_time')
-    if (dismissedTime && Date.now() - parseInt(dismissedTime, 10) < 12 * 60 * 60 * 1000) {
+    if (inStandalone || alreadyInstalled) {
+      setIsStandalone(true)
+      setShowPrompt(false)
       return () => {
         window.removeEventListener('online', handleOnline)
         window.removeEventListener('offline', handleOffline)
       }
     }
 
-    // Detect iOS
+    // 3. Listen for appinstalled event (fired by Chrome/Samsung/Tecno/Android when app finishes installing)
+    const handleAppInstalled = () => {
+      localStorage.setItem('pwa_installed', 'true')
+      setIsStandalone(true)
+      setShowPrompt(false)
+    }
+
+    window.addEventListener('appinstalled', handleAppInstalled)
+
+    // 4. Query navigator.getInstalledRelatedApps if supported
+    if ('getInstalledRelatedApps' in navigator) {
+      (navigator as unknown as { getInstalledRelatedApps: () => Promise<unknown[]> })
+        .getInstalledRelatedApps()
+        .then((relatedApps) => {
+          if (relatedApps && relatedApps.length > 0) {
+            localStorage.setItem('pwa_installed', 'true')
+            setIsStandalone(true)
+            setShowPrompt(false)
+          }
+        })
+        .catch(() => {})
+    }
+
+    // 5. Check dismissal history
+    const dismissedTime = localStorage.getItem('pwa_prompt_dismissed_time')
+    if (dismissedTime && Date.now() - parseInt(dismissedTime, 10) < 12 * 60 * 60 * 1000) {
+      return () => {
+        window.removeEventListener('online', handleOnline)
+        window.removeEventListener('offline', handleOffline)
+        window.removeEventListener('appinstalled', handleAppInstalled)
+      }
+    }
+
+    // 6. Detect iOS
     const userAgent = window.navigator.userAgent.toLowerCase()
     const iosDevice = /iphone|ipad|ipod/.test(userAgent)
     setIsIos(iosDevice)
 
-    // Capture beforeinstallprompt (Android / Samsung / Tecno / Infinix / Edge / Opera)
+    // 7. Listen for beforeinstallprompt (Android / Samsung / Tecno / Infinix / Edge / Opera)
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault()
+      // If beforeinstallprompt fires, the app is definitely NOT installed! Reset stale local flag
+      localStorage.removeItem('pwa_installed')
       setDeferredPrompt(e as BeforeInstallPromptEvent)
       setShowPrompt(true)
     }
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
 
-    // Auto-trigger promotion banner 1 second after page load
+    // 8. Trigger prompt 1 second after page load ONLY if app is NOT installed
     const timer = setTimeout(() => {
       const isMobile = /android|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(userAgent) || window.innerWidth < 1024
-      if (isMobile && !inStandalone) {
+      if (isMobile && !inStandalone && localStorage.getItem('pwa_installed') !== 'true') {
         setShowPrompt(true)
       }
     }, 1000)
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+      window.removeEventListener('appinstalled', handleAppInstalled)
       window.removeEventListener('online', handleOnline)
       window.removeEventListener('offline', handleOffline)
       clearTimeout(timer)
@@ -79,6 +113,8 @@ const PWAInstallPrompt: React.FC = () => {
       deferredPrompt.prompt()
       const { outcome } = await deferredPrompt.userChoice
       if (outcome === 'accepted') {
+        localStorage.setItem('pwa_installed', 'true')
+        setIsStandalone(true)
         setShowPrompt(false)
       }
       setDeferredPrompt(null)
@@ -94,6 +130,8 @@ const PWAInstallPrompt: React.FC = () => {
     localStorage.setItem('pwa_prompt_dismissed_time', Date.now().toString())
   }
 
+  if (isStandalone || !showPrompt) return null
+
   return (
     <>
       {/* Offline Status Warning Bar */}
@@ -104,34 +142,7 @@ const PWAInstallPrompt: React.FC = () => {
         </div>
       )}
 
-      {/* Top Mobile Smart Promo Announcement Bar */}
-      {!isStandalone && !topBarDismissed && showPrompt && (
-        <div className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-purple-900/90 via-[#07101f]/95 to-cyan-950/90 backdrop-blur-xl border-b border-cyan-500/30 px-3 py-2 text-white flex items-center justify-between gap-2 shadow-lg animate-slide-down">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping shrink-0" />
-            <p className="text-[11px] font-bold truncate">
-              <span className="text-cyan-300">Official Mobile App</span> available for Samsung, Infinix, Tecno &amp; iPhones
-            </p>
-          </div>
-          <div className="flex items-center gap-1.5 shrink-0">
-            <button
-              onClick={handleInstallClick}
-              className="px-2.5 py-1 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-black font-black text-[10px] uppercase tracking-wider shadow-[0_0_10px_rgba(34,211,238,0.5)] transition-all"
-            >
-              Get App
-            </button>
-            <button
-              onClick={() => setTopBarDismissed(true)}
-              className="text-gray-400 hover:text-white p-1"
-              aria-label="Close Top Announcement Bar"
-            >
-              <FaTimes size={11} />
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Floating Bottom Promotional Install Card */}
+      {/* Floating Bottom Install Card */}
       {!isStandalone && showPrompt && (
         <div className="fixed bottom-4 left-3 right-3 sm:left-auto sm:right-6 sm:max-w-md z-50 transition-all duration-500 animate-slide-up">
           <div className="relative p-4 rounded-2xl bg-[#060d1f]/95 backdrop-blur-2xl border-2 border-cyan-400/50 shadow-[0_10px_40px_rgba(34,211,238,0.35)] flex items-center justify-between gap-3 text-white overflow-hidden">
@@ -140,17 +151,12 @@ const PWAInstallPrompt: React.FC = () => {
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-600 to-cyan-500 rounded-2xl blur-md opacity-40 -z-10 animate-pulse"></div>
 
             {/* App Icon */}
-            <div className="relative w-13 h-13 rounded-xl overflow-hidden shrink-0 border-2 border-cyan-400 shadow-[0_0_18px_rgba(34,211,238,0.5)]">
+            <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border-2 border-cyan-400 shadow-[0_0_18px_rgba(34,211,238,0.5)]">
               <img src={appIcon} alt="Kenenisa Beyan Portfolio App" className="w-full h-full object-cover" />
             </div>
 
-            {/* Promotional Text Details */}
+            {/* Text Details */}
             <div className="flex-1 min-w-0 pr-1">
-              <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-[9px] font-black uppercase text-cyan-300 tracking-wider mb-1">
-                <FaBolt className="text-cyan-400 animate-bounce" size={9} />
-                <span>Recommended App</span>
-              </div>
-              
               <h4 className="text-xs sm:text-sm font-black text-white tracking-wide truncate">
                 Install Kenenisa's Portfolio App
               </h4>
@@ -159,7 +165,7 @@ const PWAInstallPrompt: React.FC = () => {
               </p>
             </div>
 
-            {/* Install & Dismiss Actions */}
+            {/* Install & Dismiss "X" Buttons */}
             <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={handleInstallClick}
@@ -171,10 +177,10 @@ const PWAInstallPrompt: React.FC = () => {
 
               <button
                 onClick={handleDismiss}
-                aria-label="Dismiss Promotion"
+                aria-label="Close Install Prompt"
                 className="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 text-gray-400 hover:text-white flex items-center justify-center transition-colors"
               >
-                <FaTimes size={13} />
+                <FaTimes size={14} />
               </button>
             </div>
           </div>
@@ -195,10 +201,6 @@ const PWAInstallPrompt: React.FC = () => {
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-cyan-400 shadow-[0_0_25px_rgba(34,211,238,0.6)] mb-3">
                 <img src={appIcon} alt="App Icon" className="w-full h-full object-cover" />
-              </div>
-
-              <div className="inline-block px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 font-mono text-[10px] font-bold uppercase mb-2">
-                Official iPhone / iPad App
               </div>
 
               <h3 className="text-base font-black text-white">Install Kenenisa Beyan App</h3>
@@ -246,10 +248,6 @@ const PWAInstallPrompt: React.FC = () => {
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-cyan-400 shadow-[0_0_25px_rgba(34,211,238,0.6)] mb-3">
                 <img src={appIcon} alt="App Icon" className="w-full h-full object-cover" />
-              </div>
-
-              <div className="inline-block px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 font-mono text-[10px] font-bold uppercase mb-2">
-                Samsung, Tecno, Infinix &amp; Android
               </div>
 
               <h3 className="text-base font-black text-white">Install Kenenisa Beyan App</h3>
