@@ -26,6 +26,7 @@ import Footer from './components/Footer'
 import ScrollArrow from './components/ScrollArrow'
 import ChatBot from './components/ChatBot'
 import SEO from './components/SEO'
+import PWAInstallPrompt from './components/PWAInstallPrompt'
 
 import AdminApp from './admin/AdminApp'
 
@@ -94,6 +95,7 @@ function App() {
           <Footer />
           <ScrollArrow />
           <ChatBot />
+          <PWAInstallPrompt />
         </div>
       </div>
     </PortfolioProvider>

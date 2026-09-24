@@ -20,5 +20,21 @@
   "theme_color": "#9E5AF6",
   "display": "standalone",
   "orientation": "portrait",
-  "description": "Official Portfolio & Engineering Profile of Kenenisa Beyan, Full-Stack Software Engineer."
+  "description": "Official Portfolio & Engineering Profile of Kenenisa Beyan, Full-Stack Software Engineer.",
+  "shortcuts": [
+    {
+      "name": "View Projects & Case Studies",
+      "short_name": "Projects",
+      "description": "Explore Kenenisa's Featured Engineering Projects",
+      "url": "/#work",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Contact Kenenisa",
+      "short_name": "Contact",
+      "description": "Send a direct message or hire Kenenisa Beyan",
+      "url": "/#contact",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
 }
