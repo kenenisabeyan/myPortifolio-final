@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { FaTimes, FaPaperPlane, FaTrash, FaCopy, FaCheck, FaUser } from 'react-icons/fa'
-import kenoImg from '../assets/keno.jpg'
+import kenoImg from '../assets/kenenisa.jpg'
 
 interface ChatMessage {
   role: 'user' | 'assistant'

@@ -1,5 +1,5 @@
 import React from 'react'
-import kenooImg from '../../assets/kenoo.png'
+import kenooImg from '../../assets/kenoog.png'
 import {
   FaChartPie,
   FaEye,

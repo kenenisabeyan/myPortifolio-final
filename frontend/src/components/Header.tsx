@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import kenooImg from '../assets/kenoog.png';
 
 const navLinks = ['Work', 'Experience', 'Skills', 'Testimonials', 'Contact'];
 
@@ -9,8 +10,9 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="/" className="text-2xl font-bold text-white">
-          Kenenisa Beyan
+        <a href="/" className="flex items-center gap-3 text-2xl font-bold text-white">
+          <img src={kenooImg} alt="Kenenisa Beyan" className="w-9 h-9 rounded-full object-cover border border-cyan-400" />
+          <span>Kenenisa Beyan</span>
         </a>
 
         {/* Desktop Nav */}

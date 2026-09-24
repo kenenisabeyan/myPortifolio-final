@@ -9,6 +9,7 @@ import {
   HiOutlineCheckCircle
 } from 'react-icons/hi'
 import homePageImg from '../assets/home-page.png'
+import kenenisaImg from '../assets/kenenisa.jpg'
 import kenooTransparentImg from '../assets/kenoo_transparent.png'
 import kenoogImg from '../assets/kenoog.png'
 import kenooImg from '../assets/kenoo.png'
@@ -123,56 +124,21 @@ const Overview = () => {
               className="bg-gray-100 dark:bg-[#030610]/60 dark:backdrop-blur-lg rounded-3xl dark:rounded-[2.5rem] min-h-[460px] flex justify-center items-center relative border border-gray-200 dark:border-white/[0.08] group shadow-sm dark:shadow-[0_20px_50px_rgba(0,0,0,0.9)] w-full cursor-pointer"
             >
               
-              {/* Cyberpunk HUD Corner Brackets */}
-              <div className="absolute top-3 left-3 w-4 h-4 border-l-2 border-t-2 border-cyan-400/60 group-hover:border-cyan-400 transition-colors pointer-events-none z-30" />
-              <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-cyan-400/60 group-hover:border-cyan-400 transition-colors pointer-events-none z-30" />
-              <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-cyan-400/60 group-hover:border-cyan-400 transition-colors pointer-events-none z-30" />
-              <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 border-cyan-400/60 group-hover:border-cyan-400 transition-colors pointer-events-none z-30" />
+
 
               {/* Animated glowing backdrops */}
               <div className="absolute inset-0 bg-cyan-500/10 blur-[120px] scale-150 transform opacity-30 group-hover:opacity-70 transition-opacity duration-700 pointer-events-none hidden dark:block" />
 
-              {/* 1. ORIGINAL FULL-CLARITY BACKGROUND GRAPHIC (home-page.png - At Z=0) */}
+              {/* Single High-Clarity Showcase Image (kenenisa.jpg) */}
               <div 
-                className="absolute inset-0 z-0 w-full h-full flex items-center justify-center p-4"
-                style={{ transform: 'translateZ(0px)' }}
+                className="relative z-10 w-full h-full flex items-center justify-center p-3"
+                style={{ transform: 'translateZ(25px)' }}
               >
-                <div className="absolute inset-0 bg-blue-900/15 mix-blend-overlay z-10 pointer-events-none group-hover:bg-transparent transition-colors duration-700 hidden dark:block" />
                 <img 
-                  src={homePageImg} 
-                  alt="Kenenisa Beyan — Full-Stack Software Engineer Overview" 
-                  className="w-full h-full max-w-[520px] max-h-[520px] object-contain rounded-2xl md:rounded-3xl shadow-xl dark:shadow-[0_0_30px_rgba(59,130,246,0.3)] transform transition-transform duration-1000 group-hover:scale-[1.03]"
-                />
-              </div>
-
-              {/* 2. OVERLAID 3D SUBJECT PHOTO (Maximum Overall Visibility & Scale) */}
-              <div 
-                className="relative z-10 w-full max-w-[460px] flex flex-col items-center justify-end min-h-[460px] pt-2"
-                style={{ transform: 'translateZ(45px)', transformStyle: 'preserve-3d' }}
-              >
-                
-                {/* Back Arc of Neon Circle (z-0 behind photo) */}
-                <div 
-                  className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[88%] h-24 rounded-[100%] border-[4px] border-cyan-400 shadow-[0_0_35px_rgba(34,211,238,0.9),inset_0_0_20px_rgba(34,211,238,0.6)] z-0 pointer-events-none group-hover:border-cyan-300 group-hover:shadow-[0_0_55px_rgba(34,211,238,1)] transition-all duration-500"
-                  style={{ clipPath: 'inset(0 0 50% 0)' }}
-                />
-
-                {/* 3D Floating Rim Glow behind subject shoulders */}
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-56 h-56 bg-cyan-400/25 blur-[55px] rounded-full pointer-events-none -z-10 animate-pulse" />
-
-                {/* Transparent Cutout Photo (Maximum Overall Visibility, Scale, & High Contrast Pop) */}
-                <img 
-                  src={kenooTransparentImg} 
+                  src={kenenisaImg} 
                   alt="Kenenisa Beyan — Full-Stack Software Engineer" 
-                  className="w-full max-h-[500px] object-contain relative z-10 filter brightness-[1.06] contrast-[1.05] saturate-[1.05] drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)] drop-shadow-[0_0_25px_rgba(34,211,238,0.5)] transform scale-105 group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-auto max-h-[480px] object-cover rounded-2xl md:rounded-3xl shadow-xl dark:shadow-[0_0_35px_rgba(34,211,238,0.3)] filter brightness-[1.03] contrast-[1.03] transform transition-transform duration-700 group-hover:scale-[1.03]"
                 />
-
-                {/* Front Arc of Neon Circle (z-20 in front of photo for 3D Overlap) */}
-                <div 
-                  className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[88%] h-24 rounded-[100%] border-[4px] border-cyan-400 shadow-[0_0_35px_rgba(34,211,238,0.9),inset_0_0_20px_rgba(34,211,238,0.6)] z-20 pointer-events-none group-hover:border-cyan-300 group-hover:shadow-[0_0_55px_rgba(34,211,238,1)] transition-all duration-500"
-                  style={{ clipPath: 'inset(50% 0 0 0)' }}
-                />
-
               </div>
 
             </div>
@@ -258,11 +224,7 @@ const Overview = () => {
                     : 'border-white/10 hover:border-cyan-400/50 hover:shadow-[0_15px_40px_rgba(34,211,238,0.15)]'
                 }`}
               >
-                {/* Corner Sci-Fi Bracket SVGs */}
-                <div className="absolute top-2 left-2 w-3 h-3 border-l-2 border-t-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors pointer-events-none" />
-                <div className="absolute top-2 right-2 w-3 h-3 border-r-2 border-t-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors pointer-events-none" />
-                <div className="absolute bottom-2 left-2 w-3 h-3 border-l-2 border-b-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors pointer-events-none" />
-                <div className="absolute bottom-2 right-2 w-3 h-3 border-r-2 border-b-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors pointer-events-none" />
+
 
                 {/* Glowing Accent Top Bar */}
                 <div className={`absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r ${item.topBarGradient}`} />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FaBars, FaTimes, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { FiArrowUpRight } from 'react-icons/fi'
-import kenooImg from '../assets/kenoo.png'
+import kenooImg from '../assets/kenoog.png'
 import { usePortfolioData } from '../context/PortfolioContext'
 
 const API_BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || 'http://localhost:5001'

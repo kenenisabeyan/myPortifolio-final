@@ -84,11 +84,7 @@ const WhatIBring: React.FC = () => {
                 key={idx}
                 className="group relative bg-gradient-to-b from-[#0c162d]/90 via-[#070e1c]/95 to-[#040814]/98 border border-white/[0.1] hover:border-cyan-500/40 rounded-3xl p-8 overflow-hidden transform hover:-translate-y-2 hover:scale-[1.01] transition-all duration-500 shadow-xl hover:shadow-[0_20px_50px_rgba(34,211,238,0.15)] backdrop-blur-xl flex flex-col justify-between"
               >
-                {/* Cyberpunk HUD Corner Brackets */}
-                <div className="absolute top-2 left-2 w-3 h-3 border-l-2 border-t-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors pointer-events-none" />
-                <div className="absolute top-2 right-2 w-3 h-3 border-r-2 border-t-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors pointer-events-none" />
-                <div className="absolute bottom-2 left-2 w-3 h-3 border-l-2 border-b-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors pointer-events-none" />
-                <div className="absolute bottom-2 right-2 w-3 h-3 border-r-2 border-b-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors pointer-events-none" />
+
 
                 {/* Top hairline accent bar */}
                 <div className={`absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r ${topBars[idx % topBars.length]} opacity-60 group-hover:opacity-100 transition-opacity duration-500`} />

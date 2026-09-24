@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaAward, FaBuilding, FaCalendarAlt, FaExpand, FaTimes } from 'react-icons/fa'
-import keno from '../assets/keno.jpg'
+import keno from '../assets/kenenisa.jpg'
 import edodphoto from '../assets/edodphoto.png'
 
 interface GalleryImage {

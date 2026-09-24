@@ -106,7 +106,8 @@ const Hero = () => {
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-600 to-cyan-500 rounded-full blur-md opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
               
               <a
-                href="https://drive.google.com/file/d/1sF9FXbmXPy51meMAqaVVbKpTg-qtCFLX/view?usp=drive_link"
+                href={settings.resumeUrl || "/Kenenisa_Beyan_CV.pdf"}
+                download="Kenenisa_Beyan_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative flex items-center justify-center gap-3 px-8 w-full h-full bg-gray-900 dark:bg-cyan-500 text-white dark:text-black dark:border dark:border-transparent rounded-full font-bold dark:font-black text-sm uppercase tracking-widest hover:bg-gray-800 dark:hover:bg-[#030610] dark:hover:text-cyan-50 dark:hover:border-cyan-400/50 transition-colors overflow-hidden"
